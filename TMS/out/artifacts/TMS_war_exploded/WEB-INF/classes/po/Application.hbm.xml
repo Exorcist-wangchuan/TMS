@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.Application" table="define_tool" catalog="toolmanagesys">
+        <id name="id" type="int">
+            <column name="ID"/>
+        </id>
+        <property name="code" type="string">
+            <column name="Code" length="10"/>
+        </property>
+        <property name="name" type="string">
+            <column name="Name" length="30"/>
+        </property>
+        <property name="familyID" type="int">
+            <column name="FamilyID"/>
+        </property>
+        <property name="usedFor" type="string">
+            <column name="UsedFor" length="30"/>
+        </property>
+        <property name="period" type="int">
+            <column name="PMPeriod"/>
+        </property>
+        <property name="owner" type="int">
+            <column name="Owner"/>
+        </property>
+        <property name="recOn" type="string">
+            <column name="RecOn" length="20"/>
+        </property>
+        <property name="recBy" type="int">
+            <column name="RecBy"/>
+        </property>
+        <property name="workcellID" type="int">
+            <column name="WorkCellID"/>
+        </property>
+    </class>
+</hibernate-mapping>

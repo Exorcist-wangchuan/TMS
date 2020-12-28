@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts
+Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="strutsBean" extends="struts-default" namespace="/">
+        <!--
+            使用英文方便跳转
+            初级员工:o1
+            高级员工:o2
+            监管员:sv
+            经理:manager
+            -->
+        <action name="login" class="userAction" method="login">
+            <result name="o1">/</result>
+            <result name="o2" type="redirect">/html/senior/seniorHome.jsp</result>
+            <result name="sv" type="redirect">/html/supervisor/supervisorHome.jsp</result>
+            <result name="manager">/</result>
+            <result name="fail">/login.jsp</result>
+        </action>
+
+        <!--需要加入后端校验-->
+
+        <action name="submitStorageApplication" class="applyAction" method="dealStorageApply">
+            <result name="success" type="redirect">/html/senior/storageAppl.html</result>
+            <result name="fail">/html/senior/storageHome.html</result>
+        </action>
+
+        <action name="getStorageApplication" class="applyAction" method="getStorageApply">
+            <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
+        </action>
+
+        <!--采购入库申请表-->
+        <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
+            <result name="success" type="redirect">/html/senior/seniorHome.html</result>
+            <result name="fail">/html/senior/storageApply.html</result>
+        </action>
+
+        <action name="getPurchaseRecord" class="purchaseRecordAction" method="getStoragePurchaseRecord">
+            <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
+        </action>
+    </package>
+</struts>
