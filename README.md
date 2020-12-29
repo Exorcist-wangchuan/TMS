@@ -6,11 +6,11 @@
 工夹具管理系统
 
 ### 项目概述
-使用SSH框架
-Java version: 11
-Spring Framework version: 4.0.0
-Hibernate version: 5.2.3
-Struts2 version: 2.5
+使用SSH框架  
+Java version: 11  
+Spring Framework version: 4.0.0  
+Hibernate version: 5.2.3  
+Struts2 version: 2.5  
 Database: MySQL
 
 ---
@@ -30,3 +30,13 @@ Database: MySQL
 | 流程 | 命名 |
 | ---- | ---- |
 | 采购入库流程 | purchase |
+
+---
+
+### 关于流程阶段命名
+采购入库流程(完成时)
+| 流程阶段 | 命名 |
+| ---- | ---- |
+| 提交 | 1 |
+| 初审 | 2 |
+| 终审 | 3 |
