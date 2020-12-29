@@ -13,7 +13,6 @@
     <bean name="userService" class="service.UserService"/>
     <bean name="applyService" class="service.ApplyService"/>
     <bean name="purRecordService" class="service.PurchaseRecordService"/>
-    <bean name="processService" class="service.ProcessService"/>
 
     <!--action类-->
     <bean name="userAction" class="action.UserAction">
@@ -25,11 +24,10 @@
         <property name="applyService" ref="applyService"/>
     </bean>
 
-    <!--采购入库申请-->
+<!--    采购入库申请-->
     <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
         <property name="purchaseRecord" ref="purRecord"/>
         <property name="purchaseRecordService" ref="purRecordService"/>
-        <property name="processService" ref="processService"/>
     </bean>
 
 </beans>

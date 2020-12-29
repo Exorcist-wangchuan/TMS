@@ -30,7 +30,6 @@ public class PurchaseRecordDAO {
         }
     }
 
-    //监管员获取采购记录
     public List<PurchaseRecord> searchPurchaseRecordDAO(){
         SessionFactory sf = new Configuration().configure().buildSessionFactory();
         Session session = sf.openSession();
@@ -39,28 +38,6 @@ public class PurchaseRecordDAO {
         try {
 
             String hql = "from PurchaseRecord as p";
-            String queryString = hql;
-            Query queryObject = session.createQuery(queryString);
-            return queryObject.list();
-        }catch (RuntimeException re){
-            log.error("search apply failed",re);
-            throw  re;
-        }finally {
-            session.getTransaction().commit();
-            session.close();
-        }
-    }
-
-    //经理获取采购记录
-    public List<PurchaseRecord> searchPurchaseRecordDAO_Manager(){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
-        session.beginTransaction();
-
-        try {
-
-            String hql = "select p from PurchaseRecord as p,ProcessRecord as pro where p.eID=pro.eID " +
-                    "and pro.dname='purchase' and pro.finish = 2";
             String queryString = hql;
             Query queryObject = session.createQuery(queryString);
             return queryObject.list();
