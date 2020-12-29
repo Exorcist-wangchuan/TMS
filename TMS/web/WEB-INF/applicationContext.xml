@@ -8,6 +8,9 @@
     <bean name="application" class="po.Application"/>
     <bean name="purRecord" class="po.PurchaseRecord"/>
 
+    <!--pojo类——不需要存入数据库-->
+    <bean name="checkList" class="pojo.CheckList"/>
+
     <!--service类-->
     <!--是否需要将参数交给spring?-->
     <bean name="userService" class="service.UserService"/>
@@ -28,6 +31,7 @@
     <!--采购入库申请-->
     <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
         <property name="purchaseRecord" ref="purRecord"/>
+        <property name="checkList" ref="checkList"/>
         <property name="purchaseRecordService" ref="purRecordService"/>
         <property name="processService" ref="processService"/>
     </bean>

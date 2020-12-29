@@ -2,54 +2,71 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import po.Application;
 import po.ProcessRecord;
 import po.PurchaseRecord;
-import service.ApplyService;
+import pojo.CheckList;
 import service.ProcessService;
 import service.PurchaseRecordService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
 public class PurchaseRecordAction extends ActionSupport {
     private PurchaseRecord purchaseRecord;
     private PurchaseRecordService purchaseRecordService = null;
-
     private ProcessService processService = null;
+
+    private CheckList checkList;
 
     //getter
     public PurchaseRecord getPurchaseRecord() {
         return purchaseRecord;
+    }
+    public CheckList getCheckList() {
+        return checkList;
     }
 
     //setter
     public void setPurchaseRecord(PurchaseRecord purchaseRecord) {
         this.purchaseRecord = purchaseRecord;
     }
-
+    public void setCheckList(CheckList checkList) {
+        this.checkList = checkList;
+    }
     public void setPurchaseRecordService(PurchaseRecordService purchaseRecordService) {
         this.purchaseRecordService = purchaseRecordService;
     }
-
     public void setProcessService(ProcessService processService) {
         this.processService = processService;
     }
 
+    //高级员工
     public String dealPurchaseApply() {
         boolean firstRes = purchaseRecordService.savePurchaseRecord(purchaseRecord);
         //获取时间构造eid
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        String eid = eidFormat.format(new Date());
+        String applyDate = sdf.format(new Date());
         //构造Process
         ProcessRecord process = new ProcessRecord();
-        process.seteID();
-        if (firstRes) return "success";
+        process.seteID(eid);
+        process.setDname("purchase");
+        process.setFinish(1);
+        process.setApply_UID(purchaseRecord.getApplyUID());
+        process.setApply_Date(applyDate);
+        //调用service
+        boolean secondRes = processService.saveProcess(process);
+        //判断
+        if (firstRes && secondRes) return "success";
         else return "fail";
     }
 
+
+    //监管员
     //监管员获取采购记录
     public String getStoragePurchaseRecord() {
         List<PurchaseRecord> list = new ArrayList<>();
@@ -58,6 +75,15 @@ public class PurchaseRecordAction extends ActionSupport {
         return "success";
     }
 
+    //监管员审核通过
+    public String reviewPurchaseRecord(){
+        List<String> passedList = checkList.getCheckList();
+        processService.purchase_firstCheck(passedList);
+        return "success";
+    }
+
+
+    //经理
     //经理获取采购记录
     public String getStoragePurchaseRecord_Manager() {
         List<PurchaseRecord> list = new ArrayList<>();

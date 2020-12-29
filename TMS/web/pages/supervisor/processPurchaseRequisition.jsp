@@ -106,7 +106,7 @@
                             <h4>入库申请列表</h4>
                         </div>
                         <div class="card-body">
-                            <form method="post">
+                            <form method="post" action="reviewPurchaseRecord">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -123,7 +123,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <input class="form-check-input" type="checkbox" value="" name="checkList.checkList">
                                                 </div>
                                             </td>
                                             <td><s:property value="applyUID"/></td>
@@ -167,6 +167,7 @@
 <script src="../../vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
+<script src="supervisor.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
 </body>

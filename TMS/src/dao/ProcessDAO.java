@@ -27,4 +27,24 @@ public class ProcessDAO {
         }
     }
 
+    public void updateProcess(ProcessRecord processRecord){
+        SessionFactory sf = new Configuration().configure().buildSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        try {
+            session.update(processRecord);
+        }catch (RuntimeException re){
+            log.error("update processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //to do
+    public ProcessRecord getProcessBySeqID(String seqID){
+        return null;
+    }
+
 }

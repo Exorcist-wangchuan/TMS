@@ -13,37 +13,42 @@ Configuration 2.1//EN"
             -->
         <action name="login" class="userAction" method="login">
             <result name="o1">/</result>
-            <result name="o2" type="redirect">/html/senior/seniorHome.jsp</result>
-            <result name="sv" type="redirect">/html/supervisor/supervisorHome.jsp</result>
-            <result name="manager">/</result>
+            <result name="o2" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="sv" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="manager" type="redirect">/pages/manager/managerHome.jsp</result>
             <result name="fail">/login.jsp</result>
         </action>
 
         <!--需要加入后端校验-->
 
         <action name="submitStorageApplication" class="applyAction" method="dealStorageApply">
-            <result name="success" type="redirect">/html/senior/storageAppl.html</result>
-            <result name="fail">/html/senior/storageHome.html</result>
+            <result name="success" type="redirect">/pages/senior/storageAppl.html</result>
+            <result name="fail">/pages/senior/storageHome.html</result>
         </action>
 
         <action name="getStorageApplication" class="applyAction" method="getStorageApply">
-            <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
+            <result name="success" type="redirect">/pages/supervisor/processPurchaseRequisition.jsp</result>
         </action>
 
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
-            <result name="success" type="redirect">/html/senior/seniorHome.html</result>
-            <result name="fail">/html/senior/storageApply.html</result>
+            <result name="success" type="redirect">/pages/senior/seniorHome.html</result>
+            <result name="fail">/pages/senior/storageApply.html</result>
         </action>
 
         <!--监管员获取记录-->
         <action name="getPurchaseRecord" class="purchaseRecordAction" method="getStoragePurchaseRecord">
-            <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
+            <result name="success" type="redirect">/pages/supervisor/processPurchaseRequisition.jsp</result>
+        </action>
+
+        <!--监管员进行审批-->
+        <action name="reviewPurchaseRecord" class="purchaseRecordAction" method="reviewPurchaseRecord">
+            <result name="success">#</result>
         </action>
 
         <!--经理获取记录-->
         <action name="getPurchaseRecord_Manager" class="purchaseRecordAction" method="getStoragePurchaseRecord_Manager">
-            <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
+            <result name="success" type="redirect">/pages/supervisor/processPurchaseRequisition.jsp</result>
         </action>
     </package>
 </struts>
