@@ -40,3 +40,7 @@ Database: MySQL
 | 提交 | 1 |
 | 初审 | 2 |
 | 终审 | 3 |
+
+
+### 关于时间格式
+yyyy-MM-dd HH:mm:ss
