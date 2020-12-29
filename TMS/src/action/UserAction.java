@@ -22,7 +22,6 @@ public class UserAction extends ActionSupport {
     }
 
     public String login() {
-        System.out.println(loginUser.getLevel());
         if (userService.login(loginUser)) {
             return loginUser.getLevel();
         }

@@ -1,18 +1,12 @@
-
 package po;
 
-import java.util.Date;
-import java.util.List;
-
 public class PurchaseRecord {
+    private int seqID;
     private int applyUID;
     private String code;
-    private int seqID;
     private String billNo;
     private String purchaseDate;
     private String img;
-
-
 
     public int getApplyUID() {
         return applyUID;
@@ -61,6 +55,4 @@ public class PurchaseRecord {
     public void setImg(String img) {
         this.img = img;
     }
-
-
 }

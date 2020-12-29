@@ -36,7 +36,13 @@ Configuration 2.1//EN"
             <result name="fail">/html/senior/storageApply.html</result>
         </action>
 
+        <!--监管员获取记录-->
         <action name="getPurchaseRecord" class="purchaseRecordAction" method="getStoragePurchaseRecord">
+            <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
+        </action>
+
+        <!--经理获取记录-->
+        <action name="getPurchaseRecord_Manager" class="purchaseRecordAction" method="getStoragePurchaseRecord_Manager">
             <result name="success" type="redirect">/html/supervisor/processPurchaseRequisition.jsp</result>
         </action>
     </package>
