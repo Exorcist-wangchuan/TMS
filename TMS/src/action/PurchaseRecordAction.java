@@ -3,11 +3,13 @@ package action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import po.Application;
+import po.ProcessRecord;
 import po.PurchaseRecord;
 import service.ApplyService;
 import service.ProcessService;
 import service.PurchaseRecordService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +39,14 @@ public class PurchaseRecordAction extends ActionSupport {
     }
 
     public String dealPurchaseApply() {
-        boolean res = purchaseRecordService.savePurchaseRecord(purchaseRecord);
+        boolean firstRes = purchaseRecordService.savePurchaseRecord(purchaseRecord);
+        //获取时间构造eid
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 
-        if (res) return "success";
+        //构造Process
+        ProcessRecord process = new ProcessRecord();
+        process.seteID();
+        if (firstRes) return "success";
         else return "fail";
     }
 
