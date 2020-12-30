@@ -49,4 +49,30 @@ public class ProcessService {
         return true;
     }
 
+    //经理终审
+    public boolean purchase_finalCheck(List<String> passedList){
+        //获取日期
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = sdf.format(new Date());
+        //获取经理ID
+        User manager = (User) ActionContext.getContext().getSession().get("user");
+        int id = manager.getId();
+
+        for (String seqID:passedList){
+            ProcessRecord processRecord = processDAO.getProcessBySeqID(Integer.parseInt(seqID));
+            if (processRecord!=null){
+                processRecord.setFinal_Check_UID(id);
+                processRecord.setFinal_Check_Date(date);
+                processRecord.setFinish(3);
+                processDAO.updateProcess(processRecord);
+            }else {
+                //意味着没有流程记录，出错
+            }
+        }
+        return true;
+
+    }
+
+
+
 }

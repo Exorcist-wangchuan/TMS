@@ -48,7 +48,13 @@ Configuration 2.1//EN"
 
         <!--经理获取记录-->
         <action name="getPurchaseRecord_Manager" class="purchaseRecordAction" method="getStoragePurchaseRecord_Manager">
-            <result name="success" type="redirect">/pages/supervisor/processPurchaseRequisition.jsp</result>
+            <result name="success" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
         </action>
+
+        <!--经理进行审批-->
+        <action name="reviewPurchaseRecord_Manager" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager">
+            <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
+        </action>
+
     </package>
 </struts>

@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -10,7 +9,7 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/toolmanagesys"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/toolmanagesys?useSSL=false"/>
         <property name="username" value="root"/>
         <property name="password" value="123456"/>
     </bean>
@@ -70,7 +69,6 @@
     <bean name="applyAction" class="action.ApplyAction">
         <property name="applyService" ref="applyService"/>
     </bean>
-    <!--采购入库申请-->
     <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
         <property name="checkList" ref="checkList"/>
         <property name="purchaseRecordService" ref="purRecordService"/>

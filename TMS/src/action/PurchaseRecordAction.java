@@ -94,7 +94,15 @@ public class PurchaseRecordAction extends ActionSupport {
     public String getStoragePurchaseRecord_Manager() {
         List<PurchaseRecord> list = new ArrayList<>();
         list = purchaseRecordService.getPurchaseRecord_Manager();
-        ActionContext.getContext().getSession().put("purchaseRecords_Manager", list);
+        ActionContext.getContext().getSession().put("purchaseRecords", list);
         return "success";
     }
+    //经理审核通过
+    public String reviewPurchaseRecord_Manager(){
+        List<String> passedList = checkList.getCheckList();
+        boolean res = processService.purchase_finalCheck(passedList);
+        if (res) return "success";
+        else return "fail";
+    }
+
 }
