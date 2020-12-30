@@ -32,42 +32,50 @@
         </property>
     </bean>
 
-    <bean id="baseDAO" class="dao.BaseDAO">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-
-
     <!--po类-->
     <bean name="user" class="po.User"/>
     <bean name="application" class="po.Application"/>
     <bean name="purRecord" class="po.PurchaseRecord"/>
-
     <!--pojo类——不需要存入数据库-->
     <bean name="checkList" class="pojo.CheckList"/>
 
+    <!--dao类-->
+    <bean id="baseDAO" class="dao.BaseDAO">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="userDAO" class="dao.UserDAO" parent="baseDAO"/>
+    <bean id="applyDAO" class="dao.ApplyDAO" parent="baseDAO"/>
+    <bean id="processDAO" class="dao.ProcessDAO" parent="baseDAO"/>
+    <bean id="purDAO" class="dao.PurchaseRecordDAO" parent="baseDAO"/>
+
     <!--service类-->
     <!--是否需要将参数交给spring?-->
-    <bean name="userService" class="service.UserService"/>
-    <bean name="applyService" class="service.ApplyService"/>
-    <bean name="purRecordService" class="service.PurchaseRecordService"/>
-    <bean name="processService" class="service.ProcessService"/>
+    <bean name="userService" class="service.UserService">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+    <bean name="applyService" class="service.ApplyService">
+        <property name="applyDAO" ref="applyDAO"/>
+    </bean>
+    <bean name="purRecordService" class="service.PurchaseRecordService">
+        <property name="purchaseRecordDAO" ref="purDAO"/>
+    </bean>
+    <bean name="processService" class="service.ProcessService">
+        <property name="processDAO" ref="processDAO"/>
+    </bean>
 
     <!--action类-->
     <bean name="userAction" class="action.UserAction">
-        <property name="loginUser" ref="user"/>
         <property name="userService" ref="userService"/>
     </bean>
     <bean name="applyAction" class="action.ApplyAction">
-        <property name="apply" ref="application"/>
         <property name="applyService" ref="applyService"/>
     </bean>
-
     <!--采购入库申请-->
     <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
-        <property name="purchaseRecord" ref="purRecord"/>
         <property name="checkList" ref="checkList"/>
         <property name="purchaseRecordService" ref="purRecordService"/>
         <property name="processService" ref="processService"/>
     </bean>
+
 
 </beans>

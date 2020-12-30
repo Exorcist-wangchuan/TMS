@@ -10,12 +10,11 @@ import po.Application;
 
 import java.util.List;
 
-public class ApplyDAO {
+public class ApplyDAO extends BaseDAO {
     private Log log = LogFactory.getLog(UserDAO.class);
 
     public void insertApply(Application apply){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session =  getSession();
         session.beginTransaction();
         try {
             session.save(apply);
@@ -29,8 +28,7 @@ public class ApplyDAO {
     }
 
     public List<Application> searchApply(){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session =  getSession();
         session.beginTransaction();
 
         String hql = "from Application as apply";

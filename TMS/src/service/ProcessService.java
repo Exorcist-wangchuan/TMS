@@ -10,9 +10,14 @@ import java.util.Date;
 import java.util.List;
 
 public class ProcessService {
+    private ProcessDAO processDAO=null;
+
+    public void setProcessDAO(ProcessDAO processDAO) {
+        this.processDAO = processDAO;
+    }
+
     public boolean saveProcess(ProcessRecord process) {
         //调用DAO
-        ProcessDAO processDAO = new ProcessDAO();
         processDAO.insertProcess(process);
         return true;
     }
@@ -23,7 +28,6 @@ public class ProcessService {
     * */
     //监管员通过初审
     public boolean purchase_firstCheck(List<String> passedList){
-        ProcessDAO processDAO = new ProcessDAO();
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = sdf.format(new Date());

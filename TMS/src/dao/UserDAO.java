@@ -9,13 +9,12 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class UserDAO {
+public class UserDAO extends BaseDAO {
     private Log log = LogFactory.getLog(UserDAO.class);
 
     public List findByHql(String hql) {
         log.debug("finding LoginUser instance by hql");
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = getSession();
         try {
             String queryString = hql;
             Query queryObject = session.createQuery(queryString);

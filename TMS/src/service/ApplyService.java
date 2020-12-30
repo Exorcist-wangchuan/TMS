@@ -13,6 +13,12 @@ import java.util.List;
 
 
 public class ApplyService {
+    private ApplyDAO applyDAO=null;
+
+    public void setApplyDAO(ApplyDAO applyDAO) {
+        this.applyDAO = applyDAO;
+    }
+
     public boolean saveApplication(Application apply){
         //加入时间
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -22,14 +28,12 @@ public class ApplyService {
         User user = (User) ActionContext.getContext().getSession().get("user");
         apply.setRecBy(user.getId());
         //调用DAO
-        ApplyDAO applyDAO = new ApplyDAO();
         applyDAO.insertApply(apply);
         return true;
     }
 
     public List<Application> getApplication(){
         List<Application> list = new ArrayList<>();
-        ApplyDAO applyDAO = new ApplyDAO();
         list = applyDAO.searchApply();
         return list;
     }

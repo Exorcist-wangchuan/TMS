@@ -10,12 +10,11 @@ import po.PurchaseRecord;
 
 import java.util.List;
 
-public class PurchaseRecordDAO {
+public class PurchaseRecordDAO extends BaseDAO {
     private Log log = LogFactory.getLog(PurchaseRecordDAO.class);
 
     public void insertPurchaseRecordDAO(PurchaseRecord purchaseRecord){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session =  getSession();
         session.beginTransaction();
         try {
             session.save(purchaseRecord);
@@ -30,8 +29,7 @@ public class PurchaseRecordDAO {
 
     //监管员获取采购记录
     public List<PurchaseRecord> searchPurchaseRecordDAO(){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session =  getSession();
         session.beginTransaction();
         try {
             String hql = "select p from PurchaseRecord as p, ProcessRecord as pro where p.eID = pro.eID and pro.finish = 1";
@@ -48,8 +46,7 @@ public class PurchaseRecordDAO {
 
     //经理获取采购记录
     public List<PurchaseRecord> searchPurchaseRecordDAO_Manager(){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session =  getSession();
         session.beginTransaction();
 
         try {

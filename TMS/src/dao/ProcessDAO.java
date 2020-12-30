@@ -11,13 +11,13 @@ import po.ProcessRecord;
 import java.util.List;
 
 
-public class ProcessDAO {
+public class ProcessDAO extends BaseDAO {
 
     private Log log = LogFactory.getLog(ProcessDAO.class);
 
+
     public void insertProcess(ProcessRecord process){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = getSession();
         session.beginTransaction();
         try {
             session.save(process);
@@ -31,8 +31,7 @@ public class ProcessDAO {
     }
 
     public void updateProcess(ProcessRecord processRecord){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = getSession();
         session.beginTransaction();
         try {
             session.update(processRecord);
@@ -47,8 +46,7 @@ public class ProcessDAO {
 
     //to do
     public ProcessRecord getProcessBySeqID(int seqID){
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = getSession();
         session.beginTransaction();
         try {
             //core
