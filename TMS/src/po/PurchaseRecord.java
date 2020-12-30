@@ -7,6 +7,15 @@ public class PurchaseRecord {
     private String billNo;
     private String purchaseDate;
     private String img;
+    private String eID;
+
+    public String geteID() {
+        return eID;
+    }
+
+    public void seteID(String eID) {
+        this.eID = eID;
+    }
 
     public int getApplyUID() {
         return applyUID;

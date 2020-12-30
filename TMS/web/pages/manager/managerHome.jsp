@@ -45,7 +45,7 @@
         <div class="main-menu">
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="supervisorHome.jsp"><i class="icon-home"></i>主页</a></li>
+                <li><a href="managerHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="getPurchaseRecord_Manager"><i class="icon-grid"></i>处理采购入库申请</a></li>
                 <li><a href="/login.html"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
             </ul>

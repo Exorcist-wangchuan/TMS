@@ -5,8 +5,11 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import po.ProcessRecord;
-import po.PurchaseRecord;
+
+import java.util.List;
+
 
 public class ProcessDAO {
 
@@ -43,8 +46,25 @@ public class ProcessDAO {
     }
 
     //to do
-    public ProcessRecord getProcessBySeqID(String seqID){
-        return null;
+    public ProcessRecord getProcessBySeqID(int seqID){
+        SessionFactory sf = new Configuration().configure().buildSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        try {
+            //core
+            System.out.println(seqID);
+            String hql = "select pro from PurchaseRecord as p, ProcessRecord as pro where p.seqID = :seqID and p.eID = pro.eID";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("seqID", seqID);
+            return (ProcessRecord) queryObject.uniqueResult();
+            
+        }catch (RuntimeException re){
+            log.error("get processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
 }

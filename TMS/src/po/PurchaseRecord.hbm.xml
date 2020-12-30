@@ -21,5 +21,8 @@
         <property name="img" type="string">
             <column name="Img" length="45"/>
         </property>
+        <property name="eID" type="string">
+            <column name="EID" length="30"/>
+        </property>
     </class>
 </hibernate-mapping>

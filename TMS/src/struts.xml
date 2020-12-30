@@ -43,7 +43,7 @@ Configuration 2.1//EN"
 
         <!--监管员进行审批-->
         <action name="reviewPurchaseRecord" class="purchaseRecordAction" method="reviewPurchaseRecord">
-            <result name="success">#</result>
+            <result name="success" type="redirectAction">getPurchaseRecord</result>
         </action>
 
         <!--经理获取记录-->

@@ -45,12 +45,13 @@ public class PurchaseRecordAction extends ActionSupport {
 
     //高级员工
     public String dealPurchaseApply() {
-        boolean firstRes = purchaseRecordService.savePurchaseRecord(purchaseRecord);
+
         //获取时间构造eid
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String eid = eidFormat.format(new Date());
         String applyDate = sdf.format(new Date());
+        //需要先保存ProcessRecord(主键)
         //构造Process
         ProcessRecord process = new ProcessRecord();
         process.seteID(eid);
@@ -59,7 +60,10 @@ public class PurchaseRecordAction extends ActionSupport {
         process.setApply_UID(purchaseRecord.getApplyUID());
         process.setApply_Date(applyDate);
         //调用service
-        boolean secondRes = processService.saveProcess(process);
+        boolean firstRes = processService.saveProcess(process);
+        //保存采购记录
+        purchaseRecord.seteID(eid);
+        boolean secondRes = purchaseRecordService.savePurchaseRecord(purchaseRecord);
         //判断
         if (firstRes && secondRes) return "success";
         else return "fail";
@@ -78,8 +82,10 @@ public class PurchaseRecordAction extends ActionSupport {
     //监管员审核通过
     public String reviewPurchaseRecord(){
         List<String> passedList = checkList.getCheckList();
-        processService.purchase_firstCheck(passedList);
-        return "success";
+        boolean res = processService.purchase_firstCheck(passedList);
+
+        if (res) return "success";
+        else return "fail";
     }
 
 
