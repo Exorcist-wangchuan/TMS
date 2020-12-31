@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>提交入库申请</title>
+    <title>经理主页</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,24 +32,22 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">张三</h2>
-                <span>高级员工</span><br>
-                <span>Operator Ⅱ</span>
+                <h2 class="h5"><s:property value="#session.user.name"/></h2>
+                <span>经理</span><br>
+                <span>Supervisor</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
-                <a href="/index.html" class="brand-small text-center"><strong>TMS</strong></a>
+                <a href="supervisorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
             </div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="/index.html"><i class="icon-home"></i>主页</a></li>
-                <li><a href="/forms.html"><i class="icon-form"></i>提交入库申请</a></li>
-                <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
-                <li><a href="/tables.html"><i class="icon-grid"></i>处理报修申请</a></li>
-                <li><a href="/login.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
+                <li><a href="managerHome.jsp"><i class="icon-home"></i>主页</a></li>
+                <li><a href="getPurchaseRecord_Manager"><i class="icon-grid"></i>处理采购入库申请</a></li>
+                <li><a href="getScrapRecord_Manager"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
             </ul>
         </div>
 
@@ -98,77 +95,44 @@
     </header>
     <!--右侧主体-->
     <section class="bg-light">
-        <div class="container-fluid bg-transparent">
-            <header class="h3 display">入库申请</header>
+        <div class="container-fluid ">
+            <header class="h3 display">处理采购入库申请</header>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请表</h4>
+                            <h4>入库申请列表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitStorageApplication" method="post">
-                                <div class="form-group row">
-                                    <label class="col-3">夹具编号</label>
-                                    <input name="apply.id" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">夹具代码<br><small>Code</small></label>
-                                    <input name="apply.code" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">夹具名称</label>
-                                    <input name="apply.name" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">夹具所属大类</label>
-                                    <input name="apply.familyID" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row" id="model-input-group">
-                                    <label class="col-3">夹具模组<br><small class="form-text text-muted">点击增加按钮输入多个模组</small></label>
-                                    <input name="apply.model" type="text" class="col-8 form-control" id="model"><span class="ml-1">
-                                        <button class="btn btn-success btn-add" type="button" onclick="addInput()">+</button>
-                                    </span>
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">夹具料号</label>
-                                    <input type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">每条产线装配数量</label>
-                                    <input name="apply.upl" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">用途</label>
-                                    <input name="apply.usedFor" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">保养点检周期</label>
-                                    <input name="apply.period" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">责任人</label>
-                                    <input name="apply.owner" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label class="col-3">所属工作部门</label>
-                                    <input name="apply.workcellID" type="text" class="col-8 form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group col-4 offset-3">
-                                    <button type="reset" class="btn btn-secondary">重置</button>
-                                    <button type="submit" class="btn btn-primary">提交</button>
-                                </div>
+                            <form method="post" action="reviewScrapRecord_Manager">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>申请者编号</th>
+                                        <th>类别代码</th>
+                                        <th>物品代码</th>
+                                        <th>生命周期计数</th>
+                                        <th>报废原因</th>
+                                    </tr>
+                                    </thead>
+                                    <s:iterator value="#session.scrapRecords">
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="checkList.checkList">
+                                                </div>
+                                            </td>
+                                            <td><s:property value="UID"/></td>
+                                            <td><s:property value="Code"/></td>
+                                            <td><s:property value="SeqID"/></td>
+                                            <td><s:property value="lifecount"/></td>
+                                            <td><s:property value="reason"/></td>
+                                            <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
+                                        </tr>
+                                    </s:iterator>
+                                </table>
+                                <button type="submit" class="btn btn-primary">审批通过</button>
                             </form>
                         </div>
                     </div>
@@ -200,8 +164,8 @@
 <script src="../../vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
+<script src="manager.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
-<script src="storageForm.js"></script>
 </body>
 </html>

@@ -23,18 +23,19 @@
         </property>
         <property name="mappingResources">
             <list>
-                <value>po/Application.hbm.xml</value>
                 <value>po/ProcessRecord.hbm.xml</value>
                 <value>po/PurchaseRecord.hbm.xml</value>
                 <value>po/User.hbm.xml</value>
+                <value>po/Scrap.hbm.xml</value>
             </list>
         </property>
     </bean>
 
     <!--po类-->
     <bean name="user" class="po.User"/>
-    <bean name="application" class="po.Application"/>
     <bean name="purRecord" class="po.PurchaseRecord"/>
+    <bean name="scrap" class="po.Scrap"/>
+
     <!--pojo类——不需要存入数据库-->
     <bean name="checkList" class="pojo.CheckList"/>
 
@@ -43,17 +44,14 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="userDAO" class="dao.UserDAO" parent="baseDAO"/>
-    <bean id="applyDAO" class="dao.ApplyDAO" parent="baseDAO"/>
     <bean id="processDAO" class="dao.ProcessDAO" parent="baseDAO"/>
     <bean id="purDAO" class="dao.PurchaseRecordDAO" parent="baseDAO"/>
+    <bean id="scrapDAO" class="dao.ScrapDAO" parent="baseDAO"/>
 
     <!--service类-->
     <!--是否需要将参数交给spring?-->
     <bean name="userService" class="service.UserService">
         <property name="userDAO" ref="userDAO"/>
-    </bean>
-    <bean name="applyService" class="service.ApplyService">
-        <property name="applyDAO" ref="applyDAO"/>
     </bean>
     <bean name="purRecordService" class="service.PurchaseRecordService">
         <property name="purchaseRecordDAO" ref="purDAO"/>
@@ -61,18 +59,24 @@
     <bean name="processService" class="service.ProcessService">
         <property name="processDAO" ref="processDAO"/>
     </bean>
+    <bean name="scrapService" class="service.ScrapRecordService">
+        <property name="scrapDAO" ref="scrapDAO"/>
+    </bean>
 
     <!--action类-->
     <bean name="userAction" class="action.UserAction">
         <property name="userService" ref="userService"/>
     </bean>
-    <bean name="applyAction" class="action.ApplyAction">
-        <property name="applyService" ref="applyService"/>
-    </bean>
     <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
         <property name="checkList" ref="checkList"/>
         <property name="purchaseRecordService" ref="purRecordService"/>
         <property name="processService" ref="processService"/>
+    </bean>
+    <!--报废Action声明-->
+    <bean name="scrapAction" class="action.ScrapRecordAction">
+        <property name="scrapService" ref="scrapService"/>
+        <property name="processService" ref="processService"/>
+        <property name="checkList" ref="checkList"/>
     </bean>
 
 

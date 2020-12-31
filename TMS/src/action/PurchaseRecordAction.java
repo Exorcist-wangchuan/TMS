@@ -2,6 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.Parameter;
 import po.ProcessRecord;
 import po.PurchaseRecord;
 import pojo.CheckList;
@@ -73,15 +74,20 @@ public class PurchaseRecordAction extends ActionSupport {
         else return "fail";
     }
 
-    //指定seqid查询process和purchaseRecord
-    public String getDetail(int id) {
+    //指定seqID查询process和purchaseRecord
+    public void getPurchaseDetail() {
+        Parameter seqID = ActionContext.getContext().getParameters().get("seqID");
+        int id = Integer.parseInt(seqID.toString());
         PurchaseRecord purchaseRecord = new PurchaseRecord();
         purchaseRecord = purchaseRecordService.getPurchaseRecordById(id);
         ProcessRecord process = new ProcessRecord();
         process = processService.getProcessById(id);
+        //test
+        System.out.println(process.geteID());
+        System.out.println(purchaseRecord.geteID());
         ActionContext.getContext().getSession().put("detail_purchaseRecord",purchaseRecord);
         ActionContext.getContext().getSession().put("detail_processRecord",process);
-        return "getDetail";
+        //return null;
     }
 
     //监管员

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.Scrap" table="scrap_record" catalog="toolmanagesys">
+        <composite-id>
+            <key-property name="code" column="Code" type="string" length="10"/>
+            <key-property name="seqID" column="SeqID" type="int"/>
+        </composite-id>
+        <property name="UID" type="int">
+            <column name="UID"/>
+        </property>
+        <property name="lifecount" type="int">
+            <column name="lifecount"/>
+        </property>
+        <property name="reason" type="string">
+            <column name="reason" length="30"/>
+        </property>
+        <property name="eID" type="string">
+            <column name="EID" length="30"/>
+        </property>
+    </class>
+</hibernate-mapping>

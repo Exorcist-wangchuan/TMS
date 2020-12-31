@@ -47,11 +47,11 @@
         <div class="main-menu">
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="/index.html"><i class="icon-home"></i>主页</a></li>
+                <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="storageApply.html"><i class="icon-form"></i>提交入库申请</a></li>
                 <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
                 <li><a href="/tables.html"><i class="icon-grid"></i>处理报修申请</a></li>
-                <li><a href="/login.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
+                <li><a href="scrapAppl.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -88,7 +88,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>

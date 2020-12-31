@@ -47,7 +47,7 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="managerHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="getPurchaseRecord_Manager"><i class="icon-grid"></i>处理采购入库申请</a></li>
-                <li><a href="/login.html"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
+                <li><a href="getScrapRecord_Manager"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
             </ul>
         </div>
 

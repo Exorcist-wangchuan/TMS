@@ -70,7 +70,6 @@ public class PurchaseRecordDAO extends BaseDAO {
     public List<PurchaseRecord> searchPurchaseRecordDAO_Manager(){
         Session session =  getSession();
         session.beginTransaction();
-
         try {
 
             String hql = "select p from PurchaseRecord as p,ProcessRecord as pro where p.eID=pro.eID " +

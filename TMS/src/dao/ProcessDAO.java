@@ -65,4 +65,24 @@ public class ProcessDAO extends BaseDAO {
         }
     }
 
+    //Scrap process to do
+    public ProcessRecord getScrapProcessBySeqID(int seqID){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            //core
+            System.out.println(seqID);
+            String hql = "select pro from Scrap as s, ProcessRecord as pro where s.seqID = :seqID and s.eID = pro.eID";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("seqID", seqID);
+            return (ProcessRecord) queryObject.uniqueResult();
+        }catch (RuntimeException re){
+            log.error("get processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
 }

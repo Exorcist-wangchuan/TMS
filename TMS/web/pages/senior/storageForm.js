@@ -44,3 +44,8 @@ function delInput(e){
     span.remove();
     input.remove();
 }
+
+//验证图片
+function validateFileFormat(){
+
+}

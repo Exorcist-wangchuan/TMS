@@ -48,8 +48,8 @@
                 <li><a href="supervisorHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="/forms.html"><i class="icon-form"></i>创建工夹具类别</a></li>
                 <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改工夹具类别</a></li>
-                <li><a href="processPurchaseRequisition.jsp"><i class="icon-grid"></i>处理采购入库申请</a></li>
-                <li><a href="/login.html"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
+                <li><a href="getPurchaseRecord"><i class="icon-grid"></i>处理采购入库申请</a></li>
+                <li><a href="getScrapRecord"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
             </ul>
         </div>
 
@@ -131,7 +131,7 @@
                                             <td><s:property value="seqID"/></td>
                                             <td><s:property value="billNo"/></td>
                                             <td><s:property value="purchaseDate"/></td>
-                                            <td><button type="button" class="btn btn-primary btn-sm "  data-toggle="modal" data-target="#RecordDetail">查看详情</button></td>
+                                            <td><a class="btn btn-primary btn-sm" href="getPurchaseRecordDetail" name="detailBtn">查看详情</a></td>
                                         </tr>
                                     </s:iterator>
                                 </table>
@@ -156,62 +156,6 @@
             </div>
         </div>
     </footer>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="RecordDetail" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>申请者编号</th>
-                        <td><s:property value="applyUID"/></td>
-                    </tr>
-                    <tr>
-                        <th>类别代码</th>
-                        <td><s:property value="code"/></td>
-                    </tr>
-                    <tr>
-                        <th>物品代码</th>
-                        <td><s:property value="seqID"/></td>
-                    </tr>
-                    <tr>
-                        <th>单据号</th>
-                        <td><s:property value="billNo"/></td>
-                    </tr>
-                    <tr>
-                        <th>采购入库日期</th>
-                        <td><s:property value="purchaseDate"/></td>
-                    </tr>
-                    <tr>
-                        <th>操作</th>
-                        <td><s:property value="img"/></td>
-                    </tr>
-                    </thead>
-                    <s:iterator value="#session.purchaseRecords">
-                        <tr>
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" name="checkList.checkList">
-                                </div>
-                            </td>
-                        </tr>
-                    </s:iterator>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
 </div>
 <!-- JavaScript files-->
 <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
