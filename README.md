@@ -30,6 +30,7 @@ Database: MySQL
 | 流程 | 命名 |
 | ---- | ---- |
 | 采购入库流程 | purchase |
+| 申请报废流程 | scrap |
 
 ---
 
