@@ -133,5 +133,30 @@ public class ProcessService {
         return true;
     }
 
+    /*以下为报修专用
+    包含高级用户终审*/
+    //高级员工终审
+    public boolean fix_finalCheck(List<String> passedList){
+        //获取日期
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = sdf.format(new Date());
+        //获取高级员工ID
+        User o2 = (User) ActionContext.getContext().getSession().get("user");
+        int id = o2.getId();
+
+        for (String seqID:passedList){
+            ProcessRecord processRecord = processDAO.getProcessBySeqID1(Integer.parseInt(seqID));
+            if (processRecord!=null){
+                processRecord.setFinal_Check_UID(id);
+                processRecord.setFinal_Check_Date(date);
+                processRecord.setFinish(2);
+                processDAO.updateProcess(processRecord);
+            }else {
+                //意味着没有流程记录，出错
+            }
+        }
+        return true;
+
+    }
 
 }

@@ -32,7 +32,8 @@ Configuration 2.1//EN"
         </action>
 
         <!--监管员查看详情-->
-       <!-- <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">
+        <!--<action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">
+            <result name="json"></result>
         </action>-->
 
         <!--监管员进行审批-->
@@ -77,5 +78,27 @@ Configuration 2.1//EN"
             <result name="success" type="redirectAction">getScrapRecord_Manager</result>
         </action>
 
+        <!--报修申请表-->
+        <action name="submitFixRecord" class="fixRecordAction" method="dealFixApply">
+            <result name="success" type="redirect">/pages/primary/primaryHome.jsp</result>
+            <result name="fail">/pages/senior/repairApply.html</result>
+        </action>
+
+        <!--高级员工获取记录-->
+        <action name="getFixRecord" class="fixRecordAction" method="getStorageFixRecord">
+            <result name="success" type="redirect">/pages/senior/processFix.jsp</result>
+        </action>
+
+        <!--高级员工进行审批-->
+        <action name="reviewFixRecord" class="fixRecordAction" method="reviewFixRecord">
+            <result name="success" type="redirectAction">getFixRecord</result>
+        </action>
+
+    </package>
+
+    <package name="ajax" extends="json-default">
+        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">
+            <result name="json" type="json">/pages/supervisor/processPurchaseRequisition.jsp</result>
+        </action>
     </package>
 </struts>

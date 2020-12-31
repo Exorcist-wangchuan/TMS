@@ -75,19 +75,16 @@ public class PurchaseRecordAction extends ActionSupport {
     }
 
     //指定seqID查询process和purchaseRecord
-    public void getPurchaseDetail() {
+    public String getPurchaseDetail() {
         Parameter seqID = ActionContext.getContext().getParameters().get("seqID");
         int id = Integer.parseInt(seqID.toString());
         PurchaseRecord purchaseRecord = new PurchaseRecord();
         purchaseRecord = purchaseRecordService.getPurchaseRecordById(id);
         ProcessRecord process = new ProcessRecord();
         process = processService.getProcessById(id);
-        //test
-        System.out.println(process.geteID());
-        System.out.println(purchaseRecord.geteID());
         ActionContext.getContext().getSession().put("detail_purchaseRecord",purchaseRecord);
         ActionContext.getContext().getSession().put("detail_processRecord",process);
-        //return null;
+        return "json";
     }
 
     //监管员

@@ -35,8 +35,9 @@
     <bean name="user" class="po.User"/>
     <bean name="purRecord" class="po.PurchaseRecord"/>
     <bean name="scrap" class="po.Scrap"/>
+    <bean name="fixRecord" class="po.FixRecord"/>
 
-    <!--pojo类——不需要存入数据库-->
+    <!--pojo类——非持久化类-->
     <bean name="checkList" class="pojo.CheckList"/>
 
     <!--dao类-->
@@ -47,6 +48,7 @@
     <bean id="processDAO" class="dao.ProcessDAO" parent="baseDAO"/>
     <bean id="purDAO" class="dao.PurchaseRecordDAO" parent="baseDAO"/>
     <bean id="scrapDAO" class="dao.ScrapDAO" parent="baseDAO"/>
+    <bean id="fixDAO" class="dao.FixRecordDAO" parent="baseDAO"/>
 
     <!--service类-->
     <!--是否需要将参数交给spring?-->
@@ -61,6 +63,9 @@
     </bean>
     <bean name="scrapService" class="service.ScrapRecordService">
         <property name="scrapDAO" ref="scrapDAO"/>
+    </bean>
+    <bean name="fixRecordService" class="service.FixRecordService">
+        <property name="fixRecordDAO" ref="fixDAO"/>
     </bean>
 
     <!--action类-->
@@ -77,6 +82,11 @@
         <property name="scrapService" ref="scrapService"/>
         <property name="processService" ref="processService"/>
         <property name="checkList" ref="checkList"/>
+    </bean>
+    <bean name="fixRecordAction" class="action.FixRecordAction">
+        <property name="checkList" ref="checkList"/>
+        <property name="fixRecordService" ref="fixRecordService"/>
+        <property name="processService" ref="processService"/>
     </bean>
 
 
