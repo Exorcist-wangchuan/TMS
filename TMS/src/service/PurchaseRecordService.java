@@ -22,6 +22,13 @@ public class PurchaseRecordService {
         return true;
     }
 
+    //指定seqid查询
+    public PurchaseRecord getPurchaseRecordById(int id){
+        PurchaseRecord purchaseRecord =new PurchaseRecord();
+        purchaseRecord=purchaseRecordDAO.getPurchaseRecordBySeqID(id);
+        return purchaseRecord;
+    }
+
     //监管员获取采购记录
     public List<PurchaseRecord> getPurchaseRecord() {
         List<PurchaseRecord> list = new ArrayList<>();

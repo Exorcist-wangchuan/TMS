@@ -3,6 +3,7 @@ package service;
 import com.opensymphony.xwork2.ActionContext;
 import dao.ProcessDAO;
 import po.ProcessRecord;
+import po.PurchaseRecord;
 import po.User;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,13 @@ public class ProcessService {
         //调用DAO
         processDAO.insertProcess(process);
         return true;
+    }
+
+    //指定seqid查询
+    public ProcessRecord getProcessById(int id){
+        ProcessRecord processRecord=new ProcessRecord();
+        processRecord=processDAO.getProcessBySeqID(id);
+        return processRecord;
     }
 
     /*

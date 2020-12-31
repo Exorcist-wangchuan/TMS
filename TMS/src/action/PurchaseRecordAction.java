@@ -25,6 +25,7 @@ public class PurchaseRecordAction extends ActionSupport {
     public PurchaseRecord getPurchaseRecord() {
         return purchaseRecord;
     }
+
     public CheckList getCheckList() {
         return checkList;
     }
@@ -33,12 +34,15 @@ public class PurchaseRecordAction extends ActionSupport {
     public void setPurchaseRecord(PurchaseRecord purchaseRecord) {
         this.purchaseRecord = purchaseRecord;
     }
+
     public void setCheckList(CheckList checkList) {
         this.checkList = checkList;
     }
+
     public void setPurchaseRecordService(PurchaseRecordService purchaseRecordService) {
         this.purchaseRecordService = purchaseRecordService;
     }
+
     public void setProcessService(ProcessService processService) {
         this.processService = processService;
     }
@@ -69,6 +73,16 @@ public class PurchaseRecordAction extends ActionSupport {
         else return "fail";
     }
 
+    //指定seqid查询process和purchaseRecord
+    public String getDetail(int id) {
+        PurchaseRecord purchaseRecord = new PurchaseRecord();
+        purchaseRecord = purchaseRecordService.getPurchaseRecordById(id);
+        ProcessRecord process = new ProcessRecord();
+        process = processService.getProcessById(id);
+        ActionContext.getContext().getSession().put("detail_purchaseRecord",purchaseRecord);
+        ActionContext.getContext().getSession().put("detail_processRecord",process);
+        return "getDetail";
+    }
 
     //监管员
     //监管员获取采购记录
@@ -80,7 +94,7 @@ public class PurchaseRecordAction extends ActionSupport {
     }
 
     //监管员审核通过
-    public String reviewPurchaseRecord(){
+    public String reviewPurchaseRecord() {
         List<String> passedList = checkList.getCheckList();
         boolean res = processService.purchase_firstCheck(passedList);
 
@@ -97,8 +111,9 @@ public class PurchaseRecordAction extends ActionSupport {
         ActionContext.getContext().getSession().put("purchaseRecords", list);
         return "success";
     }
+
     //经理审核通过
-    public String reviewPurchaseRecord_Manager(){
+    public String reviewPurchaseRecord_Manager() {
         List<String> passedList = checkList.getCheckList();
         boolean res = processService.purchase_finalCheck(passedList);
         if (res) return "success";

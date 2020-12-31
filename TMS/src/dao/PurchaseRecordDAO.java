@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import po.ProcessRecord;
 import po.PurchaseRecord;
 
 import java.util.List;
@@ -20,6 +21,27 @@ public class PurchaseRecordDAO extends BaseDAO {
             session.save(purchaseRecord);
         }catch (RuntimeException re){
             log.error("insert new apply failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //通过seqid查询
+    public PurchaseRecord getPurchaseRecordBySeqID(int id){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            //core
+            System.out.println(id);
+            String hql = "from PurchaseRecord as p where p.seqID = :id";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("id", id);
+            return (PurchaseRecord) queryObject.uniqueResult();
+
+        }catch (RuntimeException re){
+            log.error("get processRecord failed", re);
             throw re;
         }finally {
             session.getTransaction().commit();
