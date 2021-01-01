@@ -12,7 +12,7 @@ Configuration 2.1//EN"
             经理:manager
             -->
         <action name="login" class="userAction" method="login">
-            <result name="o1">/</result>
+            <result name="o1" type="redirect">/pages/primary/primaryHome.jsp</result>
             <result name="o2" type="redirect">/pages/senior/seniorHome.jsp</result>
             <result name="sv" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
             <result name="manager" type="redirect">/pages/manager/managerHome.jsp</result>
@@ -22,7 +22,7 @@ Configuration 2.1//EN"
         <!--需要加入后端校验-->
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
-            <result name="success" type="redirect">/pages/senior/seniorApply.html</result>
+            <result name="success" type="redirect">/pages/senior/storageApply.jsp</result>
             <result name="fail">/pages/senior/storageApply.html</result>
         </action>
 
@@ -81,7 +81,7 @@ Configuration 2.1//EN"
         <!--报修申请表-->
         <action name="submitFixRecord" class="fixRecordAction" method="dealFixApply">
             <result name="success" type="redirect">/pages/primary/primaryHome.jsp</result>
-            <result name="fail">/pages/senior/repairApply.html</result>
+            <result name="fail">/pages/senior/repairAppl.html</result>
         </action>
 
         <!--高级员工获取记录-->

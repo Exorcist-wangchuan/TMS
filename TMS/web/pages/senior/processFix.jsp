@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>处理采购入库申请</title>
+    <title>处理报修申请</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,8 +33,8 @@
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
                 <h2 class="h5"><s:property value="#session.user.name"/></h2>
-                <span>监管员</span><br>
-                <span>Supervisor</span>
+                <span>高级员工</span><br>
+                <span>Operator Ⅱ</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
@@ -45,11 +45,11 @@
         <div class="main-menu">
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="supervisorHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="/forms.html"><i class="icon-form"></i>创建工夹具类别</a></li>
-                <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改工夹具类别</a></li>
-                <li><a href="getPurchaseRecord"><i class="icon-grid"></i>处理采购入库申请</a></li>
-                <li><a href="getScrapRecord"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
+                <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
+                <li><a href="storageApply.html"><i class="icon-form"></i>提交入库申请</a></li>
+                <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
+                <li><a href="scrapAppl.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -98,28 +98,28 @@
     <!--右侧主体-->
     <section>
         <div class="container-fluid ">
-            <header class="h3 display">处理采购入库申请</header>
+            <header class="h3 display">处理报修申请</header>
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请列表</h4>
+                            <h4>报修申请列表</h4>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="reviewPurchaseRecord">
+                            <form method="post" action="reviewFixRecord">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
                                         <th></th>
                                         <th>申请者编号</th>
-                                        <th>类别代码</th>
                                         <th>物品代码</th>
-                                        <th>单据号</th>
-                                        <th>采购入库日期</th>
+                                        <th>故障描述</th>
+                                        <th>处理人</th>
+                                        <th>图片</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
-                                    <s:iterator value="#session.purchaseRecords">
+                                    <s:iterator value="#session.fixRecords">
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -127,11 +127,11 @@
                                                 </div>
                                             </td>
                                             <td><s:property value="applyUID"/></td>
-                                            <td><s:property value="code"/></td>
                                             <td><s:property value="seqID"/></td>
-                                            <td><s:property value="billNo"/></td>
-                                            <td><s:property value="purchaseDate"/></td>
-                                            <td><a class="btn btn-primary btn-sm" href="getPurchaseRecordDetail" name="detailBtn" data-toggle="modal" data-target="#PurchaseRecordDetail">查看详情</a></td>
+                                            <td><s:property value="description"/></td>
+                                            <td><s:property value="dealUID"/></td>
+                                            <td><s:property value="Img"/></td>
+                                            <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
                                         </tr>
                                     </s:iterator>
                                 </table>
@@ -167,55 +167,9 @@
 <script src="../../vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
-<script src="supervisor.js"></script>
+
 <!-- Main File-->
 <script src="../../js/front.js"></script>
-
-<!-- Modal -->
-<div class="modal fade" id="PurchaseRecordDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">采购记录详情</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>申请者编号</th>
-                        <td><s:property value="applyUID"/></td>
-                    </tr>
-                    <tr>
-                        <th>类别代码</th>
-                        <td><s:property value="code"/></td>
-                    </tr>
-                    <tr>
-                        <th>物品代码</th>
-                        <td><s:property value="seqID"/></td>
-                    </tr>
-                    <tr>
-                        <th>单据号</th>
-                        <td><s:property value="billNo"/></td>
-                    </tr>
-                    <tr>
-                        <th>采购入库日期</th>
-                        <td><s:property value="purchaseDate"/></td>
-                    </tr>
-                        <th>图片</th>
-                        <td></td>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+<script src="storageForm.js"></script>
 </body>
 </html>

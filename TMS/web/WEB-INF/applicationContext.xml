@@ -27,6 +27,7 @@
                 <value>po/PurchaseRecord.hbm.xml</value>
                 <value>po/User.hbm.xml</value>
                 <value>po/Scrap.hbm.xml</value>
+                <value>po/FixRecord.hbm.xml</value>
             </list>
         </property>
     </bean>

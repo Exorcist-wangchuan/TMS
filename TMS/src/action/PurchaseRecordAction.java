@@ -9,6 +9,10 @@ import pojo.CheckList;
 import service.ProcessService;
 import service.PurchaseRecordService;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +25,11 @@ public class PurchaseRecordAction extends ActionSupport {
     private ProcessService processService = null;
 
     private CheckList checkList;
+    private List<File> file;
+
+    public void setFile(List<File> file){
+        this.file = file;
+    }
 
     //getter
     public PurchaseRecord getPurchaseRecord() {
@@ -49,8 +58,7 @@ public class PurchaseRecordAction extends ActionSupport {
     }
 
     //高级员工
-    public String dealPurchaseApply() {
-
+    public String dealPurchaseApply() throws IOException {
         //获取时间构造eid
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
