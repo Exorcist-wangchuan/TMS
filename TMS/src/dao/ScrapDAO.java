@@ -51,7 +51,7 @@ public class ScrapDAO extends BaseDAO {
         Session session =  getSession();
         session.beginTransaction();
         try {
-            String hql = "select s from Scrap as s, ProcessRecord as pro where s.eID = pro.eID and pro.finish = 1";
+            String hql = "select s from Scrap as s, ProcessRecord as pro where s.eID = pro.eID and pro.finish = 1 and pro.dname='scrap'";
             org.hibernate.query.Query queryObject = session.createQuery(hql);
             return queryObject.list();
         }catch (RuntimeException re){

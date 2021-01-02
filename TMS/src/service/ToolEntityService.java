@@ -18,4 +18,12 @@ public class ToolEntityService {
 
         return true;
     }
+
+    //删除toolentity记录
+    public boolean deleteToolEntity(String pk) {
+        //调用DAO
+        toolEntityDAO.deleteToolEntityDAO(pk);
+
+        return true;
+    }
 }

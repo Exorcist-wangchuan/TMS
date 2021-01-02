@@ -23,12 +23,12 @@ public class ProcessService {
         return true;
     }
 
-    //指定seqid查询
-    public ProcessRecord getProcessById(int id){
-        ProcessRecord processRecord=new ProcessRecord();
-        processRecord=processDAO.getProcessBySeqID(id);
-        return processRecord;
-    }
+//    //指定codeseqid查询
+//    public ProcessRecord getProcessById(String priKey){
+//        ProcessRecord processRecord=new ProcessRecord();
+//        processRecord=processDAO.get;
+//        return processRecord;
+//    }
 
     /*
     * 以下为采购入库流程专用
@@ -43,8 +43,8 @@ public class ProcessService {
         User sv = (User) ActionContext.getContext().getSession().get("user");
         int id = sv.getId();
 
-        for (String seqID:passedList){
-            ProcessRecord processRecord = processDAO.getProcessBySeqID(Integer.parseInt(seqID));
+        for (String priKey:passedList){
+            ProcessRecord processRecord = processDAO.getPurchaseProcessByCodeandSeqID(priKey);
             if (processRecord!=null){
                 processRecord.setFirst_Check_UID(id);
                 processRecord.setFirst_Check_Date(date);
@@ -66,8 +66,8 @@ public class ProcessService {
         User manager = (User) ActionContext.getContext().getSession().get("user");
         int id = manager.getId();
 
-        for (String seqID:passedList){
-            ProcessRecord processRecord = processDAO.getProcessBySeqID(Integer.parseInt(seqID));
+        for (String priKey:passedList){
+            ProcessRecord processRecord = processDAO.getPurchaseProcessByCodeandSeqID(priKey);
             if (processRecord!=null){
                 processRecord.setFinal_Check_UID(id);
                 processRecord.setFinal_Check_Date(date);
@@ -93,9 +93,10 @@ public class ProcessService {
         //获取监管员ID
         User sv = (User) ActionContext.getContext().getSession().get("user");
         int id = sv.getId();
-        for (String seqID:passedList){
-            ProcessRecord processRecord = processDAO.getScrapProcessBySeqID(Integer.parseInt(seqID));
-            System.out.println("s"+seqID);
+        for (String pk:passedList){
+            //通过code seqID找到对应记录
+            ProcessRecord processRecord = processDAO.getScrapProcessByCodeandSeqID(pk);
+            System.out.println("pk"+pk);
             if (processRecord!=null){
                 processRecord.setFirst_Check_UID(id);
                 processRecord.setFirst_Check_Date(date);
@@ -118,8 +119,8 @@ public class ProcessService {
         User manager = (User) ActionContext.getContext().getSession().get("user");
         int id = manager.getId();
 
-        for (String seqID:passedList){
-            ProcessRecord processRecord = processDAO.getScrapProcessBySeqID(Integer.parseInt(seqID));
+        for (String pk:passedList){
+            ProcessRecord processRecord = processDAO.getScrapProcessByCodeandSeqID(pk);
             if (processRecord!=null){
                 processRecord.setFinal_Check_UID(id);
                 processRecord.setFinal_Check_Date(date);
@@ -144,8 +145,8 @@ public class ProcessService {
         User o2 = (User) ActionContext.getContext().getSession().get("user");
         int id = o2.getId();
 
-        for (String seqID:passedList){
-            ProcessRecord processRecord = processDAO.getProcessBySeqID1(Integer.parseInt(seqID));
+        for (String eID:passedList){
+            ProcessRecord processRecord = processDAO.getFixProcessByCodeandSeqID(eID);
             if (processRecord!=null){
                 processRecord.setFinal_Check_UID(id);
                 processRecord.setFinal_Check_Date(date);

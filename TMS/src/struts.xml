@@ -96,9 +96,9 @@ Configuration 2.1//EN"
 
     </package>
 
-    <package name="ajax" extends="json-default">
-        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">
-            <result name="json" type="json">/pages/supervisor/processPurchaseRequisition.jsp</result>
-        </action>
-    </package>
+<!--    <package name="ajax" extends="json-default">-->
+<!--        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">-->
+<!--            <result name="json" type="json">/pages/supervisor/processPurchaseRequisition.jsp</result>-->
+<!--        </action>-->
+<!--    </package>-->
 </struts>

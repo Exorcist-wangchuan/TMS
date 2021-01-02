@@ -8,6 +8,8 @@ import po.User;
 import pojo.CheckList;
 import service.ProcessService;
 import service.ScrapRecordService;
+import service.ToolEntityService;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +19,7 @@ public class ScrapRecordAction extends ActionSupport {
     private Scrap scrap;
     private ScrapRecordService scrapService=null;
     private ProcessService processService = null;
+    private ToolEntityService toolEntityService = null;
     private CheckList checkList;
 
     public CheckList getCheckList() {
@@ -41,6 +44,14 @@ public class ScrapRecordAction extends ActionSupport {
 
     public void setProcessService(ProcessService processService) {
         this.processService = processService;
+    }
+
+    public ToolEntityService getToolEntityService() {
+        return toolEntityService;
+    }
+
+    public void setToolEntityService(ToolEntityService toolEntityService) {
+        this.toolEntityService = toolEntityService;
     }
 
     public Scrap getScrap() {

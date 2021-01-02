@@ -22,6 +22,13 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <style type="text/css">
+        #eID_null{
+            display: none;
+            visibility: hidden;
+            opacity: 0%;
+        }
+    </style>
 </head>
 <body>
 <!-- Side Navbar -->
@@ -131,6 +138,7 @@
                                             <td><s:property value="description"/></td>
                                             <td><s:property value="dealUID"/></td>
                                             <td><s:property value="Img"/></td>
+                                            <td id="eID_null"><s:property value="eID"/></td>
                                             <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
                                         </tr>
                                     </s:iterator>

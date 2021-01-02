@@ -28,16 +28,23 @@ public class PurchaseRecordDAO extends BaseDAO {
         }
     }
 
-    //通过seqid查询
-    public PurchaseRecord getPurchaseRecordBySeqID(int id){
+    //通过code seqid查询
+    public PurchaseRecord getPurchaseRecordByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();
         try {
             //core
-            System.out.println(id);
-            String hql = "from PurchaseRecord as p where p.seqID = :id";
+            System.out.println(pk);
+
+            //分割code和seqID
+            String[] temp=pk.split("&");
+            String code=temp[0];
+            int seqID=Integer.parseInt(temp[1]);
+
+            String hql = "from PurchaseRecord as p where p.code=:code and p.seqID = :seqID";
             Query queryObject = (Query) session.createQuery(hql);
-            queryObject.setParameter("id", id);
+            queryObject.setParameter("code",code);
+            queryObject.setParameter("seqID",seqID);
             return (PurchaseRecord) queryObject.uniqueResult();
 
         }catch (RuntimeException re){
@@ -54,7 +61,7 @@ public class PurchaseRecordDAO extends BaseDAO {
         Session session =  getSession();
         session.beginTransaction();
         try {
-            String hql = "select p from PurchaseRecord as p, ProcessRecord as pro where p.eID = pro.eID and pro.finish = 1";
+            String hql = "select p from PurchaseRecord as p, ProcessRecord as pro where p.eID = pro.eID and pro.finish = 1 and pro.dname='purchase'";
             Query queryObject = session.createQuery(hql);
             return queryObject.list();
         }catch (RuntimeException re){

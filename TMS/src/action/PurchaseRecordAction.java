@@ -95,7 +95,6 @@ public class PurchaseRecordAction extends ActionSupport {
         ToolEntityPrimaryKey tpk=new ToolEntityPrimaryKey();
         tpk.setCode(purchaseRecord.getCode());
         tpk.setSeqID(purchaseRecord.getSeqID());
-        ToolEntity toolEntity=new ToolEntity();
         toolEntity.setCode_seqid(tpk);
         toolEntity.setBillNo(purchaseRecord.getBillNo());
         toolEntity.setRegDate(purchaseRecord.getPurchaseDate());
@@ -115,18 +114,18 @@ public class PurchaseRecordAction extends ActionSupport {
         else return "fail";
     }
 
-    //指定seqID查询process和purchaseRecord
-    public String getPurchaseDetail() {
-        Parameter seqID = ActionContext.getContext().getParameters().get("seqID");
-        int id = Integer.parseInt(seqID.toString());
-        PurchaseRecord purchaseRecord = new PurchaseRecord();
-        purchaseRecord = purchaseRecordService.getPurchaseRecordById(id);
-        ProcessRecord process = new ProcessRecord();
-        process = processService.getProcessById(id);
-        ActionContext.getContext().getSession().put("detail_purchaseRecord",purchaseRecord);
-        ActionContext.getContext().getSession().put("detail_processRecord",process);
-        return "json";
-    }
+//    //指定code seqID查询process和purchaseRecord
+//    public String getPurchaseDetail() {
+//        Parameter seqID = ActionContext.getContext().getParameters().get("seqID");
+//        int id = Integer.parseInt(seqID.toString());
+//        PurchaseRecord purchaseRecord = new PurchaseRecord();
+//        purchaseRecord = purchaseRecordService.getPurchaseRecordById(id);
+//        ProcessRecord process = new ProcessRecord();
+//        process = processService.getProcessById(id);
+//        ActionContext.getContext().getSession().put("detail_purchaseRecord",purchaseRecord);
+//        ActionContext.getContext().getSession().put("detail_processRecord",process);
+//        return "json";
+//    }
 
     //监管员
     //监管员获取采购记录

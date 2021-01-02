@@ -23,9 +23,9 @@ public class PurchaseRecordService {
     }
 
     //指定seqid查询
-    public PurchaseRecord getPurchaseRecordById(int id){
+    public PurchaseRecord getPurchaseRecordByCodeandId(String pk){
         PurchaseRecord purchaseRecord =new PurchaseRecord();
-        purchaseRecord=purchaseRecordDAO.getPurchaseRecordBySeqID(id);
+        purchaseRecord=purchaseRecordDAO.getPurchaseRecordByCodeandSeqID(pk);
         return purchaseRecord;
     }
 

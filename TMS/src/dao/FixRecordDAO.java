@@ -32,7 +32,7 @@ public class FixRecordDAO extends BaseDAO
         Session session =  getSession();
         session.beginTransaction();
         try {
-            String hql = "select p from FixRecord as p, ProcessRecord as pro where p.eID = pro.eID and pro.finish = 1";
+            String hql = "select p from FixRecord as p, ProcessRecord as pro where p.eID = pro.eID and pro.finish = 1 and pro.dname='fix'";
             Query queryObject = session.createQuery(hql);
             return queryObject.list();
         }catch (RuntimeException re){
