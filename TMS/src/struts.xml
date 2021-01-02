@@ -22,7 +22,7 @@ Configuration 2.1//EN"
         <!--需要加入后端校验-->
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
-            <result name="success" type="redirect">/pages/senior/storageApply.jsp</result>
+            <result name="success" type="redirect">/pages/senior/storageApply.html</result>
             <result name="fail">/pages/senior/storageApply.html</result>
         </action>
 

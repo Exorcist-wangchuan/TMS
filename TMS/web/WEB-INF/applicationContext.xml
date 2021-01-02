@@ -28,6 +28,7 @@
                 <value>po/User.hbm.xml</value>
                 <value>po/Scrap.hbm.xml</value>
                 <value>po/FixRecord.hbm.xml</value>
+                <value>po/ToolEntity.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -50,6 +51,7 @@
     <bean id="purDAO" class="dao.PurchaseRecordDAO" parent="baseDAO"/>
     <bean id="scrapDAO" class="dao.ScrapDAO" parent="baseDAO"/>
     <bean id="fixDAO" class="dao.FixRecordDAO" parent="baseDAO"/>
+    <bean id="toolEntityDAO" class="dao.ToolEntityDAO" parent="baseDAO"/>
 
     <!--service类-->
     <!--是否需要将参数交给spring?-->
@@ -68,6 +70,9 @@
     <bean name="fixRecordService" class="service.FixRecordService">
         <property name="fixRecordDAO" ref="fixDAO"/>
     </bean>
+    <bean name="toolEntityService" class="service.ToolEntityService">
+        <property name="toolEntityDAO" ref="toolEntityDAO"/>
+    </bean>
 
     <!--action类-->
     <bean name="userAction" class="action.UserAction">
@@ -77,6 +82,7 @@
         <property name="checkList" ref="checkList"/>
         <property name="purchaseRecordService" ref="purRecordService"/>
         <property name="processService" ref="processService"/>
+        <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
     <!--报废Action声明-->
     <bean name="scrapAction" class="action.ScrapRecordAction">

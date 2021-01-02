@@ -5,9 +5,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.Parameter;
 import po.ProcessRecord;
 import po.PurchaseRecord;
+import po.ToolEntity;
+import po.ToolEntityPrimaryKey;
 import pojo.CheckList;
 import service.ProcessService;
 import service.PurchaseRecordService;
+import service.ToolEntityService;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,8 +24,11 @@ import java.util.List;
 
 public class PurchaseRecordAction extends ActionSupport {
     private PurchaseRecord purchaseRecord;
+    private ToolEntity toolEntity;
+
     private PurchaseRecordService purchaseRecordService = null;
     private ProcessService processService = null;
+    private ToolEntityService toolEntityService=null;
 
     private CheckList checkList;
     private List<File> file;
@@ -40,6 +46,10 @@ public class PurchaseRecordAction extends ActionSupport {
         return checkList;
     }
 
+    public ToolEntity getToolEntity() {
+        return toolEntity;
+    }
+
     //setter
     public void setPurchaseRecord(PurchaseRecord purchaseRecord) {
         this.purchaseRecord = purchaseRecord;
@@ -47,6 +57,10 @@ public class PurchaseRecordAction extends ActionSupport {
 
     public void setCheckList(CheckList checkList) {
         this.checkList = checkList;
+    }
+
+    public void setToolEntity(ToolEntity toolEntity) {
+        this.toolEntity = toolEntity;
     }
 
     public void setPurchaseRecordService(PurchaseRecordService purchaseRecordService) {
@@ -57,6 +71,10 @@ public class PurchaseRecordAction extends ActionSupport {
         this.processService = processService;
     }
 
+    public void setToolEntityService(ToolEntityService toolEntityService) {
+        this.toolEntityService = toolEntityService;
+    }
+
     //高级员工
     public String dealPurchaseApply() throws IOException {
         //获取时间构造eid
@@ -64,6 +82,7 @@ public class PurchaseRecordAction extends ActionSupport {
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String eid = eidFormat.format(new Date());
         String applyDate = sdf.format(new Date());
+
         //需要先保存ProcessRecord(主键)
         //构造Process
         ProcessRecord process = new ProcessRecord();
@@ -72,13 +91,27 @@ public class PurchaseRecordAction extends ActionSupport {
         process.setFinish(1);
         process.setApply_UID(purchaseRecord.getApplyUID());
         process.setApply_Date(applyDate);
+        //构造ToolEntity
+        ToolEntityPrimaryKey tpk=new ToolEntityPrimaryKey();
+        tpk.setCode(purchaseRecord.getCode());
+        tpk.setSeqID(purchaseRecord.getSeqID());
+        ToolEntity toolEntity=new ToolEntity();
+        toolEntity.setCode_seqid(tpk);
+        toolEntity.setBillNo(purchaseRecord.getBillNo());
+        toolEntity.setRegDate(purchaseRecord.getPurchaseDate());
+        toolEntity.setUsedCount(0);
+        System.out.println("location"+toolEntity.getLocation());
+
         //调用service
         boolean firstRes = processService.saveProcess(process);
+        boolean entityRes=toolEntityService.saveToolEntity(toolEntity);
+
         //保存采购记录
         purchaseRecord.seteID(eid);
         boolean secondRes = purchaseRecordService.savePurchaseRecord(purchaseRecord);
+
         //判断
-        if (firstRes && secondRes) return "success";
+        if (firstRes && secondRes && entityRes) return "success";
         else return "fail";
     }
 
