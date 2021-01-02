@@ -54,7 +54,7 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="storageApply.html"><i class="icon-form"></i>提交入库申请</a></li>
-                <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="toolEntityUpdate.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
                 <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
                 <li><a href="scrapAppl.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>

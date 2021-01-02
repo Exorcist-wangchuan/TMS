@@ -3,14 +3,13 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="po.PurchaseRecord" table="purchase_record" catalog="toolmanagesys">
-        <id name="seqID" type="int">
-            <column name="SeqID"/>
-        </id>
+        <composite-id name="code_seqid" class="po.ToolEntityPrimaryKey">
+            <!-- key-property指定了复合主键由哪些属性组成 -->
+            <key-property name="code" column="Code" type="string" length="10"/>
+            <key-property name="seqID" column="SeqID" type="int"/>
+        </composite-id>
         <property name="applyUID" type="int">
             <column name="Apply_UID"/>
-        </property>
-        <property name="code" type="string">
-            <column name="Code" length="10"/>
         </property>
         <property name="billNo" type="string">
             <column name="BillNo" length="20"/>

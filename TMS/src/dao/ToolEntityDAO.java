@@ -38,6 +38,8 @@ public class ToolEntityDAO extends BaseDAO  {
             String[] temp=pk.split("&");
             String code=temp[0];
             int seqID=Integer.parseInt(temp[1]);
+            System.out.println(code);
+            System.out.println(seqID);
 
             String hql = "delete from ToolEntity where code_seqid.code = :code and code_seqid.seqID = :seqID";
             Query queryObject = (Query) session.createQuery(hql);
@@ -47,6 +49,49 @@ public class ToolEntityDAO extends BaseDAO  {
 
         }catch (RuntimeException re){
             log.error("get processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //获得记录
+    public ToolEntity getToolEntityByCodeandSeqID(String pk){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            //core
+            System.out.println(pk);
+
+            //分割code和seqID
+            String[] temp=pk.split("&");
+            String code=temp[0];
+            int seqID=Integer.parseInt(temp[1]);
+
+            String hql = "from ToolEntity as t where t.code_seqid.code=:code  and t.code_seqid.seqID = :seqID";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("code", code);
+            queryObject.setParameter("seqID", seqID);
+            return (ToolEntity) queryObject.uniqueResult();
+
+        }catch (RuntimeException re){
+            log.error("get processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //修改记录
+    public void updateToolEntity(ToolEntity toolEntity){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            session.update(toolEntity);
+        }catch (RuntimeException re){
+            log.error("update processRecord failed", re);
             throw re;
         }finally {
             session.getTransaction().commit();

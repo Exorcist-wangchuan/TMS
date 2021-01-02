@@ -57,7 +57,7 @@ public class ProcessDAO extends BaseDAO {
             String code=temp[0];
             int seqID=Integer.parseInt(temp[1]);
 
-            String hql = "select pro from PurchaseRecord as p, ProcessRecord as pro where p.code=:code  and p.seqID = :seqID and  p.eID = pro.eID";
+            String hql = "select pro from PurchaseRecord as p, ProcessRecord as pro where p.code_seqid.code=:code  and p.code_seqid.seqID = :seqID and  p.eID = pro.eID";
             Query queryObject = (Query) session.createQuery(hql);
             queryObject.setParameter("code", code);
             queryObject.setParameter("seqID", seqID);

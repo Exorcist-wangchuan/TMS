@@ -91,10 +91,14 @@ public class PurchaseRecordAction extends ActionSupport {
         process.setFinish(1);
         process.setApply_UID(purchaseRecord.getApplyUID());
         process.setApply_Date(applyDate);
+
         //构造ToolEntity
         ToolEntityPrimaryKey tpk=new ToolEntityPrimaryKey();
-        tpk.setCode(purchaseRecord.getCode());
-        tpk.setSeqID(purchaseRecord.getSeqID());
+        System.out.println(purchaseRecord.getApplyUID());
+        System.out.println(purchaseRecord.getCode_seqid().getCode());
+        System.out.println(purchaseRecord.getCode_seqid().getSeqID());
+        tpk.setCode(purchaseRecord.getCode_seqid().getCode());
+        tpk.setSeqID(purchaseRecord.getCode_seqid().getSeqID());
         toolEntity.setCode_seqid(tpk);
         toolEntity.setBillNo(purchaseRecord.getBillNo());
         toolEntity.setRegDate(purchaseRecord.getPurchaseDate());

@@ -89,11 +89,15 @@
         <property name="scrapService" ref="scrapService"/>
         <property name="processService" ref="processService"/>
         <property name="checkList" ref="checkList"/>
+        <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
     <bean name="fixRecordAction" class="action.FixRecordAction">
         <property name="checkList" ref="checkList"/>
         <property name="fixRecordService" ref="fixRecordService"/>
         <property name="processService" ref="processService"/>
+    </bean>
+    <bean name="ToolEntityAction" class="action.ToolEntityAction">
+        <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
 
 

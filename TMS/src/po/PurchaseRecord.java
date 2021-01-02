@@ -1,13 +1,20 @@
 package po;
 
 public class PurchaseRecord {
-    private int seqID;
+    private ToolEntityPrimaryKey code_seqid;
     private int applyUID;
-    private String code;
     private String billNo;
     private String purchaseDate;
     private String img;
     private String eID;
+
+    public ToolEntityPrimaryKey getCode_seqid() {
+        return code_seqid;
+    }
+
+    public void setCode_seqid(ToolEntityPrimaryKey code_seqid) {
+        this.code_seqid = code_seqid;
+    }
 
     public String geteID() {
         return eID;
@@ -25,21 +32,6 @@ public class PurchaseRecord {
         this.applyUID = applyUID;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public int getSeqID() {
-        return seqID;
-    }
-
-    public void setSeqID(int seqID) {
-        this.seqID = seqID;
-    }
 
     public String getBillNo() {
         return billNo;

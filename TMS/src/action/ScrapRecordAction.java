@@ -125,6 +125,8 @@ public class ScrapRecordAction extends ActionSupport {
         List<String> passedList = checkList.getCheckList();
         for (String str:passedList){
             System.out.println("ss"+str);
+            //在entity表中删除对应的工夹具实体记录
+            boolean toolres=toolEntityService.deleteToolEntity(str);
         }
         boolean res = processService.scrap_finalCheck(passedList);
         if (res) return "success";

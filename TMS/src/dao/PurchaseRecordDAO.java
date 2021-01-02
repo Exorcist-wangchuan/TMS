@@ -41,7 +41,7 @@ public class PurchaseRecordDAO extends BaseDAO {
             String code=temp[0];
             int seqID=Integer.parseInt(temp[1]);
 
-            String hql = "from PurchaseRecord as p where p.code=:code and p.seqID = :seqID";
+            String hql = "from PurchaseRecord as p where p.code_seqid.code=:code and p.code_seqid.seqID = :seqID";
             Query queryObject = (Query) session.createQuery(hql);
             queryObject.setParameter("code",code);
             queryObject.setParameter("seqID",seqID);

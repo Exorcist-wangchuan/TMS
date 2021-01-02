@@ -3,6 +3,7 @@ package service;
 import dao.ToolEntityDAO;
 import po.PurchaseRecord;
 import po.ToolEntity;
+import po.ToolEntityPrimaryKey;
 
 public class ToolEntityService {
     private ToolEntityDAO toolEntityDAO=null;
@@ -25,5 +26,12 @@ public class ToolEntityService {
         toolEntityDAO.deleteToolEntityDAO(pk);
 
         return true;
+    }
+
+    //修改toolentity记录
+    public boolean updateToolEntity(ToolEntity toolEntity){
+        toolEntityDAO.updateToolEntity(toolEntity);
+        return true;
+
     }
 }

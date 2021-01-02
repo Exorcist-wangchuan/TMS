@@ -94,6 +94,12 @@ Configuration 2.1//EN"
             <result name="success" type="redirectAction">getFixRecord</result>
         </action>
 
+        <!--高级员工修改基础信息-->
+        <action name="submitToolEntityUpdate" class="ToolEntityAction" method="updateToolEntity">
+            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="fail" >/pages/senior/toolEntityUpdate.html</result>
+        </action>
+
     </package>
 
 <!--    <package name="ajax" extends="json-default">-->

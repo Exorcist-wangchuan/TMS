@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>提交入库申请</title>
+    <title>修改基础信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!--fileUpload-->
+    <link rel="stylesheet" href="../../css/fileinput.min.css">
 </head>
 <body>
 <!-- Side Navbar -->
@@ -99,34 +101,45 @@
     <!--右侧主体-->
     <section class="bg-light">
         <div class="container-fluid bg-transparent">
-            <header class="h3 display">报废申请</header>
+            <header class="h3 display">修改基础信息</header>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>报废申请表</h4>
+                            <h4>基础信息修改表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitScrapApplication" method="post">
+                            <form action="submitToolEntityUpdate" method="post">
                                 <div class="form-group row">
-                                    <label class="col-3">类别代码<br></label>
-                                    <input name="scrap.Code" type="text" class="col-8 form-control">
+                                    <label class="col-3">类别代码<br><small></small></label>
+                                    <input name="toolEntity.code_seqid.code" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">物品代码<br></label>
-                                    <input name="scrap.SeqID" type="text" class="col-8 form-control">
+                                    <label class="col-3">物品代码</label>
+                                    <input name="toolEntity.code_seqid.seqID" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">夹具寿命计数</label>
-                                    <input name="scrap.lifecount" type="text" class="col-8 form-control">
+                                    <label class="col-3">单据号</label>
+                                    <input name="toolEntity.billNo" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">报废原因</label>
-                                    <input name="scrap.reason" type="text" class="col-8 form-control">
+                                    <label class="col-3">采购入库日期</label>
+                                    <input name="toolEntity.regDate" type="text" class="col-8 form-control">
                                 </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">已使用次数</label>
+                                    <input name="toolEntity.usedCount" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">存放库位</label>
+                                    <input name="toolEntity.location" type="text" class="col-8 form-control">
+                                </div>
+
                                 <div class="form-group col-4 offset-3">
                                     <button type="reset" class="btn btn-secondary">重置</button>
                                     <button type="submit" class="btn btn-primary">提交</button>
@@ -165,5 +178,6 @@
 <!-- Main File-->
 <script src="../../js/front.js"></script>
 <script src="storageForm.js"></script>
+<script src="../../js/fileinput.min.js"></script>
 </body>
 </html>
