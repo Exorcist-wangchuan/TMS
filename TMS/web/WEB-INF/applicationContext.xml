@@ -38,6 +38,7 @@
     <bean name="purRecord" class="po.PurchaseRecord"/>
     <bean name="scrap" class="po.Scrap"/>
     <bean name="fixRecord" class="po.FixRecord"/>
+    <bean name="toolEntity" class="po.ToolEntity"/>
 
     <!--pojo类——非持久化类-->
     <bean name="checkList" class="pojo.CheckList"/>

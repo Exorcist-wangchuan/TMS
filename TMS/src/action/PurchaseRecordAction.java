@@ -91,7 +91,6 @@ public class PurchaseRecordAction extends ActionSupport {
         process.setFinish(1);
         process.setApply_UID(purchaseRecord.getApplyUID());
         process.setApply_Date(applyDate);
-
         //构造ToolEntity
         ToolEntityPrimaryKey tpk=new ToolEntityPrimaryKey();
         System.out.println(purchaseRecord.getApplyUID());
