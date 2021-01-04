@@ -96,12 +96,12 @@
     <!--右侧主体-->
     <section class="bg-light">
         <div class="container-fluid ">
-            <header class="h3 display">处理采购入库申请</header>
+            <header class="h3 display">处理报废申请</header>
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请列表</h4>
+                            <h4>报废申请列表</h4>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewScrapRecord_Manager">

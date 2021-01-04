@@ -7,6 +7,9 @@ import org.hibernate.query.Query;
 import po.DefineTool;
 import po.ProcessRecord;
 import po.PurchaseRecord;
+import po.Scrap;
+
+import java.util.List;
 
 public class DefineToolDAO extends BaseDAO {
     private Log log = LogFactory.getLog(DefineToolDAO.class);
@@ -56,6 +59,44 @@ public class DefineToolDAO extends BaseDAO {
             log.error("update definetool failed", re);
             throw re;
         } finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //删除记录
+    public void deleteDefineTool(int id){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+
+            String hql = "delete from DefineTool where id = :id ";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("id", id);
+            queryObject.executeUpdate();
+
+        }catch (RuntimeException re){
+            log.error("delete definetool failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //批量获取记录
+    public List<DefineTool> searchDefineTool_supervisor(){
+        Session session =  getSession();
+        session.beginTransaction();
+        try {
+            String hql = "select s from DefineTool as s";
+            String queryString = hql;
+            org.hibernate.query.Query queryObject = session.createQuery(queryString);
+            return queryObject.list();
+        }catch (RuntimeException re){
+            log.error("search definetool failed",re);
+            throw  re;
+        }finally {
             session.getTransaction().commit();
             session.close();
         }

@@ -112,6 +112,16 @@ Configuration 2.1//EN"
             <result name="fail" >/pages/supervisor/defineToolUpdate.jsp</result>
         </action>
 
+        <!--监管员删除工夹具类别-->
+        <action name="reviewDefineTool" class="defineToolAction" method="deleteDefineTool">
+            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="fail" >/pages/supervisor/defineToolDelete.jsp</result>
+        </action>
+
+        <!--监管员获得工夹具类别-->
+        <action name="getDefineTool" class="defineToolAction" method="getDefintTool_supervisor">
+            <result name="success" type="redirect">/pages/supervisor/defineToolDelete.jsp</result>
+        </action>
     </package>
 
 <!--    <package name="ajax" extends="json-default">-->

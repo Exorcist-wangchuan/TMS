@@ -48,6 +48,7 @@
                 <li><a href="supervisorHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="defineToolInsert.jsp"><i class="icon-form"></i>创建工夹具类别</a></li>
                 <li><a href="defineToolUpdate.jsp"><i class="fa fa-bar-chart"></i>修改工夹具类别</a></li>
+                <li><a href="getDefineTool"><i class="fa fa-bar-chart"></i>删除工夹具类别</a></li>
                 <li><a href="getPurchaseRecord"><i class="icon-grid"></i>处理采购入库申请</a></li>
                 <li><a href="getScrapRecord"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
             </ul>

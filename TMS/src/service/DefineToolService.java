@@ -2,12 +2,10 @@ package service;
 
 import com.opensymphony.xwork2.ActionContext;
 import dao.DefineToolDAO;
-import po.DefineTool;
-import po.ProcessRecord;
-import po.PurchaseRecord;
-import po.User;
+import po.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +25,13 @@ public class DefineToolService {
         DefineTool defineTool =new DefineTool();
         defineTool=defineToolDAO.searchDefineTool(id);
         return defineTool;
+    }
+
+    //批量获取记录
+    public List<DefineTool> getDefineTool() {
+        List<DefineTool> list = new ArrayList<>();
+        list = defineToolDAO.searchDefineTool_supervisor();
+        return list;
     }
 
     //插入记录
@@ -63,6 +68,17 @@ public class DefineToolService {
         defineTool.setEditBy(id);//设置修改人
         defineTool.setEditByName(name);
         defineToolDAO.updateDefineTool(defineTool);
+        return true;
+    }
+
+    //删除definetool记录
+    public boolean deleteDefineTool(List<String> passedList) {
+
+        for (String id:passedList) {
+            int deleteid=Integer.parseInt(id);
+            //调用DAO
+            defineToolDAO.deleteDefineTool(deleteid);
+        }
         return true;
     }
 }

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>处理采购入库申请</title>
+    <title>删除工夹具类别</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -46,8 +46,8 @@
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="supervisorHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="/forms.html"><i class="icon-form"></i>创建工夹具类别</a></li>
-                <li><a href="/charts.html"><i class="fa fa-bar-chart"></i>修改工夹具类别</a></li>
+                <li><a href="defineToolInsert.jsp"><i class="icon-form"></i>创建工夹具类别</a></li>
+                <li><a href="defineToolUpdate.jsp"><i class="fa fa-bar-chart"></i>修改工夹具类别</a></li>
                 <li><a href="getDefineTool"><i class="fa fa-bar-chart"></i>删除工夹具类别</a></li>
                 <li><a href="getPurchaseRecord"><i class="icon-grid"></i>处理采购入库申请</a></li>
                 <li><a href="getScrapRecord"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
@@ -64,7 +64,7 @@
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header">
                         <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"></i></a>
-                        <a href="processPurchaseRequisition.jsp" class="navbar-brand">
+                        <a href="supervisorHome.jsp" class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block">
                                 <span class="font-weight-bolder" style="font-size: 18px">TMS&nbsp;</span>
                                 <span style="font-size: 18px">工夹具管理系统</span>
@@ -97,46 +97,45 @@
         </nav>
     </header>
     <!--右侧主体-->
-    <section>
+    <section class="bg-light">
         <div class="container-fluid ">
-            <header class="h3 display">处理采购入库申请</header>
+            <header class="h3 display">删除工夹具类别</header>
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请列表</h4>
+                            <h4>工夹具类别列表</h4>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="reviewPurchaseRecord">
+                            <form method="post" action="reviewDefineTool">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th>申请者编号</th>
+                                        <th>类别编号</th>
                                         <th>类别代码</th>
-                                        <th>物品代码</th>
-                                        <th>单据号</th>
-                                        <th>采购入库日期</th>
-                                        <th>操作</th>
+                                        <th>夹具名称</th>
+                                        <th>所属大类编号</th>
+                                        <th>所属大类</th>
                                     </tr>
                                     </thead>
-                                    <s:iterator value="#session.purchaseRecords">
+                                    <s:iterator value="#session.DefintToolRecords">
                                         <tr>
                                             <td>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" name="checkList.checkList">
+                                                    <input class="form-check-input" type="checkbox" value="" name="deletelist.checkList">
                                                 </div>
                                             </td>
-                                            <td><s:property value="applyUID"/></td>
-                                            <td><s:property value="code"/></td>
-                                            <td><s:property value="seqID"/></td>
-                                            <td><s:property value="billNo"/></td>
-                                            <td><s:property value="purchaseDate"/></td>
-                                            <td><a class="btn btn-primary btn-sm" href="getPurchaseRecordDetail" name="detailBtn" data-toggle="modal" data-target="#PurchaseRecordDetail">查看详情</a></td>
+                                            <td><s:property value="id"/></td>
+                                            <td><s:property value="Code"/></td>
+                                            <td><s:property value="name"/></td>
+                                            <td><s:property value="familyID"/></td>
+                                            <td><s:property value="family"/></td>
+                                            <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
                                         </tr>
                                     </s:iterator>
                                 </table>
-                                <button type="submit" class="btn btn-primary">审批通过</button>
+                                <button type="submit" class="btn btn-primary">删除</button>
                             </form>
                         </div>
                     </div>
@@ -168,55 +167,8 @@
 <script src="../../vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
-<script src="supervisor.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
-
-<!-- Modal -->
-<div class="modal fade" id="PurchaseRecordDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">采购记录详情</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>申请者编号</th>
-                        <td><s:property value="applyUID"/></td>
-                    </tr>
-                    <tr>
-                        <th>类别代码</th>
-                        <td><s:property value="code"/></td>
-                    </tr>
-                    <tr>
-                        <th>物品代码</th>
-                        <td><s:property value="seqID"/></td>
-                    </tr>
-                    <tr>
-                        <th>单据号</th>
-                        <td><s:property value="billNo"/></td>
-                    </tr>
-                    <tr>
-                        <th>采购入库日期</th>
-                        <td><s:property value="purchaseDate"/></td>
-                    </tr>
-                        <th>图片</th>
-                        <td></td>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+<script src="supervisor.js"></script>
 </body>
 </html>

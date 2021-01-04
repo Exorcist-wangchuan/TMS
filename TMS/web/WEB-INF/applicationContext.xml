@@ -105,6 +105,7 @@
         <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
     <bean name="defineToolAction" class="action.DefineToolAction">
+        <property name="deletelist" ref="checkList"/>
         <property name="defineToolService" ref="defineToolService"/>
     </bean>
 
