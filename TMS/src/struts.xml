@@ -95,9 +95,21 @@ Configuration 2.1//EN"
         </action>
 
         <!--高级员工修改基础信息-->
-        <action name="submitToolEntityUpdate" class="ToolEntityAction" method="updateToolEntity">
+        <action name="submitToolEntityUpdate" class="toolEntityAction" method="updateToolEntity">
             <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
             <result name="fail" >/pages/senior/toolEntityUpdate.html</result>
+        </action>
+
+        <!--监管员创建工夹具类别-->
+        <action name="defineToolInsert" class="defineToolAction" method="dealDefineToolApply">
+            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="fail" >/pages/supervisor/defineToolInsert.jsp</result>
+        </action>
+
+        <!--监管员修改工夹具类别-->
+        <action name="defineToolUpdate" class="defineToolAction" method="updateDefineTool">
+            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="fail" >/pages/supervisor/defineToolUpdate.jsp</result>
         </action>
 
     </package>
