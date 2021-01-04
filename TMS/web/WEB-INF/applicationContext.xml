@@ -54,7 +54,6 @@
     <bean id="toolEntityDAO" class="dao.ToolEntityDAO" parent="baseDAO"/>
 
     <!--service类-->
-    <!--是否需要将参数交给spring?-->
     <bean name="userService" class="service.UserService">
         <property name="userDAO" ref="userDAO"/>
     </bean>
@@ -100,5 +99,33 @@
         <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
 
+    <!--Util类-->
+    <!--邮件相关-->
+    <bean name="mail" class="util.JavaMailUtil">
+        <property name="username" value="toolmanagesystem@163.com"/>
+        <property name="password" value="SJPLBCHBKHIIQCLF"/>
+        <property name="smtpServer" value="smtp.163.com"/>
+    </bean>
+
+    <!--工作详情类-->
+    <bean name="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="mail"/>
+        <property name="targetMethod" value="sendEmail"/>
+    </bean>
+
+    <!--配置触发器-->
+    <bean name="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression" value="0 * * * * ? *"/>
+    </bean>
+
+    <!--配置调度工厂-->
+    <bean name="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="trigger"/>
+            </list>
+        </property>
+    </bean>
 
 </beans>

@@ -42,6 +42,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/activation.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/antlr-2.7.7.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -52,6 +61,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/byte-buddy-1.10.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/c3p0-0.9.5.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -186,6 +204,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/javax.mail.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/javax.persistence-api-2.2.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -258,6 +285,42 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/quartz-2.3.0-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/quartz-jobs-2.3.0-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/slf4j-api-1.7.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/slf4j-log4j12-1.7.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/spring-beans-4.0.0.RELEASE.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -321,6 +384,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/spring-web-4.0.0.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/stax-ex-1.8.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -348,16 +420,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/txw2-2.3.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/spring-web-4.0.0.RELEASE.jar!/" />
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-json-plugin-2.5.25.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -375,7 +438,25 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-json-plugin-2.5.25.jar!/" />
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/txw2-2.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/spring-context-support-4.0.0.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/log4j-1.2.16.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
