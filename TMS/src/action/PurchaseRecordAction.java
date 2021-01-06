@@ -3,10 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.Parameter;
-import po.ProcessRecord;
-import po.PurchaseRecord;
-import po.ToolEntity;
-import po.ToolEntityPrimaryKey;
+import po.*;
 import pojo.CheckList;
 import service.ProcessService;
 import service.PurchaseRecordService;
@@ -82,6 +79,10 @@ public class PurchaseRecordAction extends ActionSupport {
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String eid = eidFormat.format(new Date());
         String applyDate = sdf.format(new Date());
+
+        User  user=(User)ActionContext.getContext().getSession().get("user");
+        int uid=user.getId();
+        purchaseRecord.setApplyUID(uid);
 
         //需要先保存ProcessRecord(主键)
         //构造Process
