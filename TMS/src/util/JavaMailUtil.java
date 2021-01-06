@@ -1,6 +1,7 @@
 package util;
 
 import com.sun.mail.util.MailSSLSocketFactory;
+import po.PeriodCheck;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -37,7 +38,7 @@ public class JavaMailUtil {
     }
 
     //发送邮件
-    public int sendEmail(){
+    public int sendEmail(String receive, String receive_name, PeriodCheck record){
         int res=0;
         try {
             Properties p = new Properties();
@@ -70,12 +71,13 @@ public class JavaMailUtil {
             InternetAddress from = new InternetAddress("TMS SERVICE"+"<"+p.getProperty("mail.username")+">");
             msg.setFrom(from);
             //设置收件人
-            InternetAddress to = new InternetAddress("xuj1677827654@outlook.com");
+            InternetAddress to = new InternetAddress(receive);
             msg.setRecipient(Message.RecipientType.TO, to);
             //设置邮件标题
-            msg.setSubject("TMS:测试");
+            msg.setSubject("TMS:维护提醒");
             //设置主题内容
-            msg.setContent("测试邮件", "text/html;charset=UTF-8");
+            String content = generateContext(receive_name,record);
+            msg.setContent(content, "text/html;charset=UTF-8");
             //发送邮件
             Transport.send(msg);
 
@@ -84,4 +86,18 @@ public class JavaMailUtil {
         }
         return res;
     }
+
+    //生成邮件内容
+    public String generateContext(String receive_name, PeriodCheck record){
+        int line =1;
+        String context="";
+        context = context + receive_name+",你好\n";
+        context = context + "以下为需要维护的工夹具清单，请及时维护！\n";
+        context = context + line+".\n";
+        context = context + "工夹具类别号:"+record.getCode_seqid().getCode()+"\n";
+        context = context+"工夹具序列号:"+record.getCode_seqid().getSeqID()+"\n";
+
+        return context;
+    }
+
 }

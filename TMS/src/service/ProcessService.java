@@ -1,7 +1,9 @@
 package service;
 
 import com.opensymphony.xwork2.ActionContext;
+import dao.PeriodCheckDAO;
 import dao.ProcessDAO;
+import po.PeriodCheck;
 import po.ProcessRecord;
 import po.PurchaseRecord;
 import po.User;
@@ -12,9 +14,13 @@ import java.util.List;
 
 public class ProcessService {
     private ProcessDAO processDAO=null;
+    private PeriodCheckDAO periodCheckDAO;
 
     public void setProcessDAO(ProcessDAO processDAO) {
         this.processDAO = processDAO;
+    }
+    public void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO){
+        this.periodCheckDAO = periodCheckDAO;
     }
 
     public boolean saveProcess(ProcessRecord process) {

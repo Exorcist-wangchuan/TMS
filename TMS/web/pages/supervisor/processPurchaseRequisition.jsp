@@ -127,8 +127,8 @@
                                                 </div>
                                             </td>
                                             <td><s:property value="applyUID"/></td>
-                                            <td><s:property value="code"/></td>
-                                            <td><s:property value="seqID"/></td>
+                                            <td><s:property value="code_seqid.code"/></td>
+                                            <td><s:property value="code_seqid.seqID"/></td>
                                             <td><s:property value="billNo"/></td>
                                             <td><s:property value="purchaseDate"/></td>
                                             <td><a class="btn btn-primary btn-sm" href="getPurchaseRecordDetail" name="detailBtn" data-toggle="modal" data-target="#PurchaseRecordDetail">查看详情</a></td>
