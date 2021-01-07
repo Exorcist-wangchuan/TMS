@@ -8,10 +8,7 @@ Configuration 2.1//EN"
         <interceptors>
             <interceptor name="storageApplyInterceptor" class="interceptor.storageApplyInterceptor"/>
             <interceptor name="fixApplyInterceptor" class="interceptor.fixApplyInterceptor"/>
-            <interceptor name="scrapApplyInterceptor" class="interceptor.scrapApplyInterceptor"/>
-
         </interceptors>
-
         <!--
             使用英文方便跳转
             初级员工:o1
@@ -74,11 +71,6 @@ Configuration 2.1//EN"
         <action name="submitScrapApplication" class="scrapAction" method="dealScrapApply">
             <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
             <result name="fail">/pages/senior/scrapAppl.jsp</result>
-            <result name="ScrapRecordExist">/pages/senior/scrapAppl.jsp</result>
-            <!--配置系统默认拦截器
-            <interceptor-ref name="defaultStack"/>
-            &lt;!&ndash;配置自定义拦截器&ndash;&gt;
-            <interceptor-ref name="scrapApplyInterceptor"/>-->
         </action>
 
         <!--监管员获取报废记录-->
@@ -176,22 +168,6 @@ Configuration 2.1//EN"
         <!--系统管理员增加用户-->
         <action name="addUser" class="userAction" method="addUser">
             <result name="success" type="redirectAction">getUserList</result>
-        </action>
-
-        <!--高级员工录入入库记录-->
-        <action name="submitWareHouseAppl" class="WareHouseAction" method="dealWareHouse">
-            <result name="success" type="redirect">/pages/senior/WareHouseAppl.html</result>
-            <result name="fail" type="redirect">/pages/senior/seniorHome.jsp</result>
-        </action>
-
-        <!--高级员工获取出库-->
-        <action name="getOutHouse" class="WareHouseAction" method="getWareHouseRecords">
-            <result name="success" type="redirect">/pages/senior/OutHouse.jsp</result>
-        </action>
-
-        <!--高级员工处理出库-->
-        <action name="OutHouse" class="WareHouseAction" method="OutHouse">
-            <result name="success" type="redirectAction">getOutHouse</result>
         </action>
 
     </package>

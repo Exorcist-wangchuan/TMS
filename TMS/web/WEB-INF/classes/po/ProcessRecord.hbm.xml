@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.ProcessRecord" table="process_record" catalog="toolmanagesys">
+        <id name="eID" type="string">
+            <column name="EID" length="30"/>
+        </id>
+        <property name="dname" type="string">
+            <column name="Dname" length="30"/>
+        </property>
+        <property name="finish" type="int">
+            <column name="finish"/>
+        </property>
+        <property name="apply_UID" type="int">
+            <column name="Apply_UID"/>
+        </property>
+        <property name="apply_Date" type="string">
+            <column name="apply_date" length="30"/>
+        </property>
+        <property name="first_Check_UID" type="int">
+            <column name="first_Check_UID"/>
+        </property>
+        <property name="first_Check_Date" type="string">
+            <column name="first_Check_Date" length="20"/>
+        </property>
+        <property name="final_Check_UID" type="int">
+            <column name="final_Check_UID"/>
+        </property>
+        <property name="final_Check_Date" type="string">
+            <column name="final_Check_Date" length="20"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.ToolEntity" table="tool_entity" catalog="toolmanagesys">
+        <composite-id name="code_seqid" class="po.ToolEntityPrimaryKey">
+            <!-- key-property指定了复合主键由哪些属性组成 -->
+            <key-property name="code" column="Code" type="string" length="10"/>
+            <key-property name="seqID" column="SeqID" type="int"/>
+        </composite-id>
+
+        <property name="billNo" type="string">
+            <column name="BillNo" length="20"/>
+        </property>
+        <property name="regDate" type="string">
+            <column name="RegDate" length="20"/>
+        </property>
+        <property name="usedCount" type="int">
+            <column name="UsedCount"/>
+        </property>
+        <property name="location" type="string">
+            <column name="Location" length="10"/>
+        </property>
+    </class>
+</hibernate-mapping>
