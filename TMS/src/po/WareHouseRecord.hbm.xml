@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.WareHouseRecord" table="warehouse_access_record" catalog="toolmanagesys">
+        <composite-id name="code_seqid" class="po.ToolEntityPrimaryKey">
+            <key-property name="SeqID" type="int"/>
+            <key-property name="Code" type="string"/>
+        </composite-id>
+        <property name="RegDate" type="date">
+            <column name="RegDate"/>
+        </property>
+        <property name="YN" type="boolean">
+            <column name="YN"/>
+        </property>
+        <property name="Manager" type="int">
+            <column name="Manager"/>
+        </property>
+        <property name="Operator" type="int">
+            <column name="Operator"/>
+        </property>
+        <property name="PID" type="int">
+            <column name="PID" />
+        </property>
+        <property name="Name" type="int">
+            <column name="Name" />
+        </property>
+        <property name="Location" type="string">
+            <column name="Location" length="10" />
+        </property>
+        <property name="Model" type="string">
+            <column name="Model" length="20" />
+        </property>
+        <property name="PartNo" type="string">
+            <column name="PartNo" length="20" />
+        </property>
+        <property name="Family" type="string">
+            <column name="Family" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,10 +1,8 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri ="/struts-tags" prefix ="s" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TMS主页</title>
+    <title>处理出库</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -24,6 +22,13 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <style type="text/css">
+        #eID_null{
+            display: none;
+            visibility: hidden;
+            opacity: 0%;
+        }
+    </style>
 </head>
 <body>
 <!-- Side Navbar -->
@@ -34,13 +39,13 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5"><s:property value="#session.user.name" default="zhangsan"/></h2>
+                <h2 class="h5"><s:property value="#session.user.name"/></h2>
                 <span>高级员工</span><br>
                 <span>Operator Ⅱ</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
-                <a href="seniorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
+                <a href="supervisorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
             </div>
         </div>
         <!-- Sidebar Navigation Menus-->
@@ -67,7 +72,7 @@
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header">
                         <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"></i></a>
-                        <a href="/index.html" class="navbar-brand">
+                        <a href="processPurchaseRequisition.jsp" class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block">
                                 <span class="font-weight-bolder" style="font-size: 18px">TMS&nbsp;</span>
                                 <span style="font-size: 18px">工夹具管理系统</span>
@@ -90,7 +95,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.jsp" class="nav-link logout">
+                            <a href="../../login.html" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -101,7 +106,48 @@
     </header>
     <!--右侧主体-->
     <section>
-
+        <div class="container-fluid ">
+            <header class="h3 display">处理报修申请</header>
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>报修申请列表</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="OutHouse">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>领用人</th>
+                                        <th>产线</th>
+                                        <th>类别代码</th>
+                                        <th>物品代码</th>
+                                    </tr>
+                                    </thead>
+                                    <s:iterator value="#session.WareHouseRecords">
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="checkList.checkList">
+                                                </div>
+                                            </td>
+                                            <td><s:property value="Operator"/></td>
+                                            <td><s:property value="PID"/></td>
+                                            <td><s:property value="code_seqid.Code"/></td>
+                                            <td><s:property value="code_seqid.SeqID"/></td>
+                                            <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
+                                        </tr>
+                                    </s:iterator>
+                                </table>
+                                <button type="submit" class="btn btn-primary">出库</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!--底部信息-->
     <footer class="main-footer">
@@ -111,7 +157,6 @@
                     <p>Copyright &copy; 2020.Fixture Management System All rights reserved.</p>
                 </div>
                 <div class="col-sm-6 text-right">
-
                 </div>
             </div>
         </div>
@@ -127,7 +172,9 @@
 <script src="../../vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
+
 <!-- Main File-->
 <script src="../../js/front.js"></script>
+<script src="WareHouseForm.js"></script>
 </body>
 </html>
