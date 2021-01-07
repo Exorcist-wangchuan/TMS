@@ -43,4 +43,68 @@ public class UserDAO extends BaseDAO {
         }
     }
 
+    //系统管理员获取用户列表
+    public List<User> searchManageDAO(){
+        Session session =  getSession();
+        session.beginTransaction();
+        try {
+            String hql = "select p from User as p ";
+            Query queryObject = session.createQuery(hql);
+            return queryObject.list();
+        }catch (RuntimeException re){
+            log.error("search apply failed",re);
+            throw  re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //删除用户
+    public void delete(User user){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            session.delete(user);
+        }catch (RuntimeException re){
+            log.error("update processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //修改用户权限
+    public void update(User user)
+    {
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            session.update(user);
+        }catch (RuntimeException re){
+            log.error("update processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //增加用户
+    public void insert(User user)
+    {
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            session.save(user);
+        }catch (RuntimeException re){
+            log.error("update processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
 }

@@ -92,6 +92,7 @@
     <!--action类-->
     <bean name="userAction" class="action.UserAction">
         <property name="userService" ref="userService"/>
+        <property name="checkList" ref="checkList"/>
     </bean>
     <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
         <property name="checkList" ref="checkList"/>
@@ -137,7 +138,7 @@
     <!--配置触发器-->
     <bean name="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobDetail"/>
-        <property name="cronExpression" value="0/30 * * * * ? *"/>
+        <property name="cronExpression" value="* 0 * * * ? *"/>
     </bean>
 
     <!--配置调度工厂-->

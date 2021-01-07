@@ -5,6 +5,7 @@ import dao.UserDAO;
 import org.apache.struts2.interceptor.SessionAware;
 import po.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,40 @@ public class UserService{
             }
             return true;
         }
+    }
+
+    //系统管理员获取用户列表
+    public List<User> getUsers() {
+        List<User> list = new ArrayList<>();
+        list = userDAO.searchManageDAO();
+        return list;
+    }
+
+    //删除用户
+    public boolean deleteUsers(List<String> passedList){
+        for (String ID:passedList){
+            User user = userDAO.getUserByID(Integer.parseInt(ID));
+            if (user!=null){
+                userDAO.delete(user);
+            }else {
+                //意味着没有用户记录，出错
+            }
+        }
+        return true;
+    }
+
+    //修改用户权限
+    public boolean updateUser(User user)
+    {
+        userDAO.update(user);
+        return true;
+    }
+
+    //增加用户
+    public boolean addUser(User user)
+    {
+        userDAO.insert(user);
+        return true;
     }
 
 
