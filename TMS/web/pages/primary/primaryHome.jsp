@@ -64,7 +64,7 @@
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header">
                         <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"></i></a>
-                        <a href="/index.html" class="navbar-brand">
+                        <a href="primaryHome.jsp" class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block">
                                 <span class="font-weight-bolder" style="font-size: 18px">TMS&nbsp;</span>
                                 <span style="font-size: 18px">工夹具管理系统</span>
@@ -87,7 +87,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>

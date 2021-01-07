@@ -38,7 +38,7 @@
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
-                <a href="supervisorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
+                <a href="managerHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
             </div>
         </div>
         <!-- Sidebar Navigation Menus-->
@@ -84,7 +84,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
