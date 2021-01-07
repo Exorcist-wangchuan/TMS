@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.User" table="user" catalog="toolmanagesys">
+        <id name="id" type="int">
+            <column name="UID" />
+            <generator class="increment" />
+        </id>
+        <property name="name" type="string">
+            <column name="Uname" length="10"/>
+        </property>
+        <property name="password" type="string">
+            <column name="Upassword" length="20" />
+        </property>
+        <property name="level" type="string">
+            <column name="Uclass" length="10" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

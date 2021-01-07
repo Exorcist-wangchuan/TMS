@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts
+Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="strutsBean" extends="struts-default" namespace="/">
+        <!--
+            使用英文方便跳转
+            初级员工:o1
+            高级员工:o2
+            监管员:sv
+            经理:manager
+            管理员:admin
+            -->
+        <action name="login" class="userAction" method="login">
+            <result name="o1" type="redirect">/pages/primary/primaryHome.jsp</result>
+            <result name="o2" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="sv" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="manager" type="redirect">/pages/manager/managerHome.jsp</result>
+            <result name="admin" type="redirect">/pages/admin/adminHome.jsp</result>
+            <result name="fail">/login.jsp</result>
+        </action>
+
+        <!--需要加入后端校验-->
+        <!--采购入库申请表-->
+        <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
+            <result name="success" type="redirect">/pages/senior/storageApply.html</result>
+            <result name="fail">/pages/senior/storageApply.html</result>
+        </action>
+
+        <!--监管员获取记录-->
+        <action name="getPurchaseRecord" class="purchaseRecordAction" method="getStoragePurchaseRecord">
+            <result name="success" type="redirect">/pages/supervisor/processPurchaseRequisition.jsp</result>
+        </action>
+
+        <!--监管员查看详情-->
+        <!--<action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">
+            <result name="json"></result>
+        </action>-->
+
+        <!--监管员进行审批-->
+        <action name="reviewPurchaseRecord" class="purchaseRecordAction" method="reviewPurchaseRecord">
+            <result name="success" type="redirectAction">getPurchaseRecord</result>
+        </action>
+
+        <!--经理获取记录-->
+        <action name="getPurchaseRecord_Manager" class="purchaseRecordAction" method="getStoragePurchaseRecord_Manager">
+            <result name="success" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
+        </action>
+
+        <!--经理进行审批-->
+        <action name="reviewPurchaseRecord_Manager" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager">
+            <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
+        </action>
+
+        <!--以下为报废流程-->
+        <!--报废提交申请-->
+        <action name="submitScrapApplication" class="scrapAction" method="dealScrapApply">
+            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="fail">/pages/senior/scrapAppl.jsp</result>
+        </action>
+
+        <!--监管员获取报废记录-->
+        <action name="getScrapRecord" class="scrapAction" method="getStorageScrapRecord">
+            <result name="success" type="redirect">/pages/supervisor/processScrapRequisition.jsp</result>
+        </action>
+
+        <!--监管员进行报废审批-->
+        <action name="reviewScrapRecord" class="scrapAction" method="reviewScrapRecord">
+            <result name="success" type="redirectAction">getScrapRecord</result>
+        </action>
+
+        <!--经理获取报废记录-->
+        <action name="getScrapRecord_Manager" class="scrapAction" method="getStorageScrapRecord_Manager">
+            <result name="success" type="redirect">/pages/manager/processScrap_manager.jsp</result>
+        </action>
+
+        <!--经理进行报废审批-->
+        <action name="reviewScrapRecord_Manager" class="scrapAction" method="reviewPurchaseRecord_Manager">
+            <result name="success" type="redirectAction">getScrapRecord_Manager</result>
+        </action>
+
+        <!--报修申请表-->
+        <action name="submitFixRecord" class="fixRecordAction" method="dealFixApply">
+            <result name="success" type="redirect">/pages/primary/primaryHome.jsp</result>
+            <result name="fail">/pages/senior/repairAppl.html</result>
+        </action>
+
+        <!--高级员工获取记录-->
+        <action name="getFixRecord" class="fixRecordAction" method="getStorageFixRecord">
+            <result name="success" type="redirect">/pages/senior/processFix.jsp</result>
+        </action>
+
+        <!--高级员工进行审批-->
+        <action name="reviewFixRecord" class="fixRecordAction" method="reviewFixRecord">
+            <result name="success" type="redirectAction">getFixRecord</result>
+        </action>
+
+        <!--高级员工修改基础信息-->
+        <action name="submitToolEntityUpdate" class="ToolEntityAction" method="updateToolEntity">
+            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="fail" >/pages/senior/toolEntityUpdate.html</result>
+        </action>
+
+        <!--系统管理员获得用户列表-->
+        <action name="getUserList" class="userAction" method="getUserList">
+            <result name="success" type="redirect">/pages/admin/manage.jsp</result>
+        </action>
+
+        <!--系统管理员删除用户-->
+        <action name="deleteUser" class="userAction" method="deleteUser">
+            <result name="success" type="redirectAction">getUserList</result>
+        </action>
+
+        <!--系统管理员修改用户权限-->
+        <action name="updateUser" class="userAction" method="updateUser">
+            <result name="success" type="redirectAction">getUserList</result>
+        </action>
+
+        <!--系统管理员增加用户-->
+        <action name="addUser" class="userAction" method="addUser">
+            <result name="success" type="redirectAction">getUserList</result>
+        </action>
+
+    </package>
+</struts>
