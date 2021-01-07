@@ -91,11 +91,11 @@ public class JavaMailUtil {
     public String generateContext(String receive_name, PeriodCheck record){
         int line =1;
         String context="";
-        context = context + receive_name+",你好\n";
-        context = context + "以下为需要维护的工夹具清单，请及时维护！\n";
-        context = context + line+".\n";
-        context = context + "工夹具类别号:"+record.getCode_seqid().getCode()+"\n";
-        context = context+"工夹具序列号:"+record.getCode_seqid().getSeqID()+"\n";
+        context = context + receive_name+",你好<br>";
+        context = context + "以下为需要维护的工夹具清单，请及时维护！<br>";
+        context = context + line+".<br>";
+        context = context + "工夹具类别号:"+record.getCode_seqid().getCode()+"<br>";
+        context = context+"工夹具序列号:"+record.getCode_seqid().getSeqID()+"<br>";
 
         return context;
     }

@@ -65,6 +65,8 @@ public class DefineToolAction extends ActionSupport {
     public String updateDefineTool(){
         DefineTool df=defineToolService.searchDefineTool(defineTool.getId());
 
+        if(df==null)
+            return "fail";
         //将原记录中的录入人信息赋予新的记录
         defineTool.setRecByName(df.getRecByName());
         defineTool.setRecBy(df.getRecBy());

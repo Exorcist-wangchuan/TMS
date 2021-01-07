@@ -87,7 +87,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -127,8 +127,8 @@
                                                 </div>
                                             </td>
                                             <td><s:property value="UID"/></td>
-                                            <td><s:property value="Code"/></td>
-                                            <td><s:property value="SeqID"/></td>
+                                            <td><s:property value="code_seqid.Code"/></td>
+                                            <td><s:property value="code_seqid.SeqID"/></td>
                                             <td><s:property value="lifecount"/></td>
                                             <td><s:property value="reason"/></td>
                                             <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>

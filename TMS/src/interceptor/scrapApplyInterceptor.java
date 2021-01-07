@@ -35,8 +35,8 @@ public class scrapApplyInterceptor extends AbstractInterceptor {
             System.out.println(formMap.get(key));
         }
         //获得code和seqID调用purchaseRecordService来查重
-        String code = formMap.get("scrap.Code").toString();
-        String seqid = formMap.get("scrap.SeqID").toString();
+        String code = formMap.get("scrap.code_seqid.Code").toString();
+        String seqid = formMap.get("scrap.code_seqid.SeqID").toString();
         String pk = code + "&" + seqid;
         System.out.println("pk:" + pk);
         Scrap scrap = scrapRecordService.getScrapRecordByCodeandId(pk);

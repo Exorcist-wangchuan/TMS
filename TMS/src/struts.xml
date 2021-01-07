@@ -12,6 +12,7 @@ Configuration 2.1//EN"
 
         </interceptors>
 
+
         <!--
             使用英文方便跳转
             初级员工:o1
@@ -34,9 +35,9 @@ Configuration 2.1//EN"
         <!--需要加入后端校验-->
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
-            <result name="success" type="redirect">/pages/senior/storageApply.html</result>
-            <result name="fail">/pages/senior/storageApply.html</result>
-            <result name="PurchaseRecordexist">/pages/senior/storageApply.html</result>
+            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="fail">/pages/senior/storageApply.jsp</result>
+            <result name="PurchaseRecordexist">/pages/senior/storageApply.jsp</result>
             <!-- 配置系统默认拦截器 -->
             <interceptor-ref name="defaultStack"/>
             <!-- 配置自定义拦截器 -->
@@ -75,10 +76,10 @@ Configuration 2.1//EN"
             <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
             <result name="fail">/pages/senior/scrapAppl.jsp</result>
             <result name="ScrapRecordExist">/pages/senior/scrapAppl.jsp</result>
-            <!--配置系统默认拦截器
+            <!--配置系统默认拦截器-->
             <interceptor-ref name="defaultStack"/>
-            &lt;!&ndash;配置自定义拦截器&ndash;&gt;
-            <interceptor-ref name="scrapApplyInterceptor"/>-->
+            <!--配置自定义拦截器-->
+            <interceptor-ref name="scrapApplyInterceptor"/>
         </action>
 
         <!--监管员获取报废记录-->
@@ -104,8 +105,8 @@ Configuration 2.1//EN"
         <!--报修申请表-->
         <action name="submitFixRecord" class="fixRecordAction" method="dealFixApply">
             <result name="success" type="redirect">/pages/primary/primaryHome.jsp</result>
-            <result name="fail">/pages/senior/repairAppl.html</result>
-            <result name="fixRecordNotnull">/pages/primary/repairAppl.html</result>
+            <result name="fail">/pages/senior/repairAppl.jsp</result>
+            <result name="fixRecordNotnull">/pages/primary/repairAppl.jsp</result>
             <!-- 配置系统默认拦截器 -->
             <interceptor-ref name="defaultStack"/>
             <!-- 配置自定义拦截器 -->
@@ -125,7 +126,7 @@ Configuration 2.1//EN"
         <!--高级员工修改基础信息-->
         <action name="submitToolEntityUpdate" class="toolEntityAction" method="updateToolEntity">
             <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
-            <result name="fail">/pages/senior/toolEntityUpdate.html</result>
+            <result name="fail">/pages/senior/toolEntityUpdate.jsp</result>
         </action>
 
         <!--监管员创建工夹具类别-->
@@ -180,7 +181,7 @@ Configuration 2.1//EN"
 
         <!--高级员工录入入库记录-->
         <action name="submitWareHouseAppl" class="WareHouseAction" method="dealWareHouse">
-            <result name="success" type="redirect">/pages/senior/WareHouseAppl.html</result>
+            <result name="success" type="redirect">/pages/senior/WareHouseAppl.jsp</result>
             <result name="fail" type="redirect">/pages/senior/seniorHome.jsp</result>
         </action>
 
