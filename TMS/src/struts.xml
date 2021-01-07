@@ -10,12 +10,14 @@ Configuration 2.1//EN"
             高级员工:o2
             监管员:sv
             经理:manager
+            管理员:admin
             -->
         <action name="login" class="userAction" method="login">
             <result name="o1" type="redirect">/pages/primary/primaryHome.jsp</result>
             <result name="o2" type="redirect">/pages/senior/seniorHome.jsp</result>
             <result name="sv" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
             <result name="manager" type="redirect">/pages/manager/managerHome.jsp</result>
+            <result name="admin" type="redirect">/pages/admin/adminHome.jsp</result>
             <result name="fail">/login.jsp</result>
         </action>
 
@@ -100,11 +102,25 @@ Configuration 2.1//EN"
             <result name="fail" >/pages/senior/toolEntityUpdate.html</result>
         </action>
 
-    </package>
+        <!--系统管理员获得用户列表-->
+        <action name="getUserList" class="userAction" method="getUserList">
+            <result name="success" type="redirect">/pages/admin/manage.jsp</result>
+        </action>
 
-<!--    <package name="ajax" extends="json-default">-->
-<!--        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">-->
-<!--            <result name="json" type="json">/pages/supervisor/processPurchaseRequisition.jsp</result>-->
-<!--        </action>-->
-<!--    </package>-->
+        <!--系统管理员删除用户-->
+        <action name="deleteUser" class="userAction" method="deleteUser">
+            <result name="success" type="redirectAction">getUserList</result>
+        </action>
+
+        <!--系统管理员修改用户权限-->
+        <action name="updateUser" class="userAction" method="updateUser">
+            <result name="success" type="redirectAction">getUserList</result>
+        </action>
+
+        <!--系统管理员增加用户-->
+        <action name="addUser" class="userAction" method="addUser">
+            <result name="success" type="redirectAction">getUserList</result>
+        </action>
+
+    </package>
 </struts>
