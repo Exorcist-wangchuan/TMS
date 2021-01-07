@@ -49,4 +49,12 @@ public class ScrapRecordService {
         list = scrapDAO.searchScrapRecordDAO_Manager();
         return list;
     }
+
+    //指定seqid查询
+    public Scrap getScrapRecordByCodeandId(String pk){
+        Scrap scrap =new Scrap();
+        scrap=scrapDAO.getScrapRecordByCodeandSeqID(pk);
+        return scrap;
+    }
+
 }
