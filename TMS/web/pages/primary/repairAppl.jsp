@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri ="/struts-tags" prefix ="s" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +34,7 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">张三</h2>
+                <h2 class="h5"><s:property value="#session.user.name" default="zhangsan"/></h2>
                 <span>初级员工</span><br>
                 <span>Operator </span>
             </div>
@@ -45,10 +47,8 @@
         <div class="main-menu">
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="primaryHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="#"><i class="icon-form"></i>提交进出库申请</a></li>
-                <li><a href="#"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
-                <li><a href="repairAppl.html"><i class="icon-grid"></i>提交报修申请</a></li>
+                <li><a href="#"><i class="icon-home"></i>主页</a></li>
+                <li><a href="repairAppl.jsp"><i class="icon-grid"></i>提交报修申请</a></li>
             </ul>
         </div>
 
@@ -62,7 +62,7 @@
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header">
                         <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"></i></a>
-                        <a href="/index.html" class="navbar-brand">
+                        <a href="primaryHome.jsp" class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block">
                                 <span class="font-weight-bolder" style="font-size: 18px">TMS&nbsp;</span>
                                 <span style="font-size: 18px">工夹具管理系统</span>

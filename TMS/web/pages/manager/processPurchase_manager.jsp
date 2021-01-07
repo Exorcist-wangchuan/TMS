@@ -84,7 +84,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -100,8 +100,9 @@
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>入库申请列表</h4>
+                        <div class="card-header d-inline">
+                            <h4 class="d-inline">入库申请列表</h4>
+                            <button class="d-inline" id="excelBtn">导出</button>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewPurchaseRecord_Manager">
@@ -168,5 +169,6 @@
 <script src="manager.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
+<script src="../../js/TableToExcel.js"></script>
 </body>
 </html>

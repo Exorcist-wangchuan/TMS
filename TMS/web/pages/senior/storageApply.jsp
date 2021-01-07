@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri ="/struts-tags" prefix ="s" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +24,8 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!--fileUpload-->
+    <link rel="stylesheet" href="../../css/fileinput.min.css">
 </head>
 <body>
 <!-- Side Navbar -->
@@ -33,7 +36,7 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">张三</h2>
+                <h2 class="h5"><s:property value="#session.user.name" default="zhangsan"/></h2>
                 <span>高级员工</span><br>
                 <span>Operator Ⅱ</span>
             </div>
@@ -47,10 +50,12 @@
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="storageApply.html"><i class="icon-form"></i>提交入库申请</a></li>
-                <li><a href="toolEntityUpdate.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="storageApply.jsp"><i class="icon-form"></i>提交入库申请</a></li>
+                <li><a href="WareHouseAppl.jsp"><i class="icon-form"></i>录入进库信息</a></li>
+                <li><a href="getOutHouse"><i class="icon-form"></i>处理出库</a></li>
+                <li><a href="toolEntityUpdate.jsp"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
                 <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
-                <li><a href="scrapAppl.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
+                <li><a href="scrapAppl.jsp"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -87,7 +92,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -99,34 +104,54 @@
     <!--右侧主体-->
     <section class="bg-light">
         <div class="container-fluid bg-transparent">
-            <header class="h3 display">报废申请</header>
+            <header class="h3 display">入库申请</header>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>报废申请表</h4>
+                            <h4>入库申请表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitScrapApplication" method="post">
+                            <form action="submitPurchaseRecord" method="post">
                                 <div class="form-group row">
-                                    <label class="col-3">类别代码<br></label>
-                                    <input name="scrap.code_seqid.Code" type="text" class="col-8 form-control">
+                                    <label class="col-3">申请者编号</label>
+                                    <input name="purchaseRecord.applyUID" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">物品代码<br></label>
-                                    <input name="scrap.code_seqid.SeqID" type="text" class="col-8 form-control">
+                                    <label class="col-3">类别代码<br><small></small></label>
+                                    <input name="purchaseRecord.code_seqid.code" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">夹具寿命计数</label>
-                                    <input name="scrap.lifecount" type="text" class="col-8 form-control">
+                                    <label class="col-3">物品代码</label>
+                                    <input name="purchaseRecord.code_seqid.seqID" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">报废原因</label>
-                                    <input name="scrap.reason" type="text" class="col-8 form-control">
+                                    <label class="col-3">单据号</label>
+                                    <input name="purchaseRecord.billNo" type="text" class="col-8 form-control">
                                 </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">采购入库日期</label>
+                                    <input name="purchaseRecord.purchaseDate" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">存放库位</label>
+                                    <input name="toolEntity.location" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">图片</label>
+                                    <input name="purchaseRecord.img" type="text" class="col-8 form-control">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">图片</label>
+                                    <input type="file" name="file" class="file"/>
+                                </div>
+                                <hr>
                                 <div class="form-group col-4 offset-3">
                                     <button type="reset" class="btn btn-secondary">重置</button>
                                     <button type="submit" class="btn btn-primary">提交</button>
@@ -165,5 +190,6 @@
 <!-- Main File-->
 <script src="../../js/front.js"></script>
 <script src="storageForm.js"></script>
+<script src="../../js/fileinput.min.js"></script>
 </body>
 </html>

@@ -48,9 +48,7 @@
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="#"><i class="icon-home"></i>主页</a></li>
-                <li><a href="#"><i class="icon-form"></i>提交进出库申请</a></li>
-                <li><a href="#"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
-                <li><a href="repairAppl.html"><i class="icon-grid"></i>提交报修申请</a></li>
+                <li><a href="repairAppl.jsp"><i class="icon-grid"></i>提交报修申请</a></li>
             </ul>
         </div>
 

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri ="/struts-tags" prefix ="s" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +36,7 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">张三</h2>
+                <h2 class="h5"><s:property value="#session.user.name" default="zhangsan"/></h2>
                 <span>高级员工</span><br>
                 <span>Operator Ⅱ</span>
             </div>
@@ -49,10 +50,12 @@
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="storageApply.html"><i class="icon-form"></i>提交入库申请</a></li>
-                <li><a href="toolEntityUpdate.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="storageApply.jsp"><i class="icon-form"></i>提交入库申请</a></li>
+                <li><a href="WareHouseAppl.jsp"><i class="icon-form"></i>录入进库信息</a></li>
+                <li><a href="getOutHouse"><i class="icon-form"></i>处理出库</a></li>
+                <li><a href="toolEntityUpdate.jsp"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
                 <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
-                <li><a href="scrapAppl.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
+                <li><a href="scrapAppl.jsp"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -89,7 +92,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>

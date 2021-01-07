@@ -1,3 +1,5 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +34,7 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">admin</h2>
+                <h2 class="h5"><s:property value="#session.user.name"/></h2>
                 <span>系统管理员</span><br>
                 <span>Admin</span>
             </div>
@@ -47,8 +49,8 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="adminHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="getUserList"><i class="icon-form"></i>管理用户</a></li>
-                <li><a href="updateUser.html"><i class="fa fa-bar-chart"></i>修改用户权限</a></li>
-                <li><a href="addUser.html"><i class="icon-grid"></i>增加用户</a></li>
+                <li><a href="updateUser.jsp"><i class="fa fa-bar-chart"></i>修改用户权限</a></li>
+                <li><a href="addUser.jsp"><i class="icon-grid"></i>增加用户</a></li>
             </ul>
         </div>
 

@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri ="/struts-tags" prefix ="s" %>
+
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>提交入库申请</title>
+    <title>提交报废申请</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,13 +35,13 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">张三</h2>
+                <h2 class="h5"><s:property value="#session.user.name" default="zhangsan"/></h2>
                 <span>高级员工</span><br>
                 <span>Operator Ⅱ</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
-                <a href="/index.html" class="brand-small text-center"><strong>TMS</strong></a>
+                <a href="seniorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
             </div>
         </div>
         <!-- Sidebar Navigation Menus-->
@@ -47,12 +49,12 @@
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="storageApply.html"><i class="icon-form"></i>提交入库申请</a></li>
-                <li><a href="WareHouseAppl.html"><i class="icon-form"></i>录入进库信息</a></li>
+                <li><a href="storageApply.jsp"><i class="icon-form"></i>提交入库申请</a></li>
+                <li><a href="WareHouseAppl.jsp"><i class="icon-form"></i>录入进库信息</a></li>
                 <li><a href="getOutHouse"><i class="icon-form"></i>处理出库</a></li>
-                <li><a href="toolEntityUpdate.html"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="toolEntityUpdate.jsp"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
                 <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
-                <li><a href="scrapAppl.html"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
+                <li><a href="scrapAppl.jsp"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -89,7 +91,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -101,32 +103,33 @@
     <!--右侧主体-->
     <section class="bg-light">
         <div class="container-fluid bg-transparent">
-            <header class="h3 display">入库申请</header>
+            <header class="h3 display">报废申请</header>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请表</h4>
+                            <h4>报废申请表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitWareHouseAppl" method="post">
+                            <form action="submitScrapApplication" method="post">
                                 <div class="form-group row">
-                                    <label class="col-3">领用人<br></label>
-                                    <input name="wareHouseRecord.Operator" type="text" class="col-8 form-control">
+                                    <label class="col-3">类别代码<br></label>
+                                    <input name="scrap.code_seqid.Code" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">产线<br></label>
-                                    <input name="wareHouseRecord.PID" type="text" class="col-8 form-control">
+                                    <label class="col-3">物品代码<br></label>
+                                    <input name="scrap.code_seqid.SeqID" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">类别代码</label>
-                                    <input name="wareHouseRecord.code_seqid.Code" type="text" class="col-8 form-control">
+                                    <label class="col-3">夹具寿命计数</label>
+                                    <input name="scrap.lifecount" type="text" class="col-8 form-control">
                                 </div>
+                                <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">物品代码</label>
-                                    <input name="wareHouseRecord.code_seqid.SeqID" type="text" class="col-8 form-control">
+                                    <label class="col-3">报废原因</label>
+                                    <input name="scrap.reason" type="text" class="col-8 form-control">
                                 </div>
                                 <div class="form-group col-4 offset-3">
                                     <button type="reset" class="btn btn-secondary">重置</button>
@@ -165,6 +168,6 @@
 <script src="../../js/charts-home.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
-<script src="WareHouseForm.js"></script>
+<script src="storageForm.js"></script>
 </body>
 </html>

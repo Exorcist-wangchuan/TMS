@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="po.Scrap" table="scrap_record" catalog="toolmanagesys">
-        <composite-id>
+        <composite-id  name="code_seqid" class="po.ToolEntityPrimaryKey">
             <key-property name="code" column="Code" type="string" length="10"/>
             <key-property name="seqID" column="SeqID" type="int"/>
         </composite-id>

@@ -28,7 +28,7 @@ import java.util.Map;
 
 
             //如果不为空则返回fixRecordNotnull
-            if (code!=null&&seqid!=null&&des!=null&&dealUID!=null&&Img!=null) {
+            if (code.equals("")||seqid.equals("")||des.equals("")||dealUID.equals("")||Img.equals("")) {
                 return "fixRecordNotnull";
             }
             return invocation.invoke();
