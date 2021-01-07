@@ -3,9 +3,8 @@ package po;
 import java.io.Serializable;
 
 public class Scrap implements Serializable {
+    private ToolEntityPrimaryKey code_seqid;
     private int UID;
-    private String Code;
-    private int SeqID;
     private int lifecount;
     private String reason;
     private String eID;
@@ -20,20 +19,12 @@ public class Scrap implements Serializable {
         this.UID = UID;
     }
 
-    public String getCode() {
-        return Code;
+    public ToolEntityPrimaryKey getCode_seqid() {
+        return code_seqid;
     }
 
-    public void setCode(String code) {
-        Code = code;
-    }
-
-    public int getSeqID() {
-        return SeqID;
-    }
-
-    public void setSeqID(int seqID) {
-        SeqID = seqID;
+    public void setCode_seqid(ToolEntityPrimaryKey code_seqid) {
+        this.code_seqid = code_seqid;
     }
 
     public int getLifecount() {

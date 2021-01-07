@@ -15,7 +15,7 @@
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect"> org.hibernate.dialect.MySQLDialect </prop>
@@ -31,7 +31,7 @@
                 <value>po/ToolEntity.hbm.xml</value>
                 <value>po/DefineTool.hbm.xml</value>
                 <value>po/PeriodCheck.hbm.xml</value>
-
+                <value>po/WareHouseRecord.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -43,6 +43,7 @@
     <bean name="fixRecord" class="po.FixRecord"/>
     <bean name="defineTool" class="po.DefineTool"/>
     <bean name="toolEntity" class="po.ToolEntity"/>
+    <bean name="wareHouseRecord" class="po.WareHouseRecord"/>
 
     <!--pojo类——非持久化类-->
     <bean name="checkList" class="pojo.CheckList"/>
@@ -59,7 +60,7 @@
     <bean id="toolEntityDAO" class="dao.ToolEntityDAO" parent="baseDAO"/>
     <bean id="defineToolDAO" class="dao.DefineToolDAO" parent="baseDAO"/>
     <bean id="periodCheckDAO" class="dao.PeriodCheckDAO" parent="baseDAO"/>
-
+    <bean id="wareHouseDAO" class="dao.WareHouseDAO" parent="baseDAO"/>
 
     <!--service类-->
     <bean name="userService" class="service.UserService">
@@ -89,6 +90,9 @@
         <property name="defineToolDAO" ref="defineToolDAO"/>
         <property name="userDAO" ref="userDAO"/>
         <property name="mailUtil" ref="mail"/>
+    </bean>
+    <bean name="wareHouseService" class="service.WareHouseService">
+        <property name="wareHouseDAO" ref="wareHouseDAO"/>
     </bean>
 
     <!--action类-->
@@ -121,6 +125,12 @@
     </bean>
     <bean name="toolEntityAction" class="action.ToolEntityAction">
         <property name="toolEntityService" ref="toolEntityService"/>
+    </bean>
+    <!--进出库Action声明-->
+    <bean name="WareHouseAction" class="action.WareHouseAction">
+        <property name="wareHouseRecord" ref="wareHouseRecord"/>
+        <property name="wareHouseService" ref="wareHouseService"/>
+        <property name="checkList" ref="checkList"/>
     </bean>
 
 
