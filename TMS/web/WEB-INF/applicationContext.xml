@@ -41,6 +41,7 @@
     <bean name="scrap" class="po.Scrap"/>
     <bean name="fixRecord" class="po.FixRecord"/>
     <bean name="defineTool" class="po.DefineTool"/>
+    <bean name="toolEntity" class="po.ToolEntity"/>
 
     <!--pojo类——非持久化类-->
     <bean name="checkList" class="pojo.CheckList"/>
