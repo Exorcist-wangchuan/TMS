@@ -4,10 +4,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import po.DefineTool;
+import po.ProcessRecord;
+import po.PurchaseRecord;
+import po.Scrap;
+
+import java.util.List;
 import po.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DefineToolDAO extends BaseDAO {
@@ -89,7 +94,9 @@ public class DefineToolDAO extends BaseDAO {
         try {
             String hql = "select s from DefineTool as s";
             String queryString = hql;
+
             Query queryObject = session.createQuery(queryString);
+
             return queryObject.list();
         }catch (RuntimeException re){
             log.error("search definetool failed",re);
@@ -116,5 +123,4 @@ public class DefineToolDAO extends BaseDAO {
             session.close();
         }
     }
-
 }

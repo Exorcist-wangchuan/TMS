@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+
+
+
+
     <!--Struts2 Filter-->
     <filter>
         <filter-name>struts2</filter-name>
@@ -14,11 +18,18 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>accessFilter</filter-name>
+        <filter-class>filter.LogInFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>accessFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
     <!--Spring Listener-->
     <listener>
         <listener-class> org.springframework.web.context.ContextLoaderListener </listener-class>
     </listener>
-    
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>

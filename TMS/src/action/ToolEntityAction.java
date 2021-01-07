@@ -25,6 +25,7 @@ public class ToolEntityAction extends ActionSupport {
         this.toolEntityService = toolEntityService;
     }
 
+
     //修改toolentity记录
     public String updateToolEntity(){
         boolean res=toolEntityService.updateToolEntity(toolEntity);
