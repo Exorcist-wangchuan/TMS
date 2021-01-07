@@ -30,7 +30,6 @@
                 <value>po/FixRecord.hbm.xml</value>
                 <value>po/ToolEntity.hbm.xml</value>
                 <value>po/DefineTool.hbm.xml</value>
-
                 <value>po/PeriodCheck.hbm.xml</value>
 
             </list>
@@ -116,19 +115,14 @@
         <property name="fixRecordService" ref="fixRecordService"/>
         <property name="processService" ref="processService"/>
     </bean>
-
     <bean name="defineToolAction" class="action.DefineToolAction">
         <property name="deletelist" ref="checkList"/>
         <property name="defineToolService" ref="defineToolService"/>
     </bean>
-
     <bean name="toolEntityAction" class="action.ToolEntityAction">
         <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
-    <bean name="defineToolAction" class="action.DefineToolAction">
-        <property name="deletelist" ref="checkList"/>
-        <property name="defineToolService" ref="defineToolService"/>
-    </bean>
+
 
     <!--Util类-->
     <!--邮件相关-->

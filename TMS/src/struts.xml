@@ -137,7 +137,7 @@ Configuration 2.1//EN"
         <action name="getDefineTool" class="defineToolAction" method="getDefintTool_supervisor">
             <result name="success" type="redirect">/pages/supervisor/defineToolDelete.jsp</result>
         </action>
-    </package>
+
 
     <!--    <package name="ajax" extends="json-default">-->
     <!--        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">-->
