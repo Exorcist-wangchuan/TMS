@@ -85,6 +85,10 @@ public class PurchaseRecordAction extends ActionSupport {
         String eid = eidFormat.format(new Date());
         String applyDate = sdf.format(new Date());
 
+        User  user=(User)ActionContext.getContext().getSession().get("user");
+        int uid=user.getId();
+        purchaseRecord.setApplyUID(uid);
+
         //需要先保存ProcessRecord(主键)
         //构造Process
         ProcessRecord process = new ProcessRecord();

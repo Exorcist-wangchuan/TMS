@@ -4,6 +4,10 @@ Configuration 2.1//EN"
         "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
     <package name="strutsBean" extends="struts-default" namespace="/">
+        <!--拦截器-->
+        <interceptors>
+            <interceptor name="storageApplyInterceptor" class="interceptor.storageApplyInterceptor"/>
+        </interceptors>
         <!--
             使用英文方便跳转
             初级员工:o1
@@ -21,11 +25,19 @@ Configuration 2.1//EN"
             <result name="fail">/login.jsp</result>
         </action>
 
+
+
         <!--需要加入后端校验-->
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
             <result name="success" type="redirect">/pages/senior/storageApply.html</result>
             <result name="fail">/pages/senior/storageApply.html</result>
+            <result name="PurchaseRecordexist">/pages/senior/storageApply.html</result>
+            <!-- 配置系统默认拦截器 -->
+            <interceptor-ref name="defaultStack"/>
+            <!-- 配置自定义拦截器 -->
+            <interceptor-ref name="storageApplyInterceptor"/>
+
         </action>
 
         <!--监管员获取记录-->
@@ -97,11 +109,41 @@ Configuration 2.1//EN"
         </action>
 
         <!--高级员工修改基础信息-->
-        <action name="submitToolEntityUpdate" class="ToolEntityAction" method="updateToolEntity">
+        <action name="submitToolEntityUpdate" class="toolEntityAction" method="updateToolEntity">
             <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
-            <result name="fail" >/pages/senior/toolEntityUpdate.html</result>
+            <result name="fail">/pages/senior/toolEntityUpdate.html</result>
         </action>
 
+        <!--监管员创建工夹具类别-->
+        <action name="defineToolInsert" class="defineToolAction" method="dealDefineToolApply">
+            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="fail">/pages/supervisor/defineToolInsert.jsp</result>
+        </action>
+
+
+        <!--监管员修改工夹具类别-->
+        <action name="defineToolUpdate" class="defineToolAction" method="updateDefineTool">
+            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="fail">/pages/supervisor/defineToolUpdate.jsp</result>
+        </action>
+
+        <!--监管员删除工夹具类别-->
+        <action name="reviewDefineTool" class="defineToolAction" method="deleteDefineTool">
+            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="fail">/pages/supervisor/defineToolDelete.jsp</result>
+        </action>
+
+        <!--监管员获得工夹具类别-->
+        <action name="getDefineTool" class="defineToolAction" method="getDefintTool_supervisor">
+            <result name="success" type="redirect">/pages/supervisor/defineToolDelete.jsp</result>
+        </action>
+
+
+    <!--    <package name="ajax" extends="json-default">-->
+    <!--        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">-->
+    <!--            <result name="json" type="json">/pages/supervisor/processPurchaseRequisition.jsp</result>-->
+    <!--        </action>-->
+    <!--    </package>-->
         <!--系统管理员获得用户列表-->
         <action name="getUserList" class="userAction" method="getUserList">
             <result name="success" type="redirect">/pages/admin/manage.jsp</result>

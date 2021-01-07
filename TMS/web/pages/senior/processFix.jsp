@@ -45,7 +45,7 @@
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
-                <a href="supervisorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
+                <a href="seniorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
             </div>
         </div>
         <!-- Sidebar Navigation Menus-->

@@ -2,6 +2,7 @@
 window.onload = function () {
     changeCheckbox();
     initButton();
+    deleteCheckbox();
 }
 
 //需要对checkbox进行赋值，用于批量操作
@@ -17,6 +18,19 @@ function changeCheckbox() {
         //console.table(target.innerHTML);
         //将code seqID内的内容赋给checkbox
         boxes[i].value=code.innerHTML+"&"+target.innerHTML;
+    }
+}
+
+//删除工夹具类别   获得id
+function deleteCheckbox() {
+    let boxes = document.getElementsByName("deletelist.checkList");
+    for (let i = 0; i < boxes.length; i++) {
+        let td1 = boxes[i].parentElement.parentElement;
+        //id为id所在位置
+        let id=td1.nextElementSibling;
+        //console.table(target.innerHTML);
+        //将code seqID内的内容赋给checkbox
+        boxes[i].value=id.innerHTML;
     }
 }
 

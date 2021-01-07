@@ -1,8 +1,11 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <title>处理采购入库申请</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>创建工夹具类别</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -22,6 +25,8 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!--fileUpload-->
+    <link rel="stylesheet" href="../../css/fileinput.min.css">
 </head>
 <body>
 <!-- Side Navbar -->
@@ -64,7 +69,7 @@
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header">
                         <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"></i></a>
-                        <a href="processPurchaseRequisition.jsp" class="navbar-brand">
+                        <a href="/index.html" class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block">
                                 <span class="font-weight-bolder" style="font-size: 18px">TMS&nbsp;</span>
                                 <span style="font-size: 18px">工夹具管理系统</span>
@@ -97,45 +102,83 @@
         </nav>
     </header>
     <!--右侧主体-->
-    <section>
-        <div class="container-fluid ">
-            <header class="h3 display">处理采购入库申请</header>
+    <section class="bg-light">
+        <div class="container-fluid bg-transparent">
+            <header class="h3 display">创建工夹具类别</header>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请列表</h4>
+                            <h4>工夹具类别表</h4>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="reviewScrapRecord">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>申请者编号</th>
-                                        <th>夹具类代码</th>
-                                        <th>夹具实体代码</th>
-                                        <th>夹具寿命计数</th>
-                                        <th>报废原因</th>
-                                    </tr>
-                                    </thead>
-                                    <s:iterator value="#session.scrapRecords">
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" name="checkList.checkList">
-                                                </div>
-                                            </td>
-                                            <td><s:property value="UID"/></td>
-                                            <td><s:property value="Code"/></td>
-                                            <td><s:property value="SeqID"/></td>
-                                            <td><s:property value="lifecount"/></td>
-                                            <td><s:property value="reason"/></td>
-                                            <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
-                                        </tr>
-                                    </s:iterator>
-                                </table>
-                                <button type="submit" class="btn btn-primary">审批通过</button>
+                            <form action="defineToolInsert" method="post">
+                                <div class="form-group row">
+                                    <label class="col-3">类别代码<br><small></small></label>
+                                    <input name="defineTool.code" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">夹具名称</label>
+                                    <input name="defineTool.name" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">所属大类编号</label>
+                                    <input name="defineTool.familyID" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">所属大类</label>
+                                    <input name="defineTool.family" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">夹具模组</label>
+                                    <input name="defineTool.model" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">夹具料号</label>
+                                    <input name="defineTool.partNo" type="text" class="col-8 form-control">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">配备数量</label>
+                                    <input name="defineTool.upl" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">用途</label>
+                                    <input name="defineTool.usedFor" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">保养点检周期</label>
+                                    <input name="defineTool.pmPeriod" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">责任人编号</label>
+                                    <input name="defineTool.owner" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">责任人姓名</label>
+                                    <input name="defineTool.ownerName" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">所属工作部编号</label>
+                                    <input name="defineTool.workCellID" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">所属工作部</label>
+                                    <input name="defineTool.workCell" class="col-8 form-control"/>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">备注</label>
+                                    <input name="defineTool.remark" class="col-8 form-control"/>
+                                </div>
+                                <hr>
+                                <div class="form-group col-4 offset-3">
+                                    <button type="reset" class="btn btn-secondary">重置</button>
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -167,8 +210,9 @@
 <script src="../../vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
-<script src="supervisor.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
+<script src="storageForm.js"></script>
+<script src="../../js/fileinput.min.js"></script>
 </body>
 </html>

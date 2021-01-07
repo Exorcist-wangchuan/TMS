@@ -16,6 +16,7 @@ public class PurchaseRecordService {
         this.purchaseRecordDAO = purchaseRecordDAO;
     }
 
+    //插入记录
     public boolean savePurchaseRecord(PurchaseRecord purchaseRecord) {
         //调用DAO
         purchaseRecordDAO.insertPurchaseRecordDAO(purchaseRecord);
@@ -25,6 +26,7 @@ public class PurchaseRecordService {
 
     //指定seqid查询
     public PurchaseRecord getPurchaseRecordByCodeandId(String pk){
+        System.out.println("service:"+pk);
         PurchaseRecord purchaseRecord =new PurchaseRecord();
         purchaseRecord=purchaseRecordDAO.getPurchaseRecordByCodeandSeqID(pk);
         return purchaseRecord;
