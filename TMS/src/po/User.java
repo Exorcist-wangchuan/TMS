@@ -5,6 +5,7 @@ public class User {
     private String name;
     private String password;
     private String level;
+    private String email;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class User {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

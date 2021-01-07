@@ -29,6 +29,8 @@
                 <value>po/Scrap.hbm.xml</value>
                 <value>po/FixRecord.hbm.xml</value>
                 <value>po/ToolEntity.hbm.xml</value>
+                <value>po/DefineTool.hbm.xml</value>
+                <value>po/PeriodCheck.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -38,6 +40,7 @@
     <bean name="purRecord" class="po.PurchaseRecord"/>
     <bean name="scrap" class="po.Scrap"/>
     <bean name="fixRecord" class="po.FixRecord"/>
+    <bean name="defineTool" class="po.DefineTool"/>
     <bean name="toolEntity" class="po.ToolEntity"/>
 
     <!--pojo类——非持久化类-->
@@ -53,9 +56,10 @@
     <bean id="scrapDAO" class="dao.ScrapDAO" parent="baseDAO"/>
     <bean id="fixDAO" class="dao.FixRecordDAO" parent="baseDAO"/>
     <bean id="toolEntityDAO" class="dao.ToolEntityDAO" parent="baseDAO"/>
+    <bean id="defineToolDAO" class="dao.DefineToolDAO" parent="baseDAO"/>
+    <bean id="periodCheckDAO" class="dao.PeriodCheckDAO" parent="baseDAO"/>
 
     <!--service类-->
-    <!--是否需要将参数交给spring?-->
     <bean name="userService" class="service.UserService">
         <property name="userDAO" ref="userDAO"/>
     </bean>
@@ -64,6 +68,7 @@
     </bean>
     <bean name="processService" class="service.ProcessService">
         <property name="processDAO" ref="processDAO"/>
+        <property name="periodCheckDAO" ref="periodCheckDAO"/>
     </bean>
     <bean name="scrapService" class="service.ScrapRecordService">
         <property name="scrapDAO" ref="scrapDAO"/>
@@ -73,6 +78,15 @@
     </bean>
     <bean name="toolEntityService" class="service.ToolEntityService">
         <property name="toolEntityDAO" ref="toolEntityDAO"/>
+    </bean>
+    <bean name="defineToolService" class="service.DefineToolService">
+        <property name="defineToolDAO" ref="defineToolDAO"/>
+    </bean>
+    <bean name="periodCheckService" class="service.PeriodCheckService">
+        <property name="periodCheckDAO" ref="periodCheckDAO"/>
+        <property name="defineToolDAO" ref="defineToolDAO"/>
+        <property name="userDAO" ref="userDAO"/>
+        <property name="mailUtil" ref="mail"/>
     </bean>
 
     <!--action类-->
@@ -84,6 +98,7 @@
         <property name="purchaseRecordService" ref="purRecordService"/>
         <property name="processService" ref="processService"/>
         <property name="toolEntityService" ref="toolEntityService"/>
+        <property name="periodCheckService" ref="periodCheckService"/>
     </bean>
     <!--报废Action声明-->
     <bean name="scrapAction" class="action.ScrapRecordAction">
@@ -97,9 +112,41 @@
         <property name="fixRecordService" ref="fixRecordService"/>
         <property name="processService" ref="processService"/>
     </bean>
+    <bean name="defineToolAction" class="action.DefineToolAction">
+        <property name="deletelist" ref="checkList"/>
+        <property name="defineToolService" ref="defineToolService"/>
+    </bean>
     <bean name="ToolEntityAction" class="action.ToolEntityAction">
         <property name="toolEntityService" ref="toolEntityService"/>
     </bean>
 
+    <!--Util类-->
+    <!--邮件相关-->
+    <bean name="mail" class="util.JavaMailUtil">
+        <property name="username" value="toolmanagesystem@163.com"/>
+        <property name="password" value="SJPLBCHBKHIIQCLF"/>
+        <property name="smtpServer" value="smtp.163.com"/>
+    </bean>
+
+    <!--工作详情类-->
+    <bean name="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="periodCheckService"/>
+        <property name="targetMethod" value="alert"/>
+    </bean>
+
+    <!--配置触发器-->
+    <bean name="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression" value="0/30 * * * * ? *"/>
+    </bean>
+
+    <!--配置调度工厂-->
+    <bean name="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="trigger"/>
+            </list>
+        </property>
+    </bean>
 
 </beans>

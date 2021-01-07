@@ -16,6 +16,9 @@
         <property name="level" type="string">
             <column name="Uclass" length="10" />
         </property>
+        <property name="email" type="string">
+            <column name="email" length="45"/>
+        </property>
 
     </class>
 </hibernate-mapping>
