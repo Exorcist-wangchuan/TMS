@@ -68,6 +68,7 @@
                             <option value="o2">高级员工</option>
                             <option value="sv">监管员</option>
                             <option value="manager">经理</option>
+                            <option value="admin">系统管理员</option>
                         </select>
                     </label>
                     <br>

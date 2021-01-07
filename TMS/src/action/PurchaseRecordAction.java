@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.Parameter;
 import po.*;
 import pojo.CheckList;
+import service.PeriodCheckService;
 import service.ProcessService;
 import service.PurchaseRecordService;
 import service.ToolEntityService;
@@ -26,6 +27,7 @@ public class PurchaseRecordAction extends ActionSupport {
     private PurchaseRecordService purchaseRecordService = null;
     private ProcessService processService = null;
     private ToolEntityService toolEntityService=null;
+    private PeriodCheckService periodCheckService=null;
 
     private CheckList checkList;
     private List<File> file;
@@ -71,6 +73,9 @@ public class PurchaseRecordAction extends ActionSupport {
     public void setToolEntityService(ToolEntityService toolEntityService) {
         this.toolEntityService = toolEntityService;
     }
+    public void setPeriodCheckService(PeriodCheckService periodCheckService){
+        this.periodCheckService = periodCheckService;
+    }
 
     //高级员工
     public String dealPurchaseApply() throws IOException {
@@ -92,19 +97,14 @@ public class PurchaseRecordAction extends ActionSupport {
         process.setFinish(1);
         process.setApply_UID(purchaseRecord.getApplyUID());
         process.setApply_Date(applyDate);
-
         //构造ToolEntity
         ToolEntityPrimaryKey tpk=new ToolEntityPrimaryKey();
-        System.out.println(purchaseRecord.getApplyUID());
-        System.out.println(purchaseRecord.getCode_seqid().getCode());
-        System.out.println(purchaseRecord.getCode_seqid().getSeqID());
         tpk.setCode(purchaseRecord.getCode_seqid().getCode());
         tpk.setSeqID(purchaseRecord.getCode_seqid().getSeqID());
         toolEntity.setCode_seqid(tpk);
         toolEntity.setBillNo(purchaseRecord.getBillNo());
         toolEntity.setRegDate(purchaseRecord.getPurchaseDate());
         toolEntity.setUsedCount(0);
-        System.out.println("location"+toolEntity.getLocation());
 
         //调用service
         boolean firstRes = processService.saveProcess(process);
@@ -163,6 +163,7 @@ public class PurchaseRecordAction extends ActionSupport {
     //经理审核通过
     public String reviewPurchaseRecord_Manager() {
         List<String> passedList = checkList.getCheckList();
+        periodCheckService.insertPeriodCheckByList(passedList);
         boolean res = processService.purchase_finalCheck(passedList);
         if (res) return "success";
         else return "fail";

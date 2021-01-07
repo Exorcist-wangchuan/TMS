@@ -10,6 +10,10 @@ import po.PurchaseRecord;
 import po.Scrap;
 
 import java.util.List;
+import po.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DefineToolDAO extends BaseDAO {
     private Log log = LogFactory.getLog(DefineToolDAO.class);
@@ -19,7 +23,6 @@ public class DefineToolDAO extends BaseDAO {
         Session session = getSession();
         session.beginTransaction();
         try {
-
             String hql = "from DefineTool as d where d.id=:id";
             Query queryObject = (Query) session.createQuery(hql);
             queryObject.setParameter("id", id);
@@ -91,11 +94,30 @@ public class DefineToolDAO extends BaseDAO {
         try {
             String hql = "select s from DefineTool as s";
             String queryString = hql;
-            org.hibernate.query.Query queryObject = session.createQuery(queryString);
+
+            Query queryObject = session.createQuery(queryString);
+
             return queryObject.list();
         }catch (RuntimeException re){
             log.error("search definetool failed",re);
             throw  re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //获取类别和责任人的映射
+    public List<DefineTool> getOwnerAndCode(){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            String hql = "select d from DefineTool as d";
+            Query query = session.createQuery(hql);
+            return query.list();
+        }catch (RuntimeException re){
+            log.error("get owner and code error", re);
+            throw re;
         }finally {
             session.getTransaction().commit();
             session.close();
