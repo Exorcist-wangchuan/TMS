@@ -132,6 +132,10 @@
         <property name="wareHouseService" ref="wareHouseService"/>
         <property name="checkList" ref="checkList"/>
     </bean>
+    <!--查询流程时间轴-->
+    <bean name="processAction" class="action.ProcessAction">
+        <property name="processService" ref="processService"/>
+    </bean>
 
 
     <!--Util类-->

@@ -46,7 +46,10 @@ public class PeriodCheckDAO extends BaseDAO{
         try {
             String hql = "select pmPeriod from DefineTool as d where code=:code";
             Query queryObject = (Query) session.createQuery(hql);
+
             queryObject.setParameter("code", code);
+            if(queryObject.uniqueResult()==null)
+                return -1;
             return (int) queryObject.uniqueResult();
         }catch (RuntimeException re){
             log.error("get PMPeriod error");

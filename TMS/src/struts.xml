@@ -35,7 +35,7 @@ Configuration 2.1//EN"
         <!--需要加入后端校验-->
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
-            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="success">/pages/senior/seniorHome.jsp</result>
             <result name="fail">/pages/senior/storageApply.jsp</result>
             <result name="PurchaseRecordexist">/pages/senior/storageApply.jsp</result>
             <!-- 配置系统默认拦截器 -->
@@ -68,6 +68,7 @@ Configuration 2.1//EN"
         <!--经理进行审批-->
         <action name="reviewPurchaseRecord_Manager" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager">
             <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
+            <result name="fail" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
         </action>
 
         <!--以下为报废流程-->
@@ -100,6 +101,12 @@ Configuration 2.1//EN"
         <!--经理进行报废审批-->
         <action name="reviewScrapRecord_Manager" class="scrapAction" method="reviewPurchaseRecord_Manager">
             <result name="success" type="redirectAction">getScrapRecord_Manager</result>
+        </action>
+
+        <!--经理查询流程时间轴-->
+        <action name="ProcessRecordTimeLine" class="processAction" method="getProcessByeID">
+            <result name="success" type="redirect">pages/manager/processTimeLine.jsp</result>
+            <result name="fail" type="redirect">pages/manager/processTimeLine.jsp</result>
         </action>
 
         <!--报修申请表-->
