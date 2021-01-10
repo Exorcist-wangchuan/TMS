@@ -38,6 +38,13 @@ public class storageApplyInterceptor extends AbstractInterceptor {
         //获得code和seqID调用purchaseRecordService来查重
         String code = formMap.get("purchaseRecord.code_seqid.code").toString();
         String seqid = formMap.get("purchaseRecord.code_seqid.seqID").toString();
+        String billNo = formMap.get("purchaseRecord.billNo").toString();
+        String purchaseDate = formMap.get("purchaseRecord.purchaseDate").toString();
+        String location = formMap.get("purchaseRecord.location").toString();
+        if(code.toString().length()<1 || seqid.toString().length()<1 || billNo.toString().length()<1 || purchaseDate.toString().length()<1 || location.toString().length()<1){
+            return "PurchaseRecordexist";
+        }
+
         String pk = code + "&" + seqid;
 
         PurchaseRecord purchaseRecord = purchaseRecordService.getPurchaseRecordByCodeandId(pk);

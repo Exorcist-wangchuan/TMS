@@ -107,12 +107,12 @@
     <!--右侧主体-->
     <section>
         <div class="container-fluid ">
-            <header class="h3 display">处理报修申请</header>
+            <header class="h3 display">出库信息</header>
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h4>报修申请列表</h4>
+                            <h4>库内信息</h4>
                         </div>
                         <div class="card-body">
                             <form method="post" action="OutHouse">

@@ -74,7 +74,7 @@
                     <br>
                     <div class="form-group-material">
                         <input  id="login-username" type="text" name="loginUser.id" required data-msg="Please enter your username" class="input-material">
-                        <label for="login-username" class="label-material">姓名</label>
+                        <label for="login-username" class="label-material">编号</label>
                     </div>
                     <div class="form-group-material">
                         <input id="login-password" type="password" name="loginUser.password" required data-msg="Please enter your password" class="input-material">
