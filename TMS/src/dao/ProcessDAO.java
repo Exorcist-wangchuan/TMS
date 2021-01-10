@@ -44,6 +44,33 @@ public class ProcessDAO extends BaseDAO {
         }
     }
 
+    //search
+    public ProcessRecord getProcessRecord(String eid){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            //core
+            System.out.println(eid);
+
+            String hql = "select pro from ProcessRecord as pro where  pro.eID = :eID";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("eID", eid);
+            if(queryObject.uniqueResult()==null){
+                ProcessRecord processRecord=new ProcessRecord();
+                processRecord.seteID("null");
+                return processRecord;
+            }
+            return (ProcessRecord) queryObject.uniqueResult();
+
+        }catch (RuntimeException re){
+            log.error("get processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
     //to do
     public ProcessRecord getPurchaseProcessByCodeandSeqID(String pk){
         Session session = getSession();

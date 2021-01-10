@@ -32,7 +32,7 @@ public class PeriodCheckService {
         this.mailUtil = mailUtil;
     }
 
-    public void insertPeriodCheckByList(List<String> passedList){
+    public String insertPeriodCheckByList(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = sdf.format(new Date());
@@ -51,6 +51,11 @@ public class PeriodCheckService {
             periodCheck.setPurchaseDate(date);
             //加入保养周期
             int pmPeriod = periodCheckDAO.getPMPeriod(code);
+            if(pmPeriod==-1){
+                System.out.println("period fail");
+                return "fail";
+
+            }
             periodCheck.setPmPeriod(pmPeriod);
             //加入下次检查时间
             Calendar calendar = Calendar.getInstance();
@@ -60,10 +65,10 @@ public class PeriodCheckService {
             periodCheck.setNextCheckDate(next);
             //加入报废时间
 
-
             //插入记录
             periodCheckDAO.insertPeriodCheck(periodCheck);
         }
+        return "success";
     }
 
     //分析工夹具维护时间是否到达

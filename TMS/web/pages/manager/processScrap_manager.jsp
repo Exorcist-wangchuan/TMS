@@ -48,6 +48,7 @@
                 <li><a href="managerHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="getPurchaseRecord_Manager"><i class="icon-grid"></i>处理采购入库申请</a></li>
                 <li><a href="getScrapRecord_Manager"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
+                <li><a href="processTimeLine.jsp"> <i class="icon-interface-windows"></i>查看流程状态</a></li>
             </ul>
         </div>
 

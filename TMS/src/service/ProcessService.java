@@ -29,12 +29,13 @@ public class ProcessService {
         return true;
     }
 
-//    //指定codeseqid查询
-//    public ProcessRecord getProcessById(String priKey){
-//        ProcessRecord processRecord=new ProcessRecord();
-//        processRecord=processDAO.get;
-//        return processRecord;
-//    }
+    //指定codeseqid查询
+    public ProcessRecord getProcessByeId(String eid){
+        ProcessRecord processRecord=new ProcessRecord();
+        processRecord=processDAO.getProcessRecord(eid);
+        System.out.println("service eid:"+processRecord.geteID());
+        return processRecord;
+    }
 
     /*
     * 以下为采购入库流程专用
