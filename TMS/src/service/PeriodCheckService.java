@@ -13,25 +13,30 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class PeriodCheckService {
+public class PeriodCheckService implements IPeriodCheckService {
     private PeriodCheckDAO periodCheckDAO;
     private DefineToolDAO defineToolDAO;
     private UserDAO userDAO;
     private JavaMailUtil mailUtil;
 
+    @Override
     public void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO){
         this.periodCheckDAO = periodCheckDAO;
     }
+    @Override
     public void setDefineToolDAO(DefineToolDAO defineToolDAO){
         this.defineToolDAO = defineToolDAO;
     }
+    @Override
     public void setUserDAO(UserDAO userDAO){
         this.userDAO = userDAO;
     }
+    @Override
     public void setMailUtil(JavaMailUtil mailUtil){
         this.mailUtil = mailUtil;
     }
 
+    @Override
     public String insertPeriodCheckByList(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -72,6 +77,7 @@ public class PeriodCheckService {
     }
 
     //分析工夹具维护时间是否到达
+    @Override
     public Map<Integer, PeriodCheck> toolAnalyze(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //三天提前通知
@@ -104,6 +110,7 @@ public class PeriodCheckService {
         return result;
     }
 
+    @Override
     public void alert(){
         System.out.println("start");
         Map<Integer, PeriodCheck> map = toolAnalyze();

@@ -9,9 +9,10 @@ import po.*;
 
 import java.util.List;
 
-public class WareHouseDAO extends BaseDAO  {
+public class WareHouseDAO extends BaseDAO implements IWareHouseDAO {
     private Log log = LogFactory.getLog(WareHouseDAO.class);
     //插入记录（入库流程）
+    @Override
     public void insertWareHouseDAO(WareHouseRecord warehouseRecord){
         Session session =  getSession();
         session.beginTransaction();
@@ -38,6 +39,7 @@ public class WareHouseDAO extends BaseDAO  {
         }
     }
 
+    @Override
     public List<WareHouseRecord> getAllWareHouse(){
         Session session =  getSession();
         session.beginTransaction();
@@ -54,6 +56,7 @@ public class WareHouseDAO extends BaseDAO  {
         }
     }
 
+    @Override
     public WareHouseRecord getWareHouseRecordByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();
@@ -79,6 +82,7 @@ public class WareHouseDAO extends BaseDAO  {
     }
 
     //修改记录
+    @Override
     public void updateWareHouseRecord(WareHouseRecord wareHouseRecord){
         Session session = getSession();
         session.beginTransaction();

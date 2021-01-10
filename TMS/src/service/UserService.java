@@ -9,13 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class UserService{
+public class UserService implements IUserService {
     private UserDAO userDAO=null;
 
+    @Override
     public void setUserDAO(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
+    @Override
     public boolean login(User loginUser) {
         int id = loginUser.getId();
         String password = loginUser.getPassword();
@@ -33,6 +35,7 @@ public class UserService{
     }
 
     //系统管理员获取用户列表
+    @Override
     public List<User> getUsers() {
         List<User> list = new ArrayList<>();
         list = userDAO.searchManageDAO();
@@ -40,6 +43,7 @@ public class UserService{
     }
 
     //删除用户
+    @Override
     public boolean deleteUsers(List<String> passedList){
         for (String ID:passedList){
             User user = userDAO.getUserByID(Integer.parseInt(ID));
@@ -53,6 +57,7 @@ public class UserService{
     }
 
     //修改用户权限
+    @Override
     public boolean updateUser(User user)
     {
         userDAO.update(user);
@@ -60,6 +65,7 @@ public class UserService{
     }
 
     //增加用户
+    @Override
     public boolean addUser(User user)
     {
         userDAO.insert(user);

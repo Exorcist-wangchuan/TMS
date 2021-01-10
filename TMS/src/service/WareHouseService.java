@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class WareHouseService {
+public class WareHouseService implements IWareHouseService {
     private WareHouseDAO wareHouseDAO=null;
 
+    @Override
     public WareHouseDAO getWareHouseDAO() {
         return wareHouseDAO;
     }
 
+    @Override
     public void setWareHouseDAO(WareHouseDAO wareHouseDAO) {
         this.wareHouseDAO = wareHouseDAO;
     }
 
+    @Override
     public boolean saveWareHouse(WareHouseRecord wareHouseRecord){
         //加入时间
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -33,12 +36,14 @@ public class WareHouseService {
         return true;
     }
 
+    @Override
     public List<WareHouseRecord> getWareHouseRecord() {
         List<WareHouseRecord> list = new ArrayList<>();
         list = wareHouseDAO.getAllWareHouse();
         return list;
     }
 
+    @Override
     public boolean ChangeYN(List<String> passedList){
         for (String priKey:passedList){
             WareHouseRecord wareHouseRecord = wareHouseDAO.getWareHouseRecordByCodeandSeqID(priKey);

@@ -11,11 +11,12 @@ import po.ProcessRecord;
 import java.util.List;
 
 
-public class ProcessDAO extends BaseDAO {
+public class ProcessDAO extends BaseDAO implements IProcessDAO {
 
     private Log log = LogFactory.getLog(ProcessDAO.class);
 
 
+    @Override
     public void insertProcess(ProcessRecord process){
         Session session = getSession();
         session.beginTransaction();
@@ -30,6 +31,7 @@ public class ProcessDAO extends BaseDAO {
         }
     }
 
+    @Override
     public void updateProcess(ProcessRecord processRecord){
         Session session = getSession();
         session.beginTransaction();
@@ -45,6 +47,7 @@ public class ProcessDAO extends BaseDAO {
     }
 
     //search
+    @Override
     public ProcessRecord getProcessRecord(String eid){
         Session session = getSession();
         session.beginTransaction();
@@ -72,6 +75,7 @@ public class ProcessDAO extends BaseDAO {
     }
 
     //to do
+    @Override
     public ProcessRecord getPurchaseProcessByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();
@@ -100,6 +104,7 @@ public class ProcessDAO extends BaseDAO {
     }
 
     //Scrap process to do
+    @Override
     public ProcessRecord getScrapProcessByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();
@@ -127,6 +132,7 @@ public class ProcessDAO extends BaseDAO {
     }
 
     //查询报修表和流程表
+    @Override
     public ProcessRecord getFixProcessByCodeandSeqID(String eID){
         Session session = getSession();
         session.beginTransaction();
