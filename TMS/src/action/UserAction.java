@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import po.User;
 import pojo.CheckList;
+import service.IUserService;
 import service.UserService;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class UserAction extends ActionSupport {
     private User loginUser;
-    private UserService userService;
+    private IUserService userService;
     private CheckList checkList;
 
     public User getLoginUser() {
@@ -24,7 +25,7 @@ public class UserAction extends ActionSupport {
         this.loginUser = loginUser;
     }
 
-    public void setUserService(UserService userService) {
+    public void setUserService(IUserService userService) {
         this.userService = userService;
     }
 
