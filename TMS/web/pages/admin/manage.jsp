@@ -49,8 +49,8 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="adminHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="getUserList"><i class="icon-form"></i>管理用户</a></li>
-                <li><a href="updateUser.html"><i class="fa fa-bar-chart"></i>修改用户权限</a></li>
-                <li><a href="addUser.html"><i class="icon-grid"></i>增加用户</a></li>
+                <li><a href="updateUser.jsp"><i class="fa fa-bar-chart"></i>修改用户权限</a></li>
+                <li><a href="addUser.jsp"><i class="icon-grid"></i>增加用户</a></li>
             </ul>
         </div>
 

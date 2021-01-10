@@ -1,8 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri ="/struts-tags" prefix ="s" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>提交报修申请</title>
+    <title>提交入库申请</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -22,6 +24,8 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!--fileUpload-->
+    <link rel="stylesheet" href="../../css/fileinput.min.css">
 </head>
 <body>
 <!-- Side Navbar -->
@@ -32,21 +36,26 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
                 <img src="../../img/user_logo.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">张三</h2>
-                <span>初级员工</span><br>
-                <span>Operator </span>
+                <h2 class="h5"><s:property value="#session.user.name" default="zhangsan"/></h2>
+                <span>高级员工</span><br>
+                <span>Operator Ⅱ</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo">
-                <a href="primaryHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
+                <a href="seniorHome.jsp" class="brand-small text-center"><strong>TMS</strong></a>
             </div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="primaryHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="repairAppl.html"><i class="icon-grid"></i>提交报修申请</a></li>
+                <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
+                <li><a href="storageApply.jsp"><i class="icon-form"></i>提交入库申请</a></li>
+                <li><a href="WareHouseAppl.jsp"><i class="icon-form"></i>录入进库信息</a></li>
+                <li><a href="getOutHouse"><i class="icon-form"></i>处理出库</a></li>
+                <li><a href="toolEntityUpdate.jsp"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
+                <li><a href="scrapAppl.jsp"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -95,45 +104,54 @@
     <!--右侧主体-->
     <section class="bg-light">
         <div class="container-fluid bg-transparent">
-            <header class="h3 display">报修申请</header>
+            <header class="h3 display">入库申请</header>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>报修申请表</h4>
+                            <h4>入库申请表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitFixRecord" method="post">
+                            <form action="submitPurchaseRecord" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
-                                    <label class="col-3">申请人编号</label>
-                                    <input name="fixRecord.applyUID" type="text" class="col-8 form-control">
+                                    <label class="col-3">申请者编号</label>
+                                    <s:textfield name="purchaseRecord.applyUID" value="%{#session.user.id}" class="col-8 form-control" readonly="true"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">物品代码<br></label>
-                                    <input name="fixRecord.seqID" type="text" class="col-8 form-control">
+                                    <label class="col-3">类别代码<br><small></small></label>
+                                    <input name="purchaseRecord.code_seqid.code" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">故障描述</label>
-                                    <input name="fixRecord.description" type="text" class="col-8 form-control">
+                                    <label class="col-3">物品代码</label>
+                                    <input name="purchaseRecord.code_seqid.seqID" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-3">处理人</label>
-                                    <input name="fixRecord.dealUID" type="text" class="col-8 form-control">
+                                    <label class="col-3">单据号</label>
+                                    <input name="purchaseRecord.billNo" type="text" class="col-8 form-control">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">采购入库日期</label>
+                                    <input name="purchaseRecord.purchaseDate" type="text" class="col-8 form-control" id="time" value="">
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-3">存放库位</label>
+                                    <input name="toolEntity.location" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">图片</label>
-                                    <input name="fixRecord.Img" type="text" class="col-8 form-control">
+                                    <input type="file" name="upload" class="file"/>
                                 </div>
                                 <hr>
                                 <div class="form-group col-4 offset-3">
                                     <button type="reset" class="btn btn-secondary">重置</button>
                                     <button type="submit" class="btn btn-primary">提交</button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -167,6 +185,7 @@
 <script src="../../js/charts-home.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
+<script src="../../js/fileinput.min.js"></script>
 <script src="storageForm.js"></script>
 </body>
 </html>

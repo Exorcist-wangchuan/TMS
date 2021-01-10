@@ -1,6 +1,7 @@
 //窗体加载完成后立即执行
 window.onload = function () {
     changeCheckbox();
+    setInterval("NowTime()",1000);
 };
 
 //动态生成输入框
@@ -63,4 +64,34 @@ function changeCheckbox() {
         //将target内的内容赋给checkbox
         boxes[i].value=target.innerHTML;
     }
+}
+
+function NowTime(){
+    console.table(111)
+    //获取年月日
+    var time=new Date();
+    var year=time.getFullYear();
+    var month=time.getMonth();
+    var day=time.getDate();
+
+    //获取时分秒
+    var h=time.getHours();
+    var m=time.getMinutes();
+    var s=time.getSeconds();
+
+    //检查是否小于10
+    h=check(h);
+    m=check(m);
+    s=check(s);
+
+    let nowtime =year+"年"+month+"月"+day+"日  "+h+":"+m+":"+s;
+    console.table(nowtime);
+    document.getElementById("time").value=nowtime;
+}
+//时间数字小于10，则在之前加个“0”补位。
+function check(i){
+    if(i<10){
+       i="0"+i;
+    }
+    return i;
 }

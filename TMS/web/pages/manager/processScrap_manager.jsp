@@ -48,6 +48,7 @@
                 <li><a href="managerHome.jsp"><i class="icon-home"></i>主页</a></li>
                 <li><a href="getPurchaseRecord_Manager"><i class="icon-grid"></i>处理采购入库申请</a></li>
                 <li><a href="getScrapRecord_Manager"> <i class="icon-interface-windows"></i>处理报废申请</a></li>
+                <li><a href="processTimeLine.jsp"> <i class="icon-interface-windows"></i>查看流程状态</a></li>
             </ul>
         </div>
 
@@ -84,7 +85,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -100,12 +101,13 @@
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>报废申请列表</h4>
+                        <div class="card-header d-inline">
+                            <h4 class="d-inline">报废申请列表</h4>
+                            <button class="d-inline" id="excelBtn">导出</button>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewScrapRecord_Manager">
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="excelTable">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -124,8 +126,8 @@
                                                 </div>
                                             </td>
                                             <td><s:property value="UID"/></td>
-                                            <td><s:property value="Code"/></td>
-                                            <td><s:property value="SeqID"/></td>
+                                            <td><s:property value="code_seqid.Code"/></td>
+                                            <td><s:property value="code_seqid.SeqID"/></td>
                                             <td><s:property value="lifecount"/></td>
                                             <td><s:property value="reason"/></td>
                                             <td><button type="button" class="btn btn-primary btn-sm">查看详情</button></td>
@@ -167,5 +169,6 @@
 <script src="manager.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
+<script src="../../js/TableToExcel.js"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+
 </head>
 <body>
 <!-- Side Navbar -->
@@ -87,7 +88,7 @@
                         </li>
                         <!-- Log out-->
                         <li class="nav-item">
-                            <a href="../../login.html" class="nav-link logout">
+                            <a href="../../login.jsp" class="nav-link logout">
                                 <span class="d-none d-sm-inline-block">退出登录</span>
                             </a>
                         </li>
@@ -103,12 +104,13 @@
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>入库申请列表</h4>
+                        <div class="card-header d-inline">
+                            <h4 class="d-inline">入库申请列表</h4>
+                            <button class="d-inline btn btn-primary ml-lg-5" type="button" id="excelBtn">导出</button>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewPurchaseRecord">
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="excelTable">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -169,6 +171,7 @@
 <script src="../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="../../js/charts-home.js"></script>
 <script src="supervisor.js"></script>
+<script src="../../js/TableToExcel.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
 

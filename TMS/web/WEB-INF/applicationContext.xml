@@ -132,6 +132,10 @@
         <property name="wareHouseService" ref="wareHouseService"/>
         <property name="checkList" ref="checkList"/>
     </bean>
+    <!--查询流程时间轴-->
+    <bean name="processAction" class="action.ProcessAction">
+        <property name="processService" ref="processService"/>
+    </bean>
 
 
     <!--Util类-->
@@ -151,7 +155,7 @@
     <!--配置触发器-->
     <bean name="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobDetail"/>
-        <property name="cronExpression" value="* 0 * * * ? *"/>
+        <property name="cronExpression" value="0 0 * * * ? *"/>
     </bean>
 
     <!--配置调度工厂-->

@@ -44,6 +44,33 @@ public class ProcessDAO extends BaseDAO {
         }
     }
 
+    //search
+    public ProcessRecord getProcessRecord(String eid){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            //core
+            System.out.println(eid);
+
+            String hql = "select pro from ProcessRecord as pro where  pro.eID = :eID";
+            Query queryObject = (Query) session.createQuery(hql);
+            queryObject.setParameter("eID", eid);
+            if(queryObject.uniqueResult()==null){
+                ProcessRecord processRecord=new ProcessRecord();
+                processRecord.seteID("null");
+                return processRecord;
+            }
+            return (ProcessRecord) queryObject.uniqueResult();
+
+        }catch (RuntimeException re){
+            log.error("get processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
     //to do
     public ProcessRecord getPurchaseProcessByCodeandSeqID(String pk){
         Session session = getSession();
@@ -85,7 +112,7 @@ public class ProcessDAO extends BaseDAO {
             String code=temp[0];
             int seqID=Integer.parseInt(temp[1]);
 
-            String hql = "select pro from Scrap as s, ProcessRecord as pro where s.code=:code and s.seqID = :seqID and s.eID = pro.eID";
+            String hql = "select pro from Scrap as s, ProcessRecord as pro where s.code_seqid.code=:code and s.code_seqid.seqID = :seqID and s.eID = pro.eID";
             Query queryObject = (Query) session.createQuery(hql);
             queryObject.setParameter("code", code);
             queryObject.setParameter("seqID", seqID);

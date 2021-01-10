@@ -2,7 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.dispatcher.Parameter;
+import org.apache.commons.io.FileUtils;
 import po.*;
 import pojo.CheckList;
 import service.PeriodCheckService;
@@ -11,8 +11,6 @@ import service.PurchaseRecordService;
 import service.ToolEntityService;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,10 +28,15 @@ public class PurchaseRecordAction extends ActionSupport {
     private PeriodCheckService periodCheckService=null;
 
     private CheckList checkList;
-    private List<File> file;
+    private File upload;
+    private String uploadFileName;
 
-    public void setFile(List<File> file){
-        this.file = file;
+    public void setUpload(File upload){
+        this.upload = upload;
+    }
+
+    public void setUploadFileName(String uploadFileName) {
+        this.uploadFileName = uploadFileName;
     }
 
     //getter
@@ -79,15 +82,24 @@ public class PurchaseRecordAction extends ActionSupport {
 
     //高级员工
     public String dealPurchaseApply() throws IOException {
+        ActionContext ctx = ActionContext.getContext();
         //获取时间构造eid
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String eid = eidFormat.format(new Date());
         String applyDate = sdf.format(new Date());
 
-        User  user=(User)ActionContext.getContext().getSession().get("user");
+        //保存图片
+        String path="D:\\img\\";
+        path = path+purchaseRecord.getCode_seqid().getCode()+"-"+purchaseRecord.getCode_seqid().getSeqID()+"\\";
+        File file = new File(path);
+        if (!file.exists()) file.mkdir();
+        FileUtils.copyFile(upload, new File(file,uploadFileName));
+        purchaseRecord.setImg(path+uploadFileName);
+        User user=(User)ActionContext.getContext().getSession().get("user");
         int uid=user.getId();
         purchaseRecord.setApplyUID(uid);
+        purchaseRecord.setPurchaseDate(applyDate);
 
         //需要先保存ProcessRecord(主键)
         //构造Process
@@ -115,22 +127,18 @@ public class PurchaseRecordAction extends ActionSupport {
         boolean secondRes = purchaseRecordService.savePurchaseRecord(purchaseRecord);
 
         //判断
-        if (firstRes && secondRes && entityRes) return "success";
-        else return "fail";
+        if (firstRes && secondRes && entityRes) {
+            ctx.put("PurchaseApplyResult","采购记录提交成功");
+            return "success";
+        }
+        else {
+
+            ctx.put("PurchaseApplyResult","采购记录提交失败");
+            return "fail";
+        }
     }
 
-//    //指定code seqID查询process和purchaseRecord
-//    public String getPurchaseDetail() {
-//        Parameter seqID = ActionContext.getContext().getParameters().get("seqID");
-//        int id = Integer.parseInt(seqID.toString());
-//        PurchaseRecord purchaseRecord = new PurchaseRecord();
-//        purchaseRecord = purchaseRecordService.getPurchaseRecordById(id);
-//        ProcessRecord process = new ProcessRecord();
-//        process = processService.getProcessById(id);
-//        ActionContext.getContext().getSession().put("detail_purchaseRecord",purchaseRecord);
-//        ActionContext.getContext().getSession().put("detail_processRecord",process);
-//        return "json";
-//    }
+
 
     //监管员
     //监管员获取采购记录
@@ -163,7 +171,9 @@ public class PurchaseRecordAction extends ActionSupport {
     //经理审核通过
     public String reviewPurchaseRecord_Manager() {
         List<String> passedList = checkList.getCheckList();
-        periodCheckService.insertPeriodCheckByList(passedList);
+        String re=periodCheckService.insertPeriodCheckByList(passedList);
+        if(re.equals("fail"))
+            return "fail";
         boolean res = processService.purchase_finalCheck(passedList);
         if (res) return "success";
         else return "fail";

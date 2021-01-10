@@ -14,6 +14,7 @@ public class LogInFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) arg1;
         HttpSession session = request.getSession();
         if (session.getAttribute("user") == null && request.getRequestURI().indexOf("login.jsp") == -1 ) {
+            System.out.println(session.getAttribute("user"));
             //判断是否是login页面，如果是login页面的话没有request，session为空会出现错误
             response.sendRedirect("login.jsp");
             return;
