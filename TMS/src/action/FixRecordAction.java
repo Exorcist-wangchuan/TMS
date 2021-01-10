@@ -7,9 +7,7 @@ import po.ProcessRecord;
 import po.PurchaseRecord;
 import po.User;
 import pojo.CheckList;
-import service.FixRecordService;
-import service.ProcessService;
-import service.PurchaseRecordService;
+import service.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,8 +16,8 @@ import java.util.List;
 
 public class FixRecordAction extends ActionSupport{
     private FixRecord fixRecord;
-    private FixRecordService fixRecordService = null;
-    private ProcessService processService = null;
+    private IFixRecordService fixRecordService = null;
+    private IProcessService processService = null;
 
     private CheckList checkList;
 
@@ -38,10 +36,10 @@ public class FixRecordAction extends ActionSupport{
     public void setCheckList(CheckList checkList) {
         this.checkList = checkList;
     }
-    public void setFixRecordService(FixRecordService fixRecordService) {
+    public void setFixRecordService(IFixRecordService fixRecordService) {
         this.fixRecordService = fixRecordService;
     }
-    public void setProcessService(ProcessService processService) {
+    public void setProcessService(IProcessService processService) {
         this.processService = processService;
     }
 

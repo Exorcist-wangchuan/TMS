@@ -10,11 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface IPeriodCheckService {
-    void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO);
-
-    void setDefineToolDAO(DefineToolDAO defineToolDAO);
-
-    void setUserDAO(UserDAO userDAO);
 
     void setMailUtil(JavaMailUtil mailUtil);
 

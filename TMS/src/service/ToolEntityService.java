@@ -1,15 +1,16 @@
 package service;
 
+import dao.IToolEntityDAO;
 import dao.ToolEntityDAO;
 import po.PurchaseRecord;
 import po.ToolEntity;
 import po.ToolEntityPrimaryKey;
 
 public class ToolEntityService implements IToolEntityService {
-    private ToolEntityDAO toolEntityDAO=null;
+    private IToolEntityDAO toolEntityDAO=null;
 
     @Override
-    public void setToolEntityDAO(ToolEntityDAO toolEntityDAO) {
+    public void setToolEntityDAO(IToolEntityDAO toolEntityDAO) {
         this.toolEntityDAO = toolEntityDAO;
     }
 

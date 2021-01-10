@@ -1,6 +1,8 @@
 package service;
 
 import com.opensymphony.xwork2.ActionContext;
+import dao.IPeriodCheckDAO;
+import dao.IProcessDAO;
 import dao.PeriodCheckDAO;
 import dao.ProcessDAO;
 import po.PeriodCheck;
@@ -13,15 +15,15 @@ import java.util.Date;
 import java.util.List;
 
 public class ProcessService implements IProcessService {
-    private ProcessDAO processDAO=null;
-    private PeriodCheckDAO periodCheckDAO;
+    private IProcessDAO processDAO=null;
+    private IPeriodCheckDAO periodCheckDAO;
 
     @Override
-    public void setProcessDAO(ProcessDAO processDAO) {
+    public void setProcessDAO(IProcessDAO processDAO) {
         this.processDAO = processDAO;
     }
     @Override
-    public void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO){
+    public void setPeriodCheckDAO(IPeriodCheckDAO periodCheckDAO){
         this.periodCheckDAO = periodCheckDAO;
     }
 

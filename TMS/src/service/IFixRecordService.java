@@ -6,7 +6,6 @@ import po.FixRecord;
 import java.util.List;
 
 public interface IFixRecordService {
-    void setFixRecordDAO(FixRecordDAO fixRecordDAO);
 
     boolean saveFixRecord(FixRecord fixRecord);
 

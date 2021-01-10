@@ -1,5 +1,7 @@
 package service;
 import com.opensymphony.xwork2.ActionContext;
+import dao.IProcessDAO;
+import dao.IScrapDAO;
 import dao.ProcessDAO;
 import dao.ScrapDAO;
 import po.ProcessRecord;
@@ -13,16 +15,16 @@ import java.util.Date;
 import java.util.List;
 
 public class ScrapRecordService implements IScrapRecordService {
-    private ScrapDAO scrapDAO=null;
-    private ProcessDAO processDAO=null;
+    private IScrapDAO scrapDAO=null;
+    private IProcessDAO processDAO=null;
 
     @Override
-    public ScrapDAO getScrapDAO() {
+    public IScrapDAO getScrapDAO() {
         return scrapDAO;
     }
 
     @Override
-    public void setScrapDAO(ScrapDAO scrapDAO) {
+    public void setScrapDAO(IScrapDAO scrapDAO) {
         this.scrapDAO = scrapDAO;
     }
 

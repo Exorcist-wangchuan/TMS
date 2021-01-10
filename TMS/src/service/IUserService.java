@@ -6,7 +6,6 @@ import po.User;
 import java.util.List;
 
 public interface IUserService {
-    void setUserDAO(UserDAO userDAO);
 
     boolean login(User loginUser);
 

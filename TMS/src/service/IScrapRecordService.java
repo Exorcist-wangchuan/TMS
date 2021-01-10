@@ -1,14 +1,15 @@
 package service;
 
+import dao.IScrapDAO;
 import dao.ScrapDAO;
 import po.Scrap;
 
 import java.util.List;
 
 public interface IScrapRecordService {
-    ScrapDAO getScrapDAO();
+    IScrapDAO getScrapDAO();
 
-    void setScrapDAO(ScrapDAO scrapDAO);
+    void setScrapDAO(IScrapDAO scrapDAO);
 
     boolean saveScrap(Scrap scrap);
 

@@ -1,8 +1,6 @@
 package service;
 
-import dao.DefineToolDAO;
-import dao.PeriodCheckDAO;
-import dao.UserDAO;
+import dao.*;
 import po.DefineTool;
 import po.PeriodCheck;
 import po.ToolEntityPrimaryKey;
@@ -14,20 +12,17 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class PeriodCheckService implements IPeriodCheckService {
-    private PeriodCheckDAO periodCheckDAO;
-    private DefineToolDAO defineToolDAO;
-    private UserDAO userDAO;
+    private IPeriodCheckDAO periodCheckDAO;
+    private IDefineToolDAO defineToolDAO;
+    private IUserDAO userDAO;
     private JavaMailUtil mailUtil;
 
-    @Override
-    public void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO){
+    public void setPeriodCheckDAO(IPeriodCheckDAO periodCheckDAO){
         this.periodCheckDAO = periodCheckDAO;
     }
-    @Override
-    public void setDefineToolDAO(DefineToolDAO defineToolDAO){
+    public void setDefineToolDAO(IDefineToolDAO defineToolDAO){
         this.defineToolDAO = defineToolDAO;
     }
-    @Override
     public void setUserDAO(UserDAO userDAO){
         this.userDAO = userDAO;
     }

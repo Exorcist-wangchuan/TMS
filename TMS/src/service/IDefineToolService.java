@@ -6,10 +6,6 @@ import po.DefineTool;
 import java.util.List;
 
 public interface IDefineToolService {
-    DefineToolDAO getDefineToolDAO();
-
-    void setDefineToolDAO(DefineToolDAO defineToolDAO);
-
     //查询记录
     DefineTool searchDefineTool(int id);
 

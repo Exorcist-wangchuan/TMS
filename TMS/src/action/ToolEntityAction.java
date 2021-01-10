@@ -2,12 +2,13 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import po.ToolEntity;
+import service.IToolEntityService;
 import service.ToolEntityService;
 
 public class ToolEntityAction extends ActionSupport {
     private ToolEntity toolEntity;
 
-    private ToolEntityService toolEntityService=null;
+    private IToolEntityService toolEntityService=null;
 
     public ToolEntity getToolEntity() {
         return toolEntity;
@@ -17,11 +18,11 @@ public class ToolEntityAction extends ActionSupport {
         this.toolEntity = toolEntity;
     }
 
-    public ToolEntityService getToolEntityService() {
+    public IToolEntityService getToolEntityService() {
         return toolEntityService;
     }
 
-    public void setToolEntityService(ToolEntityService toolEntityService) {
+    public void setToolEntityService(IToolEntityService toolEntityService) {
         this.toolEntityService = toolEntityService;
     }
 
