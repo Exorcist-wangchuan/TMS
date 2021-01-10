@@ -39,7 +39,6 @@ Configuration 2.1//EN"
             <interceptor-ref name="defaultStack"/>
             <!-- 配置自定义拦截器 -->
             <interceptor-ref name="storageApplyInterceptor"/>
-
         </action>
 
         <!--监管员获取记录-->
@@ -78,7 +77,6 @@ Configuration 2.1//EN"
             <interceptor-ref name="defaultStack"/>
             <!--配置自定义拦截器-->
             <interceptor-ref name="scrapApplyInterceptor"/>
-
         </action>
 
         <!--监管员获取报废记录-->

@@ -108,7 +108,7 @@
                             <form action="submitFixRecord" method="post">
                                 <div class="form-group row">
                                     <label class="col-3">申请人编号</label>
-                                    <input name="fixRecord.applyUID" type="text" class="col-8 form-control">
+                                    <label><s:property value="#session.user.id" /></label>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
