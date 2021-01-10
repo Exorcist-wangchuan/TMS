@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+
 </head>
 <body>
 <!-- Side Navbar -->
@@ -105,7 +106,7 @@
                     <div class="card">
                         <div class="card-header d-inline">
                             <h4 class="d-inline">入库申请列表</h4>
-                            <button class="d-inline btn btn-primary ml-lg-5" id="excelBtn">导出</button>
+                            <button class="d-inline btn btn-primary ml-lg-5" type="button" id="excelBtn">导出</button>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewPurchaseRecord">

@@ -2,7 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.dispatcher.Parameter;
+import org.apache.commons.io.FileUtils;
 import po.*;
 import pojo.CheckList;
 import service.PeriodCheckService;
@@ -11,8 +11,6 @@ import service.PurchaseRecordService;
 import service.ToolEntityService;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,10 +28,15 @@ public class PurchaseRecordAction extends ActionSupport {
     private PeriodCheckService periodCheckService=null;
 
     private CheckList checkList;
-    private List<File> file;
+    private File upload;
+    private String uploadFileName;
 
-    public void setFile(List<File> file){
-        this.file = file;
+    public void setUpload(File upload){
+        this.upload = upload;
+    }
+
+    public void setUploadFileName(String uploadFileName) {
+        this.uploadFileName = uploadFileName;
     }
 
     //getter
@@ -86,9 +89,17 @@ public class PurchaseRecordAction extends ActionSupport {
         String eid = eidFormat.format(new Date());
         String applyDate = sdf.format(new Date());
 
-        User  user=(User)ActionContext.getContext().getSession().get("user");
+        //保存图片
+        String path="D:\\img\\";
+        path = path+purchaseRecord.getCode_seqid().getCode()+"-"+purchaseRecord.getCode_seqid().getSeqID()+"\\";
+        File file = new File(path);
+        if (!file.exists()) file.mkdir();
+        FileUtils.copyFile(upload, new File(file,uploadFileName));
+        purchaseRecord.setImg(path+uploadFileName);
+        User user=(User)ActionContext.getContext().getSession().get("user");
         int uid=user.getId();
         purchaseRecord.setApplyUID(uid);
+        purchaseRecord.setPurchaseDate(applyDate);
 
         //需要先保存ProcessRecord(主键)
         //构造Process

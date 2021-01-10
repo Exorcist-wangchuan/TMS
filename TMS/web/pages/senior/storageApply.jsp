@@ -112,10 +112,10 @@
                             <h4>入库申请表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitPurchaseRecord" method="post">
+                            <form action="submitPurchaseRecord" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <label class="col-3">申请者编号</label>
-                                    <input name="purchaseRecord.applyUID" type="text" class="col-8 form-control">
+                                    <s:textfield name="purchaseRecord.applyUID" value="%{#session.user.id}" class="col-8 form-control" readonly="true"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
@@ -135,7 +135,7 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">采购入库日期</label>
-                                    <input name="purchaseRecord.purchaseDate" type="text" class="col-8 form-control">
+                                    <input name="purchaseRecord.purchaseDate" type="text" class="col-8 form-control" id="time" value="">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
@@ -145,11 +145,7 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">图片</label>
-                                    <input name="purchaseRecord.img" type="text" class="col-8 form-control">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-3">图片</label>
-                                    <input type="file" name="file" class="file"/>
+                                    <input type="file" name="upload" class="file"/>
                                 </div>
                                 <hr>
                                 <div class="form-group col-4 offset-3">
@@ -189,7 +185,7 @@
 <script src="../../js/charts-home.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
-<script src="storageForm.js"></script>
 <script src="../../js/fileinput.min.js"></script>
+<script src="storageForm.js"></script>
 </body>
 </html>
