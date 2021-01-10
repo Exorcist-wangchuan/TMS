@@ -19,7 +19,6 @@ public class storageApplyInterceptor extends AbstractInterceptor {
 
 
     public String intercept(ActionInvocation invocation) throws Exception {
-        System.out.println("storageApplyInterceptor executed!");
         ActionContext ctx = invocation.getInvocationContext();
         Map session = ctx.getSession();
 
@@ -40,7 +39,6 @@ public class storageApplyInterceptor extends AbstractInterceptor {
         String code = formMap.get("purchaseRecord.code_seqid.code").toString();
         String seqid = formMap.get("purchaseRecord.code_seqid.seqID").toString();
         String pk = code + "&" + seqid;
-        System.out.println("pk:" + pk);
 
         PurchaseRecord purchaseRecord = purchaseRecordService.getPurchaseRecordByCodeandId(pk);
 
