@@ -1,12 +1,13 @@
 package service;
 
 import dao.FixRecordDAO;
+import dao.IFixRecordDAO;
 import po.FixRecord;
 
 import java.util.List;
 
 public interface IFixRecordService {
-    void setFixRecordDAO(FixRecordDAO fixRecordDAO);
+    void setFixRecordDAO(IFixRecordDAO fixRecordDAO);
 
     boolean saveFixRecord(FixRecord fixRecord);
 

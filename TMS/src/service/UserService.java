@@ -1,6 +1,7 @@
 package service;
 
 import com.opensymphony.xwork2.ActionContext;
+import dao.IUserDAO;
 import dao.UserDAO;
 import org.apache.struts2.interceptor.SessionAware;
 import po.User;
@@ -10,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public class UserService implements IUserService {
-    private UserDAO userDAO=null;
+    private IUserDAO userDAO=null;
 
     @Override
-    public void setUserDAO(UserDAO userDAO) {
+    public void setUserDAO(IUserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
