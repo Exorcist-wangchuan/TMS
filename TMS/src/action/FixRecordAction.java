@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import po.FixRecord;
 import po.ProcessRecord;
 import po.PurchaseRecord;
+import po.User;
 import pojo.CheckList;
 import service.FixRecordService;
 import service.ProcessService;
@@ -58,12 +59,16 @@ public class FixRecordAction extends ActionSupport{
         process.seteID(eid);
         process.setDname("fix");
         process.setFinish(1);
-        process.setApply_UID(fixRecord.getApplyUID());
+        User user= (User)ActionContext.getContext().getSession().get("user");
+        int applyUID=user.getId();
+        System.out.println(applyUID);
+        process.setApply_UID(applyUID);
         process.setApply_Date(applyDate);
         //调用service
         boolean firstRes = processService.saveProcess(process);
         //保存报修记录
         fixRecord.seteID(eid);
+        fixRecord.setApplyUID(applyUID);
         boolean secondRes = fixRecordService.saveFixRecord(fixRecord);
         //判断
         if (firstRes && secondRes) return "success";

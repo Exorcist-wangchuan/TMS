@@ -49,6 +49,7 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="#"><i class="icon-home"></i>主页</a></li>
                 <li><a href="repairAppl.jsp"><i class="icon-grid"></i>提交报修申请</a></li>
+
             </ul>
         </div>
 

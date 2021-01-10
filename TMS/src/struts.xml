@@ -10,7 +10,6 @@ Configuration 2.1//EN"
             <interceptor name="fixApplyInterceptor" class="interceptor.fixApplyInterceptor"/>
             <interceptor name="scrapApplyInterceptor" class="interceptor.scrapApplyInterceptor"/>
         </interceptors>
-
         <!--
             使用英文方便跳转
             初级员工:o1

@@ -27,7 +27,7 @@ import java.util.Map;
             String Img = formMap.get("fixRecord.Img").toString();
 
 
-            //如果不为空则返回fixRecordNotnull
+            //如果有空则返回fixRecordNotnull
             if (code.equals("")||seqid.equals("")||des.equals("")||dealUID.equals("")||Img.equals("")) {
                 return "fixRecordNotnull";
             }
