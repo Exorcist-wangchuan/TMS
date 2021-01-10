@@ -1,6 +1,7 @@
 
 package service;
 
+import dao.IPurchaseRecordDAO;
 import dao.PeriodCheckDAO;
 import dao.PurchaseRecordDAO;
 import po.PurchaseRecord;
@@ -10,10 +11,10 @@ import java.util.List;
 
 
 public class PurchaseRecordService implements IPurchaseRecordService {
-    private PurchaseRecordDAO purchaseRecordDAO=null;
+    private IPurchaseRecordDAO purchaseRecordDAO=null;
 
     @Override
-    public void setPurchaseRecordDAO(PurchaseRecordDAO purchaseRecordDAO) {
+    public void setPurchaseRecordDAO(IPurchaseRecordDAO purchaseRecordDAO) {
         this.purchaseRecordDAO = purchaseRecordDAO;
     }
 

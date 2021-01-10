@@ -8,12 +8,10 @@ import po.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class UserService implements IUserService {
     private IUserDAO userDAO=null;
 
-    @Override
     public void setUserDAO(IUserDAO userDAO) {
         this.userDAO = userDAO;
     }
