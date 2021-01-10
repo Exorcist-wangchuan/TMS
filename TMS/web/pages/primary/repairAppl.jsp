@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../../css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!--fileUpload-->
+    <link rel="stylesheet" href="../../css/fileinput.min.css">
 </head>
 <body>
 <!-- Side Navbar -->
@@ -105,7 +107,7 @@
                             <h4>报修申请表</h4>
                         </div>
                         <div class="card-body">
-                            <form action="submitFixRecord" method="post">
+                            <form action="submitFixRecord" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <label class="col-3">申请人编号</label>
                                     <label><s:property value="#session.user.id" /></label>
@@ -128,7 +130,7 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">图片</label>
-                                    <input name="fixRecord.Img" type="text" class="col-8 form-control">
+                                    <input type="file" name="upload" class="file"/>
                                 </div>
                                 <hr>
                                 <div class="form-group col-4 offset-3">
@@ -169,6 +171,6 @@
 <script src="../../js/charts-home.js"></script>
 <!-- Main File-->
 <script src="../../js/front.js"></script>
-<script src="storageForm.js"></script>
+<script src="../../js/fileinput.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package service;
 
 import dao.FixRecordDAO;
+import dao.IFixRecordDAO;
 import dao.PurchaseRecordDAO;
 import po.FixRecord;
 import po.PurchaseRecord;
@@ -9,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FixRecordService implements IFixRecordService {
-    private FixRecordDAO fixRecordDAO=null;
+    private IFixRecordDAO fixRecordDAO=null;
 
     @Override
-    public void setFixRecordDAO(FixRecordDAO fixRecordDAO) {
+    public void setFixRecordDAO(IFixRecordDAO fixRecordDAO) {
         this.fixRecordDAO = fixRecordDAO;
     }
 
