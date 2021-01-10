@@ -21,6 +21,12 @@ public class LogInFilter implements Filter {
         }
         filterChain.doFilter(arg0, arg1);
     }
+
+    @Override
+    public void destroy() {
+
+    }
+
     public void init(FilterConfig arg0) throws ServletException {
     }
 

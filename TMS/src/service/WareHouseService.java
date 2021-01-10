@@ -1,5 +1,6 @@
 package service;
 import com.opensymphony.xwork2.ActionContext;
+import dao.IWareHouseDAO;
 import dao.WareHouseDAO;
 import po.*;
 
@@ -9,15 +10,14 @@ import java.util.Date;
 import java.util.List;
 
 public class WareHouseService implements IWareHouseService {
-    private WareHouseDAO wareHouseDAO=null;
+    private IWareHouseDAO wareHouseDAO=null;
 
     @Override
-    public WareHouseDAO getWareHouseDAO() {
+    public IWareHouseDAO getWareHouseDAO() {
         return wareHouseDAO;
     }
 
-    @Override
-    public void setWareHouseDAO(WareHouseDAO wareHouseDAO) {
+    public void setWareHouseDAO(IWareHouseDAO wareHouseDAO) {
         this.wareHouseDAO = wareHouseDAO;
     }
 

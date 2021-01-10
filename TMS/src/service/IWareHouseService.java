@@ -1,14 +1,15 @@
 package service;
 
+import dao.IWareHouseDAO;
 import dao.WareHouseDAO;
 import po.WareHouseRecord;
 
 import java.util.List;
 
 public interface IWareHouseService {
-    WareHouseDAO getWareHouseDAO();
+    IWareHouseDAO getWareHouseDAO();
 
-    void setWareHouseDAO(WareHouseDAO wareHouseDAO);
+    void setWareHouseDAO(IWareHouseDAO wareHouseDAO);
 
     boolean saveWareHouse(WareHouseRecord wareHouseRecord);
 
