@@ -28,24 +28,24 @@ public class ScrapRecordAction extends ActionSupport {
         this.checkList = checkList;
     }
 
-    public IToolEntityService getToolEntityService() {
-        return toolEntityService;
+    public IScrapRecordService getScrapService() {
+        return scrapService;
     }
 
     public void setToolEntityService(IToolEntityService toolEntityService) {
         this.toolEntityService = toolEntityService;
     }
 
-    public Scrap getScrap() {
-        return scrap;
+    public IProcessService getProcessService() {
+        return processService;
     }
 
     public void setScrap(Scrap scrap) {
         this.scrap = scrap;
     }
-
-    public IScrapRecordService getScrapService() {
-        return scrapService;
+  
+    public IToolEntityService getToolEntityService() {
+        return toolEntityService;
     }
 
     public void setScrapService(IScrapRecordService scrapService) {

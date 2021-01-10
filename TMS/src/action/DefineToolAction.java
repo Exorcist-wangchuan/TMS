@@ -7,6 +7,7 @@ import po.DefineTool;
 import po.Scrap;
 import pojo.CheckList;
 import service.DefineToolService;
+import service.IDefineToolService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class DefineToolAction extends ActionSupport {
     private DefineTool defineTool;
-    private DefineToolService defineToolService=null;
+    private IDefineToolService defineToolService=null;
     private CheckList deletelist;
 
     public DefineTool getDefineTool() {
@@ -26,11 +27,11 @@ public class DefineToolAction extends ActionSupport {
         this.defineTool = defineTool;
     }
 
-    public DefineToolService getDefineToolService() {
+    public IDefineToolService getDefineToolService() {
         return defineToolService;
     }
 
-    public void setDefineToolService(DefineToolService defineToolService) {
+    public void setDefineToolService(IDefineToolService defineToolService) {
         this.defineToolService = defineToolService;
     }
 
