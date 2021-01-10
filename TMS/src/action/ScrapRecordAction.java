@@ -52,10 +52,6 @@ public class ScrapRecordAction extends ActionSupport {
         this.scrapService = scrapService;
     }
 
-    public IProcessService getProcessService() {
-        return processService;
-    }
-
     public void setProcessService(IProcessService processService) {
         this.processService = processService;
     }
