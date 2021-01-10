@@ -32,28 +32,32 @@ public class ScrapRecordAction extends ActionSupport {
         return scrapService;
     }
 
-    public void setToolEntityService(IToolEntityService toolEntityService) {
-        this.toolEntityService = toolEntityService;
+    public void setScrapService(ScrapRecordService scrapService) {
+        this.scrapService = scrapService;
     }
 
     public IProcessService getProcessService() {
         return processService;
     }
 
-    public void setScrap(Scrap scrap) {
-        this.scrap = scrap;
+    public void setProcessService(ProcessService processService) {
+        this.processService = processService;
     }
-  
+
     public IToolEntityService getToolEntityService() {
         return toolEntityService;
     }
 
-    public void setScrapService(IScrapRecordService scrapService) {
-        this.scrapService = scrapService;
+    public void setToolEntityService(ToolEntityService toolEntityService) {
+        this.toolEntityService = toolEntityService;
     }
 
-    public void setProcessService(IProcessService processService) {
-        this.processService = processService;
+    public Scrap getScrap() {
+        return scrap;
+    }
+
+    public void setScrap(Scrap scrap) {
+        this.scrap = scrap;
     }
 
     //高级员工
@@ -77,6 +81,7 @@ public class ScrapRecordAction extends ActionSupport {
         boolean firstRes = processService.saveProcess(process);
         //保存报废记录
         scrap.seteID(eid);
+        System.out.println(scrap.getCode_seqid().getSeqID());
         boolean secondRes = scrapService.saveScrap(scrap);
         //判断
         if (firstRes && secondRes) return "success";
@@ -95,9 +100,9 @@ public class ScrapRecordAction extends ActionSupport {
     //监管员审核通过
     public String reviewScrapRecord(){
         List<String> passedList = checkList.getCheckList();
-        /*for (String str:passedList){
+        for (String str:passedList){
             System.out.println("ss"+str);
-        }*/
+        }
         boolean res = processService.scrap_firstCheck(passedList);
         if (res) return "success";
         else return "fail";
