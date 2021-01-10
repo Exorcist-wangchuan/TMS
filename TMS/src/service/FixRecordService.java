@@ -12,7 +12,6 @@ import java.util.List;
 public class FixRecordService implements IFixRecordService {
     private IFixRecordDAO fixRecordDAO=null;
 
-    @Override
     public void setFixRecordDAO(IFixRecordDAO fixRecordDAO) {
         this.fixRecordDAO = fixRecordDAO;
     }

@@ -103,7 +103,7 @@
                     <div class="card">
                         <div class="card-header d-inline">
                             <h4 class="d-inline">报废申请列表</h4>
-                            <button class="d-inline" id="excelBtn">导出</button>
+                            <button class="d-inline btn btn-primary ml-lg-5" type="button" id="excelBtn">导出</button>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewScrapRecord_Manager">

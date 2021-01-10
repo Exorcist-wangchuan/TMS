@@ -5,10 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.io.FileUtils;
 import po.*;
 import pojo.CheckList;
-import service.PeriodCheckService;
-import service.ProcessService;
-import service.PurchaseRecordService;
-import service.ToolEntityService;
+import service.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,10 +19,10 @@ public class PurchaseRecordAction extends ActionSupport {
     private PurchaseRecord purchaseRecord;
     private ToolEntity toolEntity;
 
-    private PurchaseRecordService purchaseRecordService = null;
-    private ProcessService processService = null;
-    private ToolEntityService toolEntityService=null;
-    private PeriodCheckService periodCheckService=null;
+    private IPurchaseRecordService purchaseRecordService = null;
+    private IProcessService processService = null;
+    private IToolEntityService toolEntityService=null;
+    private IPeriodCheckService periodCheckService=null;
 
     private CheckList checkList;
     private File upload;
@@ -65,18 +62,18 @@ public class PurchaseRecordAction extends ActionSupport {
         this.toolEntity = toolEntity;
     }
 
-    public void setPurchaseRecordService(PurchaseRecordService purchaseRecordService) {
+    public void setPurchaseRecordService(IPurchaseRecordService purchaseRecordService) {
         this.purchaseRecordService = purchaseRecordService;
     }
 
-    public void setProcessService(ProcessService processService) {
+    public void setProcessService(IProcessService processService) {
         this.processService = processService;
     }
 
-    public void setToolEntityService(ToolEntityService toolEntityService) {
+    public void setToolEntityService(IToolEntityService toolEntityService) {
         this.toolEntityService = toolEntityService;
     }
-    public void setPeriodCheckService(PeriodCheckService periodCheckService){
+    public void setPeriodCheckService(IPeriodCheckService periodCheckService){
         this.periodCheckService = periodCheckService;
     }
 
@@ -91,6 +88,7 @@ public class PurchaseRecordAction extends ActionSupport {
 
         //保存图片
         String path="D:\\img\\";
+        String judge=
         path = path+purchaseRecord.getCode_seqid().getCode()+"-"+purchaseRecord.getCode_seqid().getSeqID()+"\\";
         File file = new File(path);
         if (!file.exists()) file.mkdir();
@@ -132,13 +130,10 @@ public class PurchaseRecordAction extends ActionSupport {
             return "success";
         }
         else {
-
             ctx.put("PurchaseApplyResult","采购记录提交失败");
             return "fail";
         }
     }
-
-
 
     //监管员
     //监管员获取采购记录

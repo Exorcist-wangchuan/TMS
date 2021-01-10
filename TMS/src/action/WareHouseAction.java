@@ -3,6 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionContext;
 import po.WareHouseRecord;
 import pojo.CheckList;
+import service.IWareHouseService;
 import service.WareHouseService;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class WareHouseAction {
     private WareHouseRecord wareHouseRecord;
-    private WareHouseService wareHouseService=null;
+    private IWareHouseService wareHouseService=null;
     private CheckList checkList;
 
     public WareHouseRecord getWareHouseRecord() {
@@ -21,11 +22,11 @@ public class WareHouseAction {
         this.wareHouseRecord = wareHouseRecord;
     }
 
-    public WareHouseService getWareHouseService() {
+    public IWareHouseService getWareHouseService() {
         return wareHouseService;
     }
 
-    public void setWareHouseService(WareHouseService wareHouseService) {
+    public void setWareHouseService(IWareHouseService wareHouseService) {
         this.wareHouseService = wareHouseService;
     }
 

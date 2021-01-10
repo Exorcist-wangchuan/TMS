@@ -6,9 +6,7 @@ import po.ProcessRecord;
 import po.Scrap;
 import po.User;
 import pojo.CheckList;
-import service.ProcessService;
-import service.ScrapRecordService;
-import service.ToolEntityService;
+import service.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,9 +15,9 @@ import java.util.List;
 
 public class ScrapRecordAction extends ActionSupport {
     private Scrap scrap;
-    private ScrapRecordService scrapService=null;
-    private ProcessService processService = null;
-    private ToolEntityService toolEntityService = null;
+    private IScrapRecordService scrapService=null;
+    private IProcessService processService = null;
+    private IToolEntityService toolEntityService = null;
     private CheckList checkList;
 
     public CheckList getCheckList() {
@@ -30,36 +28,36 @@ public class ScrapRecordAction extends ActionSupport {
         this.checkList = checkList;
     }
 
-    public ScrapRecordService getScrapService() {
+    public IScrapRecordService getScrapService() {
         return scrapService;
     }
 
-    public void setScrapService(ScrapRecordService scrapService) {
-        this.scrapService = scrapService;
-    }
-
-    public ProcessService getProcessService() {
-        return processService;
-    }
-
-    public void setProcessService(ProcessService processService) {
-        this.processService = processService;
-    }
-
-    public ToolEntityService getToolEntityService() {
-        return toolEntityService;
-    }
-
-    public void setToolEntityService(ToolEntityService toolEntityService) {
+    public void setToolEntityService(IToolEntityService toolEntityService) {
         this.toolEntityService = toolEntityService;
     }
 
-    public Scrap getScrap() {
-        return scrap;
+    public IProcessService getProcessService() {
+        return processService;
     }
 
     public void setScrap(Scrap scrap) {
         this.scrap = scrap;
+    }
+  
+    public IToolEntityService getToolEntityService() {
+        return toolEntityService;
+    }
+
+    public void setScrapService(IScrapRecordService scrapService) {
+        this.scrapService = scrapService;
+    }
+
+    public IProcessService getProcessService() {
+        return processService;
+    }
+
+    public void setProcessService(IProcessService processService) {
+        this.processService = processService;
     }
 
     //高级员工
@@ -83,7 +81,6 @@ public class ScrapRecordAction extends ActionSupport {
         boolean firstRes = processService.saveProcess(process);
         //保存报废记录
         scrap.seteID(eid);
-        System.out.println(scrap.getCode_seqid().getSeqID());
         boolean secondRes = scrapService.saveScrap(scrap);
         //判断
         if (firstRes && secondRes) return "success";
@@ -102,9 +99,9 @@ public class ScrapRecordAction extends ActionSupport {
     //监管员审核通过
     public String reviewScrapRecord(){
         List<String> passedList = checkList.getCheckList();
-        for (String str:passedList){
+        /*for (String str:passedList){
             System.out.println("ss"+str);
-        }
+        }*/
         boolean res = processService.scrap_firstCheck(passedList);
         if (res) return "success";
         else return "fail";

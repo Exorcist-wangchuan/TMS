@@ -2,6 +2,7 @@ package service;
 
 import com.opensymphony.xwork2.ActionContext;
 import dao.DefineToolDAO;
+import dao.IDefineToolDAO;
 import po.*;
 
 import java.text.SimpleDateFormat;
@@ -10,15 +11,13 @@ import java.util.Date;
 import java.util.List;
 
 public class DefineToolService implements IDefineToolService {
-    private DefineToolDAO defineToolDAO=null;
+    private IDefineToolDAO defineToolDAO=null;
 
-    @Override
-    public DefineToolDAO getDefineToolDAO() {
+    public IDefineToolDAO getDefineToolDAO() {
         return defineToolDAO;
     }
 
-    @Override
-    public void setDefineToolDAO(DefineToolDAO defineToolDAO) {
+    public void setDefineToolDAO(IDefineToolDAO defineToolDAO) {
         this.defineToolDAO = defineToolDAO;
     }
 

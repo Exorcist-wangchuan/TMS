@@ -11,7 +11,6 @@ import service.PurchaseRecordService;
 import service.ScrapRecordService;
 
 import javax.servlet.ServletContext;
-
 import java.util.Map;
 import java.util.Set;
 

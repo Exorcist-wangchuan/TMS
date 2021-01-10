@@ -9,6 +9,7 @@ Configuration 2.1//EN"
             <interceptor name="storageApplyInterceptor" class="interceptor.storageApplyInterceptor"/>
             <interceptor name="fixApplyInterceptor" class="interceptor.fixApplyInterceptor"/>
             <interceptor name="scrapApplyInterceptor" class="interceptor.scrapApplyInterceptor"/>
+            <interceptor name="processStorageInterceptor" class="interceptor.processStorageInterceptor"/>
         </interceptors>
         <!--
             使用英文方便跳转
@@ -54,6 +55,10 @@ Configuration 2.1//EN"
         <!--监管员进行审批-->
         <action name="reviewPurchaseRecord" class="purchaseRecordAction" method="reviewPurchaseRecord">
             <result name="success" type="redirectAction">getPurchaseRecord</result>
+            <!--没有选择审批项目-->
+            <result name="empty" type="redirectAction">getPurchaseRecord</result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="processStorageInterceptor"/>
         </action>
 
         <!--经理获取记录-->
@@ -65,6 +70,9 @@ Configuration 2.1//EN"
         <action name="reviewPurchaseRecord_Manager" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager">
             <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
             <result name="fail" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
+            <result name="empty" type="redirectAction">getPurchaseRecord_Manager</result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="processStorageInterceptor"/>
         </action>
 
         <!--以下为报废流程-->
