@@ -88,6 +88,7 @@ public class PurchaseRecordAction extends ActionSupport {
 
         //保存图片
         String path="D:\\img\\";
+        String judge=
         path = path+purchaseRecord.getCode_seqid().getCode()+"-"+purchaseRecord.getCode_seqid().getSeqID()+"\\";
         File file = new File(path);
         if (!file.exists()) file.mkdir();

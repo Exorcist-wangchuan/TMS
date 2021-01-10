@@ -142,34 +142,42 @@
                                     <label class="col-3">夹具料号</label>
                                     <input name="defineTool.partNo" type="text" class="col-8 form-control">
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">配备数量</label>
                                     <input name="defineTool.upl" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">用途</label>
                                     <input name="defineTool.usedFor" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">保养点检周期</label>
                                     <input name="defineTool.pmPeriod" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">责任人编号</label>
                                     <input name="defineTool.owner" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">责任人姓名</label>
                                     <input name="defineTool.ownerName" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">所属工作部编号</label>
                                     <input name="defineTool.workCellID" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">所属工作部</label>
                                     <input name="defineTool.workCell" class="col-8 form-control"/>
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">备注</label>
                                     <input name="defineTool.remark" class="col-8 form-control"/>

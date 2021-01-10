@@ -104,7 +104,7 @@
     <!--右侧主体-->
     <section class="bg-light">
         <div class="container-fluid bg-transparent">
-            <header class="h3 display">创建工夹具类别</header>
+            <header class="h3 display">修改工夹具类别</header>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
