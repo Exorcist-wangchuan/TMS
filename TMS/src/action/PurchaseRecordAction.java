@@ -132,13 +132,10 @@ public class PurchaseRecordAction extends ActionSupport {
             return "success";
         }
         else {
-
             ctx.put("PurchaseApplyResult","采购记录提交失败");
             return "fail";
         }
     }
-
-
 
     //监管员
     //监管员获取采购记录
