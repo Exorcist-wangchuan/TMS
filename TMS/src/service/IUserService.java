@@ -1,11 +1,13 @@
 package service;
 
+import dao.IUserDAO;
 import dao.UserDAO;
 import po.User;
 
 import java.util.List;
 
 public interface IUserService {
+    void setUserDAO(IUserDAO userDAO);
 
     boolean login(User loginUser);
 

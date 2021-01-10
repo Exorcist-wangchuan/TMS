@@ -55,7 +55,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
             Query queryObject = session.createQuery(hql);
             return queryObject.list();
         }catch (RuntimeException re){
-            log.error("search apply failed",re);
+            log.error("search users failed",re);
             throw  re;
         }finally {
             session.getTransaction().commit();
@@ -71,7 +71,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
         try {
             session.delete(user);
         }catch (RuntimeException re){
-            log.error("update processRecord failed", re);
+            log.error("delete user failed", re);
             throw re;
         }finally {
             session.getTransaction().commit();
@@ -88,7 +88,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
         try {
             session.update(user);
         }catch (RuntimeException re){
-            log.error("update processRecord failed", re);
+            log.error("update user failed", re);
             throw re;
         }finally {
             session.getTransaction().commit();
@@ -105,7 +105,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
         try {
             session.save(user);
         }catch (RuntimeException re){
-            log.error("update processRecord failed", re);
+            log.error("add user failed", re);
             throw re;
         }finally {
             session.getTransaction().commit();

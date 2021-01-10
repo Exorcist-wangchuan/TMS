@@ -17,7 +17,6 @@ public class WareHouseService implements IWareHouseService {
         return wareHouseDAO;
     }
 
-    @Override
     public void setWareHouseDAO(IWareHouseDAO wareHouseDAO) {
         this.wareHouseDAO = wareHouseDAO;
     }

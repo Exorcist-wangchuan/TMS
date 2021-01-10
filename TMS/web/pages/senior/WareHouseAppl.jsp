@@ -125,6 +125,7 @@
                                     <label class="col-3">类别代码</label>
                                     <input name="wareHouseRecord.code_seqid.Code" type="text" class="col-8 form-control">
                                 </div>
+                                <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码</label>
                                     <input name="wareHouseRecord.code_seqid.SeqID" type="text" class="col-8 form-control">
