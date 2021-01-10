@@ -9,14 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PurchaseRecordService {
+public class PurchaseRecordService implements IPurchaseRecordService {
     private PurchaseRecordDAO purchaseRecordDAO=null;
 
+    @Override
     public void setPurchaseRecordDAO(PurchaseRecordDAO purchaseRecordDAO) {
         this.purchaseRecordDAO = purchaseRecordDAO;
     }
 
     //插入记录
+    @Override
     public boolean savePurchaseRecord(PurchaseRecord purchaseRecord) {
         //调用DAO
         purchaseRecordDAO.insertPurchaseRecordDAO(purchaseRecord);
@@ -25,6 +27,7 @@ public class PurchaseRecordService {
     }
 
     //指定seqid查询
+    @Override
     public PurchaseRecord getPurchaseRecordByCodeandId(String pk){
         System.out.println("service:"+pk);
         PurchaseRecord purchaseRecord =new PurchaseRecord();
@@ -33,6 +36,7 @@ public class PurchaseRecordService {
     }
 
     //监管员获取采购记录
+    @Override
     public List<PurchaseRecord> getPurchaseRecord() {
         List<PurchaseRecord> list = new ArrayList<>();
         list = purchaseRecordDAO.searchPurchaseRecordDAO();
@@ -40,6 +44,7 @@ public class PurchaseRecordService {
     }
 
     //经理获取采购记录
+    @Override
     public List<PurchaseRecord> getPurchaseRecord_Manager() {
         List<PurchaseRecord> list = new ArrayList<>();
         list = purchaseRecordDAO.searchPurchaseRecordDAO_Manager();

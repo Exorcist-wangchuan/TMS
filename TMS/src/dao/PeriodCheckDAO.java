@@ -9,8 +9,9 @@ import po.PeriodCheck;
 import java.util.List;
 
 
-public class PeriodCheckDAO extends BaseDAO{
+public class PeriodCheckDAO extends BaseDAO implements IPeriodCheckDAO {
     private Log log = LogFactory.getLog(PeriodCheckDAO.class);
+    @Override
     public List getPeriodCheckList(){
         Session session = getSession();
         session.beginTransaction();
@@ -26,6 +27,7 @@ public class PeriodCheckDAO extends BaseDAO{
         }
     }
 
+    @Override
     public void insertPeriodCheck(PeriodCheck periodCheck){
         Session session = getSession();
         session.beginTransaction();
@@ -40,6 +42,7 @@ public class PeriodCheckDAO extends BaseDAO{
         }
     }
 
+    @Override
     public int getPMPeriod(String code){
         Session session = getSession();
         session.beginTransaction();

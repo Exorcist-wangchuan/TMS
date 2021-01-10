@@ -9,10 +9,10 @@ import po.PurchaseRecord;
 
 import java.util.List;
 
-public class FixRecordDAO extends BaseDAO
-{
+public class FixRecordDAO extends BaseDAO implements IFixRecordDAO {
     private Log log = LogFactory.getLog(FixRecordDAO.class);
 
+    @Override
     public void insertFixRecordDAO(FixRecord fixRecord){
         Session session = getSession();
         session.beginTransaction();
@@ -28,6 +28,7 @@ public class FixRecordDAO extends BaseDAO
     }
 
     //高级用户获取报修记录
+    @Override
     public List<FixRecord> searchFixRecordDAO(){
         Session session =  getSession();
         session.beginTransaction();

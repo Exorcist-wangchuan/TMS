@@ -8,9 +8,10 @@ import po.User;
 
 import java.util.List;
 
-public class UserDAO extends BaseDAO {
+public class UserDAO extends BaseDAO implements IUserDAO {
     private Log log = LogFactory.getLog(UserDAO.class);
 
+    @Override
     public List findByHql(String hql) {
         log.debug("finding LoginUser instance by hql");
         Session session = getSession();
@@ -26,6 +27,7 @@ public class UserDAO extends BaseDAO {
         }
     }
 
+    @Override
     public User getUserByID(int id){
         Session session = getSession();
         session.beginTransaction();
@@ -44,6 +46,7 @@ public class UserDAO extends BaseDAO {
     }
 
     //系统管理员获取用户列表
+    @Override
     public List<User> searchManageDAO(){
         Session session =  getSession();
         session.beginTransaction();
@@ -61,6 +64,7 @@ public class UserDAO extends BaseDAO {
     }
 
     //删除用户
+    @Override
     public void delete(User user){
         Session session = getSession();
         session.beginTransaction();
@@ -76,6 +80,7 @@ public class UserDAO extends BaseDAO {
     }
 
     //修改用户权限
+    @Override
     public void update(User user)
     {
         Session session = getSession();
@@ -92,6 +97,7 @@ public class UserDAO extends BaseDAO {
     }
 
     //增加用户
+    @Override
     public void insert(User user)
     {
         Session session = getSession();

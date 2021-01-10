@@ -11,8 +11,9 @@ import po.Scrap;
 
 import java.util.List;
 
-public class ScrapDAO extends BaseDAO {
+public class ScrapDAO extends BaseDAO implements IScrapDAO {
     private Log log = LogFactory.getLog(ScrapDAO.class);
+    @Override
     public void insertScrap(Scrap scrap){
         Session session=getSession();
         session.beginTransaction();
@@ -47,6 +48,7 @@ public class ScrapDAO extends BaseDAO {
     }*/
 
     //监管员获取报废记录
+    @Override
     public List<Scrap> searchScrapRecordDAO(){
         Session session =  getSession();
         session.beginTransaction();
@@ -64,6 +66,7 @@ public class ScrapDAO extends BaseDAO {
     }
 
     //经理获取报废记录
+    @Override
     public List<Scrap> searchScrapRecordDAO_Manager(){
         Session session =  getSession();
         session.beginTransaction();
@@ -83,6 +86,7 @@ public class ScrapDAO extends BaseDAO {
     }
 
     //通过code seqid查询
+    @Override
     public Scrap getScrapRecordByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();

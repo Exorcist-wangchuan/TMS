@@ -8,10 +8,11 @@ import po.ProcessRecord;
 import po.PurchaseRecord;
 import po.ToolEntity;
 
-public class ToolEntityDAO extends BaseDAO  {
+public class ToolEntityDAO extends BaseDAO implements IToolEntityDAO {
     private Log log = LogFactory.getLog(PurchaseRecordDAO.class);
 
     //插入记录（采购入库流程）
+    @Override
     public void insertToolEntityDAO(ToolEntity toolEntity){
         Session session =  getSession();
         session.beginTransaction();
@@ -27,6 +28,7 @@ public class ToolEntityDAO extends BaseDAO  {
     }
 
     //删除记录（报废流程）
+    @Override
     public void deleteToolEntityDAO(String pk){
         Session session = getSession();
         session.beginTransaction();
@@ -57,6 +59,7 @@ public class ToolEntityDAO extends BaseDAO  {
     }
 
     //获得记录
+    @Override
     public ToolEntity getToolEntityByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();
@@ -85,6 +88,7 @@ public class ToolEntityDAO extends BaseDAO  {
     }
 
     //修改记录
+    @Override
     public void updateToolEntity(ToolEntity toolEntity){
         Session session = getSession();
         session.beginTransaction();
