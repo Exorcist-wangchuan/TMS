@@ -15,10 +15,11 @@ import po.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefineToolDAO extends BaseDAO {
+public class DefineToolDAO extends BaseDAO implements IDefineToolDAO {
     private Log log = LogFactory.getLog(DefineToolDAO.class);
 
     //搜索记录
+    @Override
     public DefineTool searchDefineTool(int id) {
         Session session = getSession();
         session.beginTransaction();
@@ -38,6 +39,7 @@ public class DefineToolDAO extends BaseDAO {
     }
 
     //插入记录
+    @Override
     public void insertDefineToolDAO(DefineTool defineTool) {
         Session session = getSession();
         session.beginTransaction();
@@ -53,6 +55,7 @@ public class DefineToolDAO extends BaseDAO {
     }
 
     //更新记录
+    @Override
     public void updateDefineTool(DefineTool defineTool) {
         Session session = getSession();
         session.beginTransaction();
@@ -68,6 +71,7 @@ public class DefineToolDAO extends BaseDAO {
     }
 
     //删除记录
+    @Override
     public void deleteDefineTool(int id){
         Session session = getSession();
         session.beginTransaction();
@@ -88,6 +92,7 @@ public class DefineToolDAO extends BaseDAO {
     }
 
     //批量获取记录
+    @Override
     public List<DefineTool> searchDefineTool_supervisor(){
         Session session =  getSession();
         session.beginTransaction();
@@ -108,6 +113,7 @@ public class DefineToolDAO extends BaseDAO {
     }
 
     //获取类别和责任人的映射
+    @Override
     public List<DefineTool> getOwnerAndCode(){
         Session session = getSession();
         session.beginTransaction();

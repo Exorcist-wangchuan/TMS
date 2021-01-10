@@ -9,18 +9,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DefineToolService {
+public class DefineToolService implements IDefineToolService {
     private DefineToolDAO defineToolDAO=null;
 
+    @Override
     public DefineToolDAO getDefineToolDAO() {
         return defineToolDAO;
     }
 
+    @Override
     public void setDefineToolDAO(DefineToolDAO defineToolDAO) {
         this.defineToolDAO = defineToolDAO;
     }
 
     //查询记录
+    @Override
     public DefineTool searchDefineTool(int id){
         DefineTool defineTool =new DefineTool();
         defineTool=defineToolDAO.searchDefineTool(id);
@@ -28,6 +31,7 @@ public class DefineToolService {
     }
 
     //批量获取记录
+    @Override
     public List<DefineTool> getDefineTool() {
         List<DefineTool> list = new ArrayList<>();
         list = defineToolDAO.searchDefineTool_supervisor();
@@ -35,6 +39,7 @@ public class DefineToolService {
     }
 
     //插入记录
+    @Override
     public boolean saveDefineTool(DefineTool defineTool) {
         //录入时间
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -54,6 +59,7 @@ public class DefineToolService {
     }
 
     //修改记录
+    @Override
     public boolean updateDefineTool(DefineTool defineTool){
         //修改时间
         SimpleDateFormat eidFormat = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -72,6 +78,7 @@ public class DefineToolService {
     }
 
     //删除definetool记录
+    @Override
     public boolean deleteDefineTool(List<String> passedList) {
 
         for (String id:passedList) {

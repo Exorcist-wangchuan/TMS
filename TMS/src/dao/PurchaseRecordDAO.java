@@ -11,9 +11,10 @@ import po.PurchaseRecord;
 
 import java.util.List;
 
-public class PurchaseRecordDAO extends BaseDAO {
+public class PurchaseRecordDAO extends BaseDAO implements IPurchaseRecordDAO {
     private Log log = LogFactory.getLog(PurchaseRecordDAO.class);
 
+    @Override
     public void insertPurchaseRecordDAO(PurchaseRecord purchaseRecord){
         Session session =  getSession();
         session.beginTransaction();
@@ -29,6 +30,7 @@ public class PurchaseRecordDAO extends BaseDAO {
     }
 
     //通过code seqid查询
+    @Override
     public PurchaseRecord getPurchaseRecordByCodeandSeqID(String pk){
         Session session = getSession();
         session.beginTransaction();
@@ -57,6 +59,7 @@ public class PurchaseRecordDAO extends BaseDAO {
     }
 
     //监管员获取采购记录
+    @Override
     public List<PurchaseRecord> searchPurchaseRecordDAO(){
         Session session =  getSession();
         session.beginTransaction();
@@ -74,6 +77,7 @@ public class PurchaseRecordDAO extends BaseDAO {
     }
 
     //经理获取采购记录
+    @Override
     public List<PurchaseRecord> searchPurchaseRecordDAO_Manager(){
         Session session =  getSession();
         session.beginTransaction();

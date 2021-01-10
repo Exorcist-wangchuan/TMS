@@ -12,17 +12,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ProcessService {
+public class ProcessService implements IProcessService {
     private ProcessDAO processDAO=null;
     private PeriodCheckDAO periodCheckDAO;
 
+    @Override
     public void setProcessDAO(ProcessDAO processDAO) {
         this.processDAO = processDAO;
     }
+    @Override
     public void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO){
         this.periodCheckDAO = periodCheckDAO;
     }
 
+    @Override
     public boolean saveProcess(ProcessRecord process) {
         //调用DAO
         processDAO.insertProcess(process);
@@ -30,6 +33,7 @@ public class ProcessService {
     }
 
     //指定codeseqid查询
+    @Override
     public ProcessRecord getProcessByeId(String eid){
         ProcessRecord processRecord=new ProcessRecord();
         processRecord=processDAO.getProcessRecord(eid);
@@ -42,6 +46,7 @@ public class ProcessService {
     * 包含监管员初审、经理终审
     * */
     //监管员通过初审
+    @Override
     public boolean purchase_firstCheck(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -65,6 +70,7 @@ public class ProcessService {
     }
 
     //经理终审
+    @Override
     public boolean purchase_finalCheck(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -93,6 +99,7 @@ public class ProcessService {
      * 包含监管员初审、经理终审
      * */
     //监管员通过初审
+    @Override
     public boolean scrap_firstCheck(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -118,6 +125,7 @@ public class ProcessService {
     }
 
     //经理终审
+    @Override
     public boolean scrap_finalCheck(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -144,6 +152,7 @@ public class ProcessService {
     /*以下为报修专用
     包含高级用户终审*/
     //高级员工终审
+    @Override
     public boolean fix_finalCheck(List<String> passedList){
         //获取日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

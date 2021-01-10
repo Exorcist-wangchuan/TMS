@@ -12,18 +12,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ScrapRecordService {
+public class ScrapRecordService implements IScrapRecordService {
     private ScrapDAO scrapDAO=null;
     private ProcessDAO processDAO=null;
 
+    @Override
     public ScrapDAO getScrapDAO() {
         return scrapDAO;
     }
 
+    @Override
     public void setScrapDAO(ScrapDAO scrapDAO) {
         this.scrapDAO = scrapDAO;
     }
 
+    @Override
     public boolean saveScrap(Scrap scrap){
         //加入时间
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -37,6 +40,7 @@ public class ScrapRecordService {
     }
 
     //监管员获取报废记录
+    @Override
     public List<Scrap> getScrapRecord() {
         List<Scrap> list = new ArrayList<>();
         list = scrapDAO.searchScrapRecordDAO();
@@ -44,6 +48,7 @@ public class ScrapRecordService {
     }
 
     //经理获取报废记录
+    @Override
     public List<Scrap> getScrapRecord_Manager() {
         List<Scrap> list = new ArrayList<>();
         list = scrapDAO.searchScrapRecordDAO_Manager();
@@ -51,6 +56,7 @@ public class ScrapRecordService {
     }
 
     //指定seqid查询
+    @Override
     public Scrap getScrapRecordByCodeandId(String pk){
         Scrap scrap =new Scrap();
         scrap=scrapDAO.getScrapRecordByCodeandSeqID(pk);
