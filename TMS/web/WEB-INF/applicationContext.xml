@@ -167,4 +167,9 @@
         </property>
     </bean>
 
+    <!--生成Excel-->
+    <bean name="exportExcel" class="util.ExportUtil">
+        <property name="purchaseRecordService" ref="purRecordService"/>
+    </bean>
+
 </beans>

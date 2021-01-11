@@ -100,8 +100,28 @@
         </nav>
     </header>
     <!--右侧主体-->
-    <section>
-
+    <section class="bg-light">
+        <div class="container-fluid bg-transparent">
+            <header>&nbsp;</header>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Tool Manage System</h4>
+                        </div>
+                        <div class="card-body">
+                            <h2>您好</h2>
+                            <h5><s:property value="#session.user.name"/>&nbsp;
+                                <s:if test="#session.user.level=='o1'">初级员工</s:if>
+                                <s:if test="#session.user.level=='o2'">高级员工</s:if>
+                                <s:if test="#session.user.level=='sv'">监管员</s:if>
+                                <s:if test="#session.user.level=='manager'">经理</s:if>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!--底部信息-->
     <footer class="main-footer">

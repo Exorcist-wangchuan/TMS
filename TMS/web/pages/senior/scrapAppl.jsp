@@ -114,12 +114,12 @@
                             <form action="submitScrapApplication" method="post">
                                 <div class="form-group row">
                                     <label class="col-3">类别代码<br></label>
-                                    <input name="scrap.code_seqid.Code" type="text" class="col-8 form-control">
+                                    <input name="scrap.code_seqid.code" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码<br></label>
-                                    <input name="scrap.code_seqid.SeqID" type="text" class="col-8 form-control">
+                                    <input name="scrap.code_seqid.seqID" type="text" class="col-8 form-control">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
