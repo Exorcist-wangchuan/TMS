@@ -83,6 +83,9 @@ public class FixRecordAction extends ActionSupport{
         if (!file.exists()) file.mkdir();
         FileUtils.copyFile(upload, new File(file,uploadFileName));
         fixRecord.setImg(path+uploadFileName);
+        String file2 = new File(file,uploadFileName).toString();
+        System.out.println("文件名："+uploadFileName);
+        System.out.println("file2:"+file2);
 
         //保存报修记录
         fixRecord.seteID(eid);
