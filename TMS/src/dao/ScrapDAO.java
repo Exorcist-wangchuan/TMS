@@ -18,6 +18,8 @@ public class ScrapDAO extends BaseDAO implements IScrapDAO {
         Session session=getSession();
         session.beginTransaction();
         try {
+            System.out.println(scrap.getReason());
+            System.out.println(scrap.getCode_seqid().getSeqID());
             session.save(scrap);
         }catch (RuntimeException re){
             log.error("insert new scrap failed", re);
@@ -99,7 +101,7 @@ public class ScrapDAO extends BaseDAO implements IScrapDAO {
             String code=temp[0];
             int seqID=Integer.parseInt(temp[1]);
 
-            String hql = "from Scrap as s where s.code_seqid.code=:code and s.code_seqid.seqID = :seqID";
+            String hql = "from Scrap as s where s.code_seqid.Code=:code and s.code_seqid.SeqID = :seqID";
             Query queryObject = (Query) session.createQuery(hql);
             queryObject.setParameter("code",code);
             queryObject.setParameter("seqID",seqID);

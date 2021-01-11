@@ -5,12 +5,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.Parameter;
 import po.ProcessRecord;
 import po.PurchaseRecord;
+import service.IProcessService;
 import service.ProcessService;
 
 public class ProcessAction extends ActionSupport {
 
     String timelineByeID;
-    private ProcessService processService = null;
+    private IProcessService processService = null;
 
     public String getTimelineByeID() {
         return timelineByeID;
@@ -20,11 +21,11 @@ public class ProcessAction extends ActionSupport {
         this.timelineByeID = timelineByeID;
     }
 
-    public ProcessService getProcessService() {
+    public IProcessService getProcessService() {
         return processService;
     }
 
-    public void setProcessService(ProcessService processService) {
+    public void setProcessService(IProcessService processService) {
         this.processService = processService;
     }
 

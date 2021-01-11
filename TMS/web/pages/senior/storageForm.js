@@ -71,7 +71,7 @@ function NowTime(){
     //获取年月日
     var time=new Date();
     var year=time.getFullYear();
-    var month=time.getMonth();
+    var month=time.getMonth()+1;
     var day=time.getDate();
 
     //获取时分秒

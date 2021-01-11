@@ -1,5 +1,7 @@
 package service;
 
+import dao.IPeriodCheckDAO;
+import dao.IProcessDAO;
 import dao.PeriodCheckDAO;
 import dao.ProcessDAO;
 import po.ProcessRecord;
@@ -7,9 +9,9 @@ import po.ProcessRecord;
 import java.util.List;
 
 public interface IProcessService {
-    void setProcessDAO(ProcessDAO processDAO);
+    void setProcessDAO(IProcessDAO processDAO);
 
-    void setPeriodCheckDAO(PeriodCheckDAO periodCheckDAO);
+    void setPeriodCheckDAO(IPeriodCheckDAO periodCheckDAO);
 
     boolean saveProcess(ProcessRecord process);
 

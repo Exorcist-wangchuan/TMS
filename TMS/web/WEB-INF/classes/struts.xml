@@ -70,6 +70,9 @@ Configuration 2.1//EN"
         <action name="reviewPurchaseRecord_Manager" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager">
             <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
             <result name="fail" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
+            <result name="empty" type="redirectAction">getPurchaseRecord_Manager</result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="processStorageInterceptor"/>
         </action>
 
         <!--以下为报废流程-->
