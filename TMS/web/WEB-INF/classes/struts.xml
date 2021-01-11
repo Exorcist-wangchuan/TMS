@@ -206,5 +206,10 @@ Configuration 2.1//EN"
             <result name="success" type="redirectAction">getOutHouse</result>
         </action>
 
+        <!--导出Excel-->
+        <action name="exportExcel" class="exportExcel" method="importExcel">
+            <!--<result name="success" type="redirect">/pages/supervisor/processPurchaseRequisition.jsp</result>-->
+        </action>
+
     </package>
 </struts>
