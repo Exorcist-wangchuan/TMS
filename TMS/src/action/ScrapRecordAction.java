@@ -56,6 +56,7 @@ public class ScrapRecordAction extends ActionSupport {
         return scrap;
     }
 
+
     public void setScrap(Scrap scrap) {
         this.scrap = scrap;
     }
