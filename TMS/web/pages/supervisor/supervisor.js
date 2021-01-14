@@ -45,7 +45,3 @@ function initButton(){
         console.table(buttons[i].href);
     }
 }
-
-function getExcel(){
-    window.location.href="${pageContext.request.contextPath}/exportExcel";
-}

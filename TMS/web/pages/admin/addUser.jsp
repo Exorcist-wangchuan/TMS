@@ -104,7 +104,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>修改权限表</h4>
+                            <h4>增加用户表</h4>
                         </div>
                         <div class="card-body">
                             <form action="addUser" method="post">
