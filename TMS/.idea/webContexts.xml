@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/web/html/supervisor/processPurchaseRequisition.jsp" value="file://$PROJECT_DIR$/web/html/supervisor" />
+        <entry key="file://$PROJECT_DIR$/web/pages/admin/addUser.jsp" value="file://$PROJECT_DIR$/web/pages/admin" />
       </map>
     </option>
   </component>
