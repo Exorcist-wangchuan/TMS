@@ -125,7 +125,15 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">用户权限<br></label>
-                                    <input name="loginUser.level" type="text" class="col-8 form-control">
+                                    <label>
+                                        <select name="loginUser.level" title="身份信息" class="form-control">
+                                            <option value="o1">初级员工</option>
+                                            <option value="o2">高级员工</option>
+                                            <option value="sv">监管员</option>
+                                            <option value="manager">经理</option>
+                                            <option value="admin">系统管理员</option>
+                                        </select>
+                                    </label>
                                 </div>
                                 <hr>
                                 <div class="form-group col-4 offset-3">
