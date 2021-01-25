@@ -3,7 +3,12 @@
 Configuration 2.1//EN"
         "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.mapper.action.prefix.enabled" value="true" />
+
     <package name="strutsBean" extends="struts-default" namespace="/">
+
         <!--自定义result-type-->
         <result-types>
             <result-type name="mytype" class="redirect.Redircet"></result-type>
@@ -69,6 +74,13 @@ Configuration 2.1//EN"
             <interceptor-ref name="defaultStack"/>
             <interceptor-ref name="processStorageInterceptor"/>
         </action>
+        <action name="rejectPurchaseRecord" class="purchaseRecordAction" method="rejectPurchaseRecord">
+            <result name="success" type="redirectAction">getPurchaseRecord</result>
+            <!--没有选择审批项目-->
+            <result name="empty" type="redirectAction">getPurchaseRecord</result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="processStorageInterceptor"/>
+        </action>
 
         <!--经理获取记录-->
         <action name="getPurchaseRecord_Manager" class="purchaseRecordAction" method="getStoragePurchaseRecord_Manager">
@@ -77,6 +89,13 @@ Configuration 2.1//EN"
 
         <!--经理进行审批-->
         <action name="reviewPurchaseRecord_Manager" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager">
+            <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
+            <result name="fail" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
+            <result name="empty" type="redirectAction">getPurchaseRecord_Manager</result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="processStorageInterceptor"/>
+        </action>
+        <action name="reviewPurchaseRecord_Manager_reject" class="purchaseRecordAction" method="reviewPurchaseRecord_Manager_reject">
             <result name="success" type="redirectAction">getPurchaseRecord_Manager</result>
             <result name="fail" type="redirect">/pages/manager/processPurchase_manager.jsp</result>
             <result name="empty" type="redirectAction">getPurchaseRecord_Manager</result>
@@ -108,6 +127,9 @@ Configuration 2.1//EN"
         <action name="reviewScrapRecord" class="scrapAction" method="reviewScrapRecord">
             <result name="success" type="redirectAction">getScrapRecord</result>
         </action>
+        <action name="rejectScrapRecord" class="scrapAction" method="rejectScrapRecord">
+            <result name="success" type="redirectAction">getScrapRecord</result>
+        </action>
 
         <!--经理获取报废记录-->
         <action name="getScrapRecord_Manager" class="scrapAction" method="getStorageScrapRecord_Manager">
@@ -116,6 +138,9 @@ Configuration 2.1//EN"
 
         <!--经理进行报废审批-->
         <action name="reviewScrapRecord_Manager" class="scrapAction" method="reviewPurchaseRecord_Manager">
+            <result name="success" type="redirectAction">getScrapRecord_Manager</result>
+        </action>
+        <action name="rejectScrapRecord_Manager" class="scrapAction" method="reviewPurchaseRecord_Manager">
             <result name="success" type="redirectAction">getScrapRecord_Manager</result>
         </action>
 
