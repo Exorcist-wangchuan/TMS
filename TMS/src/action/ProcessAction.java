@@ -37,9 +37,9 @@ public class ProcessAction extends ActionSupport {
         if(processRecord.getDname()!=null){
             System.out.println("dname"+processRecord.getDname());
         }
-        if(processRecord.geteID().equals("null")){
-            return "fail";
-        }
+//        if(processRecord.geteID().equals("null")){
+//            return "fail";
+//        }
         ActionContext.getContext().getSession().put("processSearchResult", processRecord);
         return "success";
     }

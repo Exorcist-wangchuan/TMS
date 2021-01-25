@@ -113,22 +113,22 @@
                             <form action="submitWareHouseAppl" method="post">
                                 <div class="form-group row">
                                     <label class="col-3">领用人<br></label>
-                                    <input name="wareHouseRecord.Operator" type="text" class="col-8 form-control">
+                                    <input name="wareHouseRecord.Operator" type="text" class="col-8 form-control" placeholder="请填写领用人ID 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">产线<br></label>
-                                    <input name="wareHouseRecord.PID" type="text" class="col-8 form-control">
+                                    <input name="wareHouseRecord.PID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">类别代码</label>
-                                    <input name="wareHouseRecord.code_seqid.Code" type="text" class="col-8 form-control">
+                                    <input name="wareHouseRecord.code_seqid.Code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码</label>
-                                    <input name="wareHouseRecord.code_seqid.SeqID" type="text" class="col-8 form-control">
+                                    <input name="wareHouseRecord.code_seqid.SeqID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <div class="form-group col-4 offset-3">
                                     <button type="reset" class="btn btn-secondary">重置</button>

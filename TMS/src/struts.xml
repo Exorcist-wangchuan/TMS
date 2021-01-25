@@ -7,6 +7,8 @@ Configuration 2.1//EN"
         <!--自定义result-type-->
         <result-types>
             <result-type name="mytype" class="redirect.Redircet"></result-type>
+            <result-type name="purchasetype" class="redirect.PurchaseRedirect"></result-type>
+            <result-type name="supervisortype" class="redirect.supervisorRedirect"></result-type>
         </result-types>
         <!--拦截器-->
         <interceptors>
@@ -37,7 +39,10 @@ Configuration 2.1//EN"
         <!--需要加入后端校验-->
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
-            <result name="success">/pages/senior/seniorHome.jsp</result>
+            <result name="success" type="purchasetype">
+                <param name="location">/pages/senior/seniorHome.jsp</param>
+                <param name="msg">提交成功！</param>
+            </result>
             <result name="fail">/pages/senior/storageApply.jsp</result>
             <result name="PurchaseRecordexist">/pages/senior/storageApply.jsp</result>
             <!-- 配置系统默认拦截器 -->
@@ -82,7 +87,10 @@ Configuration 2.1//EN"
         <!--以下为报废流程-->
         <!--报废提交申请-->
         <action name="submitScrapApplication" class="scrapAction" method="dealScrapApply">
-            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="success" type="purchasetype">
+                <param name="location">/pages/senior/seniorHome.jsp</param>
+                <param name="msg">提交成功！</param>
+            </result>
             <result name="fail">/pages/senior/scrapAppl.jsp</result>
             <result name="ScrapRecordExist">/pages/senior/scrapAppl.jsp</result>
             <!--配置系统默认拦截器-->
@@ -120,17 +128,11 @@ Configuration 2.1//EN"
         <!--报修申请表-->
         <action name="submitFixRecord" class="fixRecordAction" method="dealFixApply">
             <result name="success" type="mytype">
-                <param name="location">primaryHome.jsp</param>
+                <param name="location">/pages/primary/primaryHome.jsp</param>
                 <param name="msg">提交成功！</param>
             </result>
-            <result name="fail" type="mytype">
-                <param name="location">primaryHome.jsp</param>
-                <param name="msg">提交失败！</param>
-            </result>
-            <result name="fixRecordNotnull" type="mytype">
-                <param name="location">primaryHome.jsp</param>
-                <param name="msg">提交失败！</param>
-            </result>
+            <result name="fail">/pages/primary/repairAppl.jsp</result>
+            <result name="fixRecordNotnull">/pages/primary/repairAppl.jsp</result>
             <!-- 配置系统默认拦截器 -->
             <interceptor-ref name="defaultStack"/>
             <!-- 配置自定义拦截器 -->
@@ -149,20 +151,29 @@ Configuration 2.1//EN"
 
         <!--高级员工修改基础信息-->
         <action name="submitToolEntityUpdate" class="toolEntityAction" method="updateToolEntity">
-            <result name="success" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="success" type="purchasetype">
+                <param name="location">/pages/senior/seniorHome.jsp</param>
+                <param name="msg">修改成功！</param>
+            </result>
             <result name="fail">/pages/senior/toolEntityUpdate.jsp</result>
         </action>
 
         <!--监管员创建工夹具类别-->
         <action name="defineToolInsert" class="defineToolAction" method="dealDefineToolApply">
-            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="success" type="supervisortype">
+                <param name="location">/pages/primary/supervisorHome.jsp</param>
+                <param name="msg">创建成功！</param>
+            </result>
             <result name="fail">/pages/supervisor/defineToolInsert.jsp</result>
         </action>
 
 
         <!--监管员修改工夹具类别-->
         <action name="defineToolUpdate" class="defineToolAction" method="updateDefineTool">
-            <result name="success" type="redirect">/pages/supervisor/supervisorHome.jsp</result>
+            <result name="success" type="supervisortype">
+                <param name="location">/pages/primary/supervisorHome.jsp</param>
+                <param name="msg">修改成功！</param>
+            </result>
             <result name="fail">/pages/supervisor/defineToolUpdate.jsp</result>
         </action>
 

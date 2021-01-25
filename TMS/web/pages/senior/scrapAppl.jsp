@@ -112,24 +112,25 @@
                         </div>
                         <div class="card-body">
                             <form action="submitScrapApplication" method="post">
+                                <s:actionerror/>
                                 <div class="form-group row">
                                     <label class="col-3">类别代码<br></label>
-                                    <input name="scrap.code_seqid.code" type="text" class="col-8 form-control">
+                                    <input name="scrap.code_seqid.code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码<br></label>
-                                    <input name="scrap.code_seqid.seqID" type="text" class="col-8 form-control">
+                                    <input name="scrap.code_seqid.seqID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">夹具寿命计数</label>
-                                    <input name="scrap.lifecount" type="text" class="col-8 form-control">
+                                    <input name="scrap.lifecount" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">报废原因</label>
-                                    <input name="scrap.reason" type="text" class="col-8 form-control">
+                                    <input name="scrap.reason" type="text" class="col-8 form-control" placeholder="请填写30位以内字符">
                                 </div>
                                 <div class="form-group col-4 offset-3">
                                     <button type="reset" class="btn btn-secondary">重置</button>

@@ -113,34 +113,35 @@
                         </div>
                         <div class="card-body">
                             <form action="submitToolEntityUpdate" method="post">
+                                <s:actionerror/>
                                 <div class="form-group row">
                                     <label class="col-3">类别代码<br><small></small></label>
-                                    <input name="toolEntity.code_seqid.code" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.code_seqid.code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码</label>
-                                    <input name="toolEntity.code_seqid.seqID" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.code_seqid.seqID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">单据号</label>
-                                    <input name="toolEntity.billNo" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.billNo" type="text" class="col-8 form-control" placeholder="请填写20位以内字符 如:JBO-3216">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">采购入库日期</label>
-                                    <input name="toolEntity.regDate" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.regDate" type="text" class="col-8 form-control" >
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">已使用次数</label>
-                                    <input name="toolEntity.usedCount" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.usedCount" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">存放库位</label>
-                                    <input name="toolEntity.location" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.location" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
 
                                 <div class="form-group col-4 offset-3">

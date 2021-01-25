@@ -1,5 +1,7 @@
 package interceptor;
 
+import action.FixRecordAction;
+import action.ScrapRecordAction;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
@@ -19,6 +21,9 @@ public class scrapApplyInterceptor extends AbstractInterceptor {
     public String intercept(ActionInvocation invocation) throws Exception {
         System.out.println("scrapApplyInterceptor executed!");
         ActionContext ctx = invocation.getInvocationContext();
+        //获得action对象
+        Object action=invocation.getAction();
+        ScrapRecordAction scrapRecordAction = (ScrapRecordAction) action;
 
         //获得purRecordService的bean对象
         ActionContext actionContext = invocation.getInvocationContext();
@@ -36,11 +41,23 @@ public class scrapApplyInterceptor extends AbstractInterceptor {
         //获得code和seqID调用purchaseRecordService来查重
         String code = formMap.get("scrap.code_seqid.code").toString();
         String seqid = formMap.get("scrap.code_seqid.seqID").toString();
+
+
+        String lifecount = formMap.get("scrap.lifecount").toString();
+        String reason = formMap.get("scrap.reason").toString();
+
+        //判空
+        if(code.toString().length()<1 || seqid.toString().length()<1 || lifecount.toString().length()<1 || reason.toString().length()<1 ){
+            scrapRecordAction.addActionError("表格不能为空");
+            return "ScrapRecordExist";
+        }
+
         String pk = code + "&" + seqid;
         System.out.println("pk:" + pk);
         Scrap scrap = scrapRecordService.getScrapRecordByCodeandId(pk);
         //如果存在则返回ScrapRecordExist
         if (scrap != null) {
+            scrapRecordAction.addActionError("报废记录已存在，请重新填写！");
             return "ScrapRecordExist";
         }
         return invocation.invoke();

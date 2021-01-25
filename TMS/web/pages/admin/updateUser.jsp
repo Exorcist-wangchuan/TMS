@@ -110,22 +110,31 @@
                             <form action="updateUser" method="post">
                                 <div class="form-group row">
                                     <label class="col-3">用户ID</label>
-                                    <input name="loginUser.id" type="text" class="col-8 form-control">
+                                    <input name="loginUser.id" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">姓名<br></label>
-                                    <input name="loginUser.name" type="text" class="col-8 form-control">
+                                    <input name="loginUser.name" type="text" class="col-8 form-control" placeholder="请填写姓名 如:张三">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">密码<br></label>
-                                    <input name="loginUser.password" type="text" class="col-8 form-control">
+                                    <input name="loginUser.password" type="text" class="col-8 form-control" placeholder="请填写20位以内字符">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">修改权限<br></label>
-                                    <input name="loginUser.level" type="text" class="col-8 form-control">
+<%--                                    <input name="loginUser.level" type="text" class="col-8 form-control">--%>
+                                    <label>
+                                        <select name="loginUser.level" title="身份信息" class="form-control">
+                                            <option value="o1">初级员工</option>
+                                            <option value="o2">高级员工</option>
+                                            <option value="sv">监管员</option>
+                                            <option value="manager">经理</option>
+                                            <option value="admin">系统管理员</option>
+                                        </select>
+                                    </label>
                                 </div>
                                 <hr>
                                 <div class="form-group col-4 offset-3">

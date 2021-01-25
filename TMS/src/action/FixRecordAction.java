@@ -92,8 +92,13 @@ public class FixRecordAction extends ActionSupport{
         fixRecord.setApplyUID(applyUID);
         boolean secondRes = fixRecordService.saveFixRecord(fixRecord);
         //判断
-        if (firstRes && secondRes) return "success";
-        else return "fail";
+        if (firstRes && secondRes){
+            return "success";
+        }
+        else{
+            this.addActionError("报修记录提交失败，请重新填写！");
+            return "fail";
+        }
     }
 
     //高级员工

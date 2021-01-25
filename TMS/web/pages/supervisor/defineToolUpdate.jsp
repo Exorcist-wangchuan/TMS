@@ -115,72 +115,72 @@
                             <form action="defineToolUpdate" method="post">
                                 <div class="form-group row">
                                     <label class="col-3">类别编号<br><small></small></label>
-                                    <input name="defineTool.id" type="text" class="col-8 form-control">
+                                    <input name="defineTool.id" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">类别代码<br><small></small></label>
-                                    <input name="defineTool.code" type="text" class="col-8 form-control">
+                                    <input name="defineTool.code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">夹具名称</label>
-                                    <input name="defineTool.name" type="text" class="col-8 form-control">
+                                    <input name="defineTool.name" type="text" class="col-8 form-control" placeholder="请填写30位以内字符 如:B42 螺丝紧固夹具">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">所属大类编号</label>
-                                    <input name="defineTool.familyID" type="text" class="col-8 form-control">
+                                    <input name="defineTool.familyID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">所属大类</label>
-                                    <input name="defineTool.family" type="text" class="col-8 form-control">
+                                    <input name="defineTool.family" type="text" class="col-8 form-control" placeholder="请填写20位以内字符 如:BFC SQ 2218">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">夹具模组</label>
-                                    <input name="defineTool.model" type="text" class="col-8 form-control">
+                                    <input name="defineTool.model" type="text" class="col-8 form-control" placeholder="请填写20位以内字符 如:B42">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">夹具料号</label>
-                                    <input name="defineTool.partNo" type="text" class="col-8 form-control">
+                                    <input name="defineTool.partNo" type="text" class="col-8 form-control" placeholder="请填写20位以内字符 如:KBZ233500/1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">配备数量</label>
-                                    <input name="defineTool.upl" class="col-8 form-control"/>
+                                    <input name="defineTool.upl" class="col-8 form-control" placeholder="请填写整数 如:1"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">用途</label>
-                                    <input name="defineTool.usedFor" class="col-8 form-control"/>
+                                    <input name="defineTool.usedFor" class="col-8 form-control" placeholder="请填写30位以内字符"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">保养点检周期</label>
-                                    <input name="defineTool.pmPeriod" class="col-8 form-control"/>
+                                    <input name="defineTool.pmPeriod" class="col-8 form-control" placeholder="请填写整数 如:1"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">责任人编号</label>
-                                    <input name="defineTool.owner" class="col-8 form-control"/>
+                                    <input name="defineTool.owner" class="col-8 form-control" placeholder="请填写ID 如:1"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">责任人姓名</label>
-                                    <input name="defineTool.ownerName" class="col-8 form-control"/>
+                                    <input name="defineTool.ownerName" class="col-8 form-control" placeholder="请填写姓名 如:张三"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">所属工作部编号</label>
-                                    <input name="defineTool.workCellID" class="col-8 form-control"/>
+                                    <input name="defineTool.workCellID" class="col-8 form-control" placeholder="请填写整数 如:1"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">所属工作部</label>
-                                    <input name="defineTool.workCell" class="col-8 form-control"/>
+                                    <input name="defineTool.workCell" class="col-8 form-control" placeholder="请填写10位以内字符 如:JW05"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
