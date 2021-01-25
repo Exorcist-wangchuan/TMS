@@ -52,9 +52,6 @@ public class ScrapRecordAction extends ActionSupport {
         this.scrapService = scrapService;
     }
 
-    public IProcessService getProcessService() {
-        return processService;
-    }
 
     public void setProcessService(IProcessService processService) {
         this.processService = processService;
@@ -81,6 +78,8 @@ public class ScrapRecordAction extends ActionSupport {
         boolean firstRes = processService.saveProcess(process);
         //保存报废记录
         scrap.seteID(eid);
+        System.out.println("scrapaction id:"+scrap.getCode_seqid());
+        System.out.println("scrapaction code:"+scrap.getCode_seqid().getCode());
         boolean secondRes = scrapService.saveScrap(scrap);
         //判断
         if (firstRes && secondRes) return "success";
