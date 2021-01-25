@@ -31,6 +31,9 @@ public class ToolEntityAction extends ActionSupport {
     public String updateToolEntity(){
         boolean res=toolEntityService.updateToolEntity(toolEntity);
         if(res) return "success";
-        return "fail";
+        else{
+            this.addActionError("修改失败，请重新填写！");
+            return "fail";
+        }
     }
 }

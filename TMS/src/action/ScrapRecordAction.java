@@ -85,7 +85,10 @@ public class ScrapRecordAction extends ActionSupport {
         boolean secondRes = scrapService.saveScrap(scrap);
         //判断
         if (firstRes && secondRes) return "success";
-        else return "fail";
+        else{
+            this.addActionError("报废记录提交失败，请重新填写！");
+            return "fail";
+        }
     }
 
     //监管员

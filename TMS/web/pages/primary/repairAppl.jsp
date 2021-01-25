@@ -108,6 +108,7 @@
                         </div>
                         <div class="card-body">
                             <form action="submitFixRecord" method="post" enctype="multipart/form-data">
+                                <s:actionerror/>
                                 <div class="form-group row">
                                     <label class="col-3">申请人编号</label>
                                     <label><s:property value="#session.user.id" /></label>
@@ -115,17 +116,17 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码<br></label>
-                                    <input name="fixRecord.seqID" type="text" class="col-8 form-control">
+                                    <input name="fixRecord.seqID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">故障描述</label>
-                                    <input name="fixRecord.description" type="text" class="col-8 form-control">
+                                    <input name="fixRecord.description" type="text" class="col-8 form-control" placeholder="请填写描述，不超过30个字符">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">处理人</label>
-                                    <input name="fixRecord.dealUID" type="text" class="col-8 form-control">
+                                    <input name="fixRecord.dealUID" type="text" class="col-8 form-control" placeholder="请填写处理人ID 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">

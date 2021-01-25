@@ -61,6 +61,9 @@ public class ProcessDAO extends BaseDAO implements IProcessDAO {
             if(queryObject.uniqueResult()==null){
                 ProcessRecord processRecord=new ProcessRecord();
                 processRecord.seteID("null");
+                processRecord.setApply_Date("no");
+                processRecord.setFirst_Check_Date("no");
+                processRecord.setFinal_Check_Date("no");
                 return processRecord;
             }
             return (ProcessRecord) queryObject.uniqueResult();

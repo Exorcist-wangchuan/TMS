@@ -126,10 +126,14 @@ public class PurchaseRecordAction extends ActionSupport {
 
         //判断
         if (firstRes && secondRes && entityRes) {
+            System.out.println("采购入库提交成功");
+            this.addActionError("采购入库记录提交成功");
             ctx.put("PurchaseApplyResult","采购记录提交成功");
             return "success";
         }
         else {
+            System.out.println("采购入库提交失败");
+            this.addActionError("采购入库记录提交失败");
             ctx.put("PurchaseApplyResult","采购记录提交失败");
             return "fail";
         }

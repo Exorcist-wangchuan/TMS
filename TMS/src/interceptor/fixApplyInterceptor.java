@@ -1,5 +1,7 @@
 package interceptor;
 
+import action.FixRecordAction;
+import action.PurchaseRecordAction;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
@@ -11,6 +13,9 @@ import java.util.Map;
             System.out.println("fixApplyInterceptor executed!");
             ActionContext ctx = invocation.getInvocationContext();
             Map session = ctx.getSession();
+            //获得action对象
+            Object action=invocation.getAction();
+            FixRecordAction fixRecordAction = (FixRecordAction) action;
 
             //获取用户请求页面的参数
             Map formMap = invocation.getInvocationContext().getParameters();
@@ -29,6 +34,7 @@ import java.util.Map;
 
             //如果有空则返回fixRecordNotnull
             if (code.equals("")||seqid.equals("")||des.equals("")||dealUID.equals("")||Img.equals("")) {
+                fixRecordAction.addActionError("表格不能为空");
                 return "fixRecordNotnull";
             }
             return invocation.invoke();

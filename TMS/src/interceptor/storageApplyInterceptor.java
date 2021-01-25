@@ -1,5 +1,6 @@
 package interceptor;
 
+import action.PurchaseRecordAction;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -21,6 +22,10 @@ public class storageApplyInterceptor extends AbstractInterceptor {
     public String intercept(ActionInvocation invocation) throws Exception {
         ActionContext ctx = invocation.getInvocationContext();
         Map session = ctx.getSession();
+        //获得action对象
+        Object action=invocation.getAction();
+        PurchaseRecordAction purchaseRecordAction = (PurchaseRecordAction)action;
+
 
         //获得purRecordService的bean对象
         ActionContext actionContext = invocation.getInvocationContext();
@@ -41,7 +46,9 @@ public class storageApplyInterceptor extends AbstractInterceptor {
         String billNo = formMap.get("purchaseRecord.billNo").toString();
         String purchaseDate = formMap.get("purchaseRecord.purchaseDate").toString();
         String location = formMap.get("purchaseRecord.location").toString();
+        //输入框为空提示
         if(code.toString().length()<1 || seqid.toString().length()<1 || billNo.toString().length()<1 || purchaseDate.toString().length()<1 || location.toString().length()<1){
+            purchaseRecordAction.addActionError("表格不能为空");
             return "PurchaseRecordexist";
         }
 
@@ -51,6 +58,8 @@ public class storageApplyInterceptor extends AbstractInterceptor {
 
         //如果存在则返回PurchaseRecordexist
         if (purchaseRecord != null) {
+            System.out.println("existerror");
+            purchaseRecordAction.addActionError("该记录已经存在，请重新填写！");
             return "PurchaseRecordexist";
         }
         return invocation.invoke();

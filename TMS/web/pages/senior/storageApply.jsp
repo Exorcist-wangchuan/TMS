@@ -113,6 +113,7 @@
                         </div>
                         <div class="card-body">
                             <form action="submitPurchaseRecord" method="post" enctype="multipart/form-data">
+                                <s:actionerror/>
                                 <div class="form-group row">
                                     <label class="col-3">申请者编号</label>
                                     <s:textfield name="purchaseRecord.applyUID" value="%{#session.user.id}" class="col-8 form-control" readonly="true"/>
@@ -120,17 +121,17 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">类别代码<br><small></small></label>
-                                    <input name="purchaseRecord.code_seqid.code" type="text" class="col-8 form-control">
+                                    <input name="purchaseRecord.code_seqid.code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">物品代码</label>
-                                    <input name="purchaseRecord.code_seqid.seqID" type="text" class="col-8 form-control">
+                                    <input name="purchaseRecord.code_seqid.seqID" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">单据号</label>
-                                    <input name="purchaseRecord.billNo" type="text" class="col-8 form-control">
+                                    <input name="purchaseRecord.billNo" type="text" class="col-8 form-control" placeholder="请填写20位以内字符 如:JBO-3216" >
                                 </div>
                                 <hr>
                                 <div class="form-group row">
@@ -140,7 +141,7 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">存放库位</label>
-                                    <input name="toolEntity.location" type="text" class="col-8 form-control">
+                                    <input name="toolEntity.location" type="text" class="col-8 form-control" placeholder="请填写整数 如:1">
                                 </div>
                                 <hr>
                                 <div class="form-group row">

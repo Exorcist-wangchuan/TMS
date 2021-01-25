@@ -119,7 +119,7 @@
                     <form action="ProcessRecordTimeLine" method="post">
                         <div class="form-group row">
                             <h5 class="col-1">流程ID</h5>
-                            <input name="timelineByeID" type="text" class="col-3 form-control">
+                            <input name="timelineByeID" type="text" class="col-3 form-control" placeholder="请输入流程ID 如:20210110184945">
                         </div>
                         <div class="form-group col-4  ">
                             <button class="nodis col-2"></button>
@@ -133,7 +133,7 @@
                 <div class="row">
                     <div class="timeline ">
                         <!--查询结果不为空-->
-                        <s:if test="#session.processSearchResult!=null">
+                        <s:if test="#session.processSearchResult.apply_Date!='no'">
 
                             <div class="timeline-item timeline-item-left timeline-item-arrow-sm col-8">
                                 <div class="timeline-point timeline-point-blank">
@@ -161,7 +161,7 @@
                             </div>
                         </s:if>
                         <!--有初审-->
-                        <s:if test="#session.processSearchResult.first_Check_Date!=null">
+                        <s:if test="#session.processSearchResult.first_Check_Date!='no'">
 
                             <div class="timeline-item timeline-item-right timeline-item-arrow-sm col-8">
                                 <div class="timeline-point timeline-point-blank">
@@ -189,7 +189,7 @@
                             </div>
                         </s:if>
                         <!--有终审-->
-                        <s:if test="#session.processSearchResult.final_Check_Date!=null">
+                        <s:if test="#session.processSearchResult.final_Check_Date!='no'">
 
                             <div class="timeline-item  timeline-item-left timeline-item-arrow-sm col-8">
                                 <div class="timeline-point timeline-point-blank">
