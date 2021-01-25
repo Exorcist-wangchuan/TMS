@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>处理采购入库申请</title>
+    <title>处理报废申请</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -99,12 +99,12 @@
     <!--右侧主体-->
     <section>
         <div class="container-fluid ">
-            <header class="h3 display">处理采购入库申请</header>
+            <header class="h3 display">处理报废申请</header>
             <div class="row">
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h4>入库申请列表</h4>
+                            <h4>报废申请列表</h4>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewScrapRecord">

@@ -105,8 +105,12 @@
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header d-inline">
-                            <h4 class="d-inline">入库申请列表</h4>
-                            <button class="d-inline btn btn-primary ml-lg-5" type="button" id="excelBtn">导出</button>
+                            <h4 class="d-inline">入库申请列表</h4><%--id="excelBtn"--%>
+                            <div class="d-inline d-inline-block">
+                                <form action="exportExcel" method="post" enctype="multipart/form-data">
+                                    <button class="d-inline btn btn-primary ml-lg-5" type="submit">导出</button>
+                                </form>
+                            </div>
                         </div>
                         <div class="card-body">
                             <form method="post" action="reviewPurchaseRecord">
