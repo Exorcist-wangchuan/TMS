@@ -158,7 +158,7 @@
     <!--配置触发器-->
     <bean name="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobDetail"/>
-        <property name="cronExpression" value="0 58 * * * ? *"/>
+        <property name="cronExpression" value="0 30 * * * ? *"/>
     </bean>
 
     <!--配置调度工厂-->

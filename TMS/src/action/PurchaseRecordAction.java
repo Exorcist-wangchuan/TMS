@@ -150,13 +150,21 @@ public class PurchaseRecordAction extends ActionSupport {
 
     //监管员审核通过
     public String reviewPurchaseRecord() {
+        System.out.println(111);
         List<String> passedList = checkList.getCheckList();
         boolean res = processService.purchase_firstCheck(passedList);
-
         if (res) return "success";
         else return "fail";
     }
 
+    //监管员初审不通过
+    public String rejectPurchaseRecord(){
+        System.out.println(222);
+        List<String> passedList = checkList.getCheckList();
+        boolean res = processService.purchase_firstCheck_reject(passedList);
+        if (res) return "success";
+        else return "fail";
+    }
 
     //经理
     //经理获取采购记录
@@ -174,6 +182,14 @@ public class PurchaseRecordAction extends ActionSupport {
         if(re.equals("fail"))
             return "fail";
         boolean res = processService.purchase_finalCheck(passedList);
+        if (res) return "success";
+        else return "fail";
+    }
+
+    //经理审核不通过
+    public String reviewPurchaseRecord_Manager_reject(){
+        List<String> passedList = checkList.getCheckList();
+        boolean res = processService.purchase_finalCheck_reject(passedList);
         if (res) return "success";
         else return "fail";
     }

@@ -103,10 +103,15 @@ public class ScrapRecordAction extends ActionSupport {
     //监管员审核通过
     public String reviewScrapRecord(){
         List<String> passedList = checkList.getCheckList();
-        for (String str:passedList){
-            System.out.println("ss"+str);
-        }
         boolean res = processService.scrap_firstCheck(passedList);
+        if (res) return "success";
+        else return "fail";
+    }
+
+    //监管员驳回报废请求
+    public String rejectScrapRecord(){
+        List<String> passedList = checkList.getCheckList();
+        boolean res = processService.scrap_firstCheck_reject(passedList);
         if (res) return "success";
         else return "fail";
     }
@@ -134,4 +139,13 @@ public class ScrapRecordAction extends ActionSupport {
         if (res) return "success";
         else return "fail";
     }
+
+    //经理审核不通过
+    public String rejectPurchaseRecord_Manager(){
+        List<String> passedList = checkList.getCheckList();
+        boolean res = processService.scrap_finalCheck_reject(passedList);
+        if (res) return "success";
+        else return "fail";
+    }
+
 }

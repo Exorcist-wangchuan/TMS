@@ -135,7 +135,8 @@
                                         </tr>
                                     </s:iterator>
                                 </table>
-                                <button type="submit" class="btn btn-primary">审批通过</button>
+                                <s:submit cssClass="btn btn-primary" value="审批通过" theme="simple"/>
+                                <s:submit action="reviewPurchaseRecord_Manager_reject" cssClass="btn btn-danger" value="驳回申请" theme="simple"/>
                             </form>
                         </div>
                     </div>

@@ -25,8 +25,14 @@ public interface IProcessService {
     //监管员通过初审
     boolean purchase_firstCheck(List<String> passedList);
 
+    //监管员不通过初审
+    boolean purchase_firstCheck_reject(List<String> passedList);
+
+
     //经理终审
     boolean purchase_finalCheck(List<String> passedList);
+    //经理终审不同过
+    boolean purchase_finalCheck_reject(List<String> passedList);
 
     /*
      * 以下为报废流程专用
@@ -34,9 +40,13 @@ public interface IProcessService {
      * */
     //监管员通过初审
     boolean scrap_firstCheck(List<String> passedList);
+    //监管员不通过初审
+    boolean scrap_firstCheck_reject(List<String> passedList);
 
     //经理终审
     boolean scrap_finalCheck(List<String> passedList);
+    //经理不通过终审
+    boolean scrap_finalCheck_reject(List<String> passedList);
 
     /*以下为报修专用
         包含高级用户终审*/
