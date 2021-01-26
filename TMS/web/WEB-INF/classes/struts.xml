@@ -39,8 +39,6 @@ Configuration 2.1//EN"
             <result name="fail">/login.jsp</result>
         </action>
 
-
-
         <!--需要加入后端校验-->
         <!--获取工夹具类别-->
         <action name="getToolCodeForStorage" class="purchaseRecordAction" method="getToolCode">
@@ -250,8 +248,8 @@ Configuration 2.1//EN"
             <result name="success">/pages/senior/WareHouseAppl.jsp</result>
         </action>
         <action name="submitWareHouseAppl" class="WareHouseAction" method="dealWareHouse">
-            <result name="success" type="redirect">/pages/senior/WareHouseAppl.jsp</result>
-            <result name="fail" type="redirect">/pages/senior/seniorHome.jsp</result>
+            <result name="success" type="chain">getToolCodeForWareHouse</result>
+            <result name="fail">/pages/senior/seniorHome.jsp</result>
         </action>
 
         <!--高级员工获取出库-->

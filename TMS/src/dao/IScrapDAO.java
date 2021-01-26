@@ -15,4 +15,7 @@ public interface IScrapDAO extends IBaseDAO {
 
     //通过code seqid查询
     Scrap getScrapRecordByCodeandSeqID(String pk);
+
+    //获取所有报废记录
+    List<Scrap> getAllRecord();
 }

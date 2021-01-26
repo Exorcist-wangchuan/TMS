@@ -20,5 +20,6 @@ public interface IScrapRecordService {
     public List<Scrap> getScrapRecord();
     public List<Scrap> getScrapRecord_Manager();
     public Scrap getScrapRecordByCodeandId(String pk);
+    double getAverageScrapTime(String code);
 
 }

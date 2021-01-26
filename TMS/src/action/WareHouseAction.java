@@ -95,13 +95,14 @@ public class WareHouseAction {
     //高级员工审核出库
     public String OutHouse() {
         List<String> passedList = checkList.getCheckList();
-        if (passedList == null) System.out.println(111);
+        /*if (passedList == null) System.out.println(111);
         else System.out.println(222);
         System.out.println(passedList.size());
         System.out.println(passedList.get(0));
         for (int i = 0; i < passedList.size(); i++) {
             System.out.println(passedList.get(i));
-        }
+        }*/
+
         boolean res = wareHouseService.ChangeYN(passedList);
         if (res) return "success";
         else return "fail";
