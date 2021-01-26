@@ -5,6 +5,8 @@ import po.WareHouseRecord;
 import java.util.List;
 
 public interface IWareHouseDAO extends IBaseDAO {
+    public void INupdateWareHouseRecord(WareHouseRecord wareHouseRecord);
+
     //插入记录（入库流程）
     void insertWareHouseDAO(WareHouseRecord warehouseRecord);
 

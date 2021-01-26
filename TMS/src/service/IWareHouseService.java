@@ -7,6 +7,8 @@ import po.WareHouseRecord;
 import java.util.List;
 
 public interface IWareHouseService {
+    public WareHouseRecord searchWareHouse(WareHouseRecord wareHouseRecord);
+
     IWareHouseDAO getWareHouseDAO();
 
     void setWareHouseDAO(IWareHouseDAO wareHouseDAO);
@@ -16,4 +18,6 @@ public interface IWareHouseService {
     List<WareHouseRecord> getWareHouseRecord();
 
     boolean ChangeYN(List<String> passedList);
+
+    public boolean INYN(WareHouseRecord wareHouseRecord);
 }

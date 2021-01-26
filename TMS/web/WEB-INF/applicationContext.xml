@@ -133,6 +133,7 @@
     <bean name="WareHouseAction" class="action.WareHouseAction">
         <property name="wareHouseRecord" ref="wareHouseRecord"/>
         <property name="wareHouseService" ref="wareHouseService"/>
+        <property name="toolEntityService" ref="toolEntityService"/>
         <property name="checkList" ref="checkList"/>
     </bean>
     <!--查询流程时间轴-->

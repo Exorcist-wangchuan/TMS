@@ -52,6 +52,8 @@ public class WareHouseRecord implements Serializable {
         return YN;
     }
 
+
+
     public void setYN(boolean YN) {
         this.YN = YN;
     }
