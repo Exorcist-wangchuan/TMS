@@ -74,6 +74,7 @@ Configuration 2.1//EN"
             <interceptor-ref name="defaultStack"/>
             <interceptor-ref name="processStorageInterceptor"/>
         </action>
+
         <action name="rejectPurchaseRecord" class="purchaseRecordAction" method="rejectPurchaseRecord">
             <result name="success" type="redirectAction">getPurchaseRecord</result>
             <!--没有选择审批项目-->

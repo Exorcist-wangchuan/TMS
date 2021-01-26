@@ -81,13 +81,30 @@ public class WareHouseDAO extends BaseDAO implements IWareHouseDAO {
         }
     }
 
-    //修改记录
+    //出库
     @Override
     public void updateWareHouseRecord(WareHouseRecord wareHouseRecord){
         Session session = getSession();
         session.beginTransaction();
         try {
             wareHouseRecord.setYN(true);
+            session.update(wareHouseRecord);
+        }catch (RuntimeException re){
+            log.error("update processRecord failed", re);
+            throw re;
+        }finally {
+            session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    //入库修改
+    @Override
+    public void INupdateWareHouseRecord(WareHouseRecord wareHouseRecord){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            wareHouseRecord.setYN(false);
             session.update(wareHouseRecord);
         }catch (RuntimeException re){
             log.error("update processRecord failed", re);
