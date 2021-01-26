@@ -9,6 +9,9 @@ import java.util.List;
 public interface IPurchaseRecordService {
     void setPurchaseRecordDAO(IPurchaseRecordDAO purchaseRecordDAO);
 
+    //获取所有工夹具类别代码
+    List getToolCode();
+
     //插入记录
     boolean savePurchaseRecord(PurchaseRecord purchaseRecord);
 

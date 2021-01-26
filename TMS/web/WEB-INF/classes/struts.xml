@@ -42,6 +42,11 @@ Configuration 2.1//EN"
 
 
         <!--需要加入后端校验-->
+        <!--获取工夹具类别-->
+        <action name="getToolCodeForStorage" class="purchaseRecordAction" method="getToolCode">
+            <result name="success">/pages/senior/storageApply.jsp</result>
+        </action>
+
         <!--采购入库申请表-->
         <action name="submitPurchaseRecord" class="purchaseRecordAction" method="dealPurchaseApply">
             <result name="success" type="purchasetype">
@@ -105,6 +110,9 @@ Configuration 2.1//EN"
         </action>
 
         <!--以下为报废流程-->
+        <action name="getToolCodeForScrap" class="purchaseRecordAction" method="getToolCode">
+            <result name="success">/pages/senior/scrapAppl.jsp</result>
+        </action>
         <!--报废提交申请-->
         <action name="submitScrapApplication" class="scrapAction" method="dealScrapApply">
             <result name="success" type="purchasetype">
@@ -176,6 +184,9 @@ Configuration 2.1//EN"
         </action>
 
         <!--高级员工修改基础信息-->
+        <action name="getToolCodeForUpdate" class="purchaseRecordAction" method="getToolCode">
+            <result name="success">/pages/senior/toolEntityUpdate.jsp</result>
+        </action>
         <action name="submitToolEntityUpdate" class="toolEntityAction" method="updateToolEntity">
             <result name="success" type="purchasetype">
                 <param name="location">/pages/senior/seniorHome.jsp</param>
@@ -214,12 +225,6 @@ Configuration 2.1//EN"
             <result name="success" type="redirect">/pages/supervisor/defineToolDelete.jsp</result>
         </action>
 
-
-    <!--    <package name="ajax" extends="json-default">-->
-    <!--        <action name="getPurchaseRecordDetail" class="purchaseRecordAction" method="getPurchaseDetail">-->
-    <!--            <result name="json" type="json">/pages/supervisor/processPurchaseRequisition.jsp</result>-->
-    <!--        </action>-->
-    <!--    </package>-->
         <!--系统管理员获得用户列表-->
         <action name="getUserList" class="userAction" method="getUserList">
             <result name="success" type="redirect">/pages/admin/manage.jsp</result>
@@ -241,6 +246,9 @@ Configuration 2.1//EN"
         </action>
 
         <!--高级员工录入入库记录-->
+        <action name="getToolCodeForWareHouse" class="purchaseRecordAction" method="getToolCode">
+            <result name="success">/pages/senior/WareHouseAppl.jsp</result>
+        </action>
         <action name="submitWareHouseAppl" class="WareHouseAction" method="dealWareHouse">
             <result name="success" type="redirect">/pages/senior/WareHouseAppl.jsp</result>
             <result name="fail" type="redirect">/pages/senior/seniorHome.jsp</result>

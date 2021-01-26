@@ -7,6 +7,9 @@ import java.util.List;
 public interface IPurchaseRecordDAO extends IBaseDAO {
     void insertPurchaseRecordDAO(PurchaseRecord purchaseRecord);
 
+    //获取所有类别代码
+    List getToolCode();
+
     //通过code seqid查询
     PurchaseRecord getPurchaseRecordByCodeandSeqID(String pk);
 
