@@ -27,6 +27,12 @@ public class PurchaseRecordService implements IPurchaseRecordService {
         return true;
     }
 
+    //获取所有工夹具类别代码
+    public List getToolCode(){
+        List list = purchaseRecordDAO.getToolCode();
+        return list;
+    }
+
     //指定seqid查询
     @Override
     public PurchaseRecord getPurchaseRecordByCodeandId(String pk){

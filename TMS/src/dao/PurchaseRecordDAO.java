@@ -3,16 +3,27 @@ package dao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import po.ProcessRecord;
 import po.PurchaseRecord;
 
 import java.util.List;
 
 public class PurchaseRecordDAO extends BaseDAO implements IPurchaseRecordDAO {
     private Log log = LogFactory.getLog(PurchaseRecordDAO.class);
+
+    //获取已存在所有工夹具类别
+    public List getToolCode(){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            String hql = "select code from DefineTool";
+            Query query = session.createQuery(hql);
+            return query.list();
+        } catch (RuntimeException re) {
+            log.error("get processRecord failed", re);
+            throw re;
+        }
+    }
 
     @Override
     public void insertPurchaseRecordDAO(PurchaseRecord purchaseRecord){

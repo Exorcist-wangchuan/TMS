@@ -27,6 +27,16 @@ public class PurchaseRecordAction extends ActionSupport {
     private CheckList checkList;
     private File upload;
     private String uploadFileName;
+    //工夹具类别列表
+    private List codeList;
+
+    public List getCodeList() {
+        return codeList;
+    }
+
+    public void setCodeList(List codeList) {
+        this.codeList = codeList;
+    }
 
     public void setUpload(File upload){
         this.upload = upload;
@@ -75,6 +85,12 @@ public class PurchaseRecordAction extends ActionSupport {
     }
     public void setPeriodCheckService(IPeriodCheckService periodCheckService){
         this.periodCheckService = periodCheckService;
+    }
+
+    //高级员工获取类别
+    public String getToolCode(){
+        codeList = purchaseRecordService.getToolCode();
+        return "success";
     }
 
     //高级员工
@@ -142,6 +158,7 @@ public class PurchaseRecordAction extends ActionSupport {
     //监管员
     //监管员获取采购记录
     public String getStoragePurchaseRecord() {
+        System.out.println("test");
         List<PurchaseRecord> list = new ArrayList<>();
         list = purchaseRecordService.getPurchaseRecord();
         ActionContext.getContext().getSession().put("purchaseRecords", list);
@@ -150,7 +167,6 @@ public class PurchaseRecordAction extends ActionSupport {
 
     //监管员审核通过
     public String reviewPurchaseRecord() {
-        System.out.println(111);
         List<String> passedList = checkList.getCheckList();
         boolean res = processService.purchase_firstCheck(passedList);
         if (res) return "success";
@@ -159,7 +175,6 @@ public class PurchaseRecordAction extends ActionSupport {
 
     //监管员初审不通过
     public String rejectPurchaseRecord(){
-        System.out.println(222);
         List<String> passedList = checkList.getCheckList();
         boolean res = processService.purchase_firstCheck_reject(passedList);
         if (res) return "success";

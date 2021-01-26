@@ -50,12 +50,12 @@
             <h5 class="sidenav-heading">管理操作</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="seniorHome.jsp"><i class="icon-home"></i>主页</a></li>
-                <li><a href="storageApply.jsp"><i class="icon-form"></i>提交入库申请</a></li>
-                <li><a href="WareHouseAppl.jsp"><i class="icon-form"></i>录入进库信息</a></li>
+                <li><a href="getToolCodeForStorage"><i class="icon-form"></i>提交入库申请</a></li>
+                <li><a href="getToolCodeForWareHouse"><i class="icon-form"></i>录入进库信息</a></li>
                 <li><a href="getOutHouse"><i class="icon-form"></i>处理出库</a></li>
-                <li><a href="toolEntityUpdate.jsp"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
+                <li><a href="getToolCodeForUpdate"><i class="fa fa-bar-chart"></i>修改基础信息</a></li>
                 <li><a href="getFixRecord"><i class="icon-grid"></i>处理报修申请</a></li>
-                <li><a href="scrapAppl.jsp"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
+                <li><a href="getToolCodeForScrap"> <i class="icon-interface-windows"></i>提交报废申请</a></li>
             </ul>
         </div>
 
@@ -121,7 +121,8 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label class="col-3">类别代码<br><small></small></label>
-                                    <input name="purchaseRecord.code_seqid.code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">
+                                    <%--<input name="purchaseRecord.code_seqid.code" type="text" class="col-8 form-control" placeholder="请填写10位以内字符 如:LM2132-3">--%>
+                                    <s:select list="codeList" name="purchaseRecord.code_seqid.code" cssClass="col-8 form-control"/>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
