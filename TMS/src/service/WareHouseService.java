@@ -1,9 +1,9 @@
 package service;
 
 import com.opensymphony.xwork2.ActionContext;
-import dao.IWareHouseDAO;
-import dao.WareHouseDAO;
+import dao.*;
 import po.*;
+import util.JavaMailUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,6 +12,10 @@ import java.util.List;
 
 public class WareHouseService implements IWareHouseService {
     private IWareHouseDAO wareHouseDAO = null;
+    private IToolEntityDAO toolEntityDAO;
+    private IUserDAO userDAO;
+    private IScrapRecordService scrapRecordService;
+    private JavaMailUtil mailUtil;
 
     @Override
     public IWareHouseDAO getWareHouseDAO() {
@@ -22,6 +26,25 @@ public class WareHouseService implements IWareHouseService {
         this.wareHouseDAO = wareHouseDAO;
     }
 
+    public IScrapRecordService getScrapRecordService() {
+        return scrapRecordService;
+    }
+
+    public void setScrapRecordService(IScrapRecordService scrapRecordService) {
+        this.scrapRecordService = scrapRecordService;
+    }
+
+    public void setToolEntityDAO(IToolEntityDAO toolEntityDAO) {
+        this.toolEntityDAO = toolEntityDAO;
+    }
+
+    public void setUserDAO(IUserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public void setMailUtil(JavaMailUtil mailUtil) {
+        this.mailUtil = mailUtil;
+    }
 
     @Override
     public WareHouseRecord searchWareHouse(WareHouseRecord wareHouseRecord) {
@@ -68,6 +91,7 @@ public class WareHouseService implements IWareHouseService {
         for (String priKey : passedList) {
             WareHouseRecord wareHouseRecord = wareHouseDAO.getWareHouseRecordByCodeandSeqID(priKey);
             if (wareHouseRecord != null) {
+                check(wareHouseRecord);
                 Date date = new Date();
                 wareHouseRecord.setRegDate(date);
                 wareHouseDAO.updateWareHouseRecord(wareHouseRecord);
@@ -95,6 +119,26 @@ public class WareHouseService implements IWareHouseService {
         }
         return true;
 
+    }
+
+
+    public void check(WareHouseRecord record){
+        if (record!=null){
+            System.out.println(111);
+            double time = scrapRecordService.getAverageScrapTime(record.getCode_seqid().getCode());
+            System.out.println("time" + time);
+            String pk = record.getCode_seqid().getCode() + "&" + record.getCode_seqid().getSeqID();
+            ToolEntity toolEntity = toolEntityDAO.getToolEntityByCodeandSeqID(pk);
+            System.out.println(toolEntity.getUsedCount());
+            if (toolEntity.getUsedCount()+2 > time){
+                int uid = record.getOperator();
+                User user = userDAO.getUserByID(uid);
+                System.out.println(user.getEmail());
+                if (user.getEmail()!=null) {
+                    mailUtil.sendScrapEmail(user.getEmail());
+                }
+            }
+        }
     }
 
     //监管员获取报废记录

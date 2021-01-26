@@ -100,4 +100,59 @@ public class JavaMailUtil {
         return context;
     }
 
+    //发送报废预警邮件
+    public void sendScrapEmail(String receive){
+        try {
+            Properties p = new Properties();
+            p.setProperty("mail.smtp.host", smtpServer);
+            //身份验证
+            p.setProperty("mail.smtp.auth", "true");
+            //用户名
+            p.setProperty("mail.username", username);
+            //授权码
+            p.setProperty("mail.password", password);
+            //协议
+            p.setProperty("mail.transport.protocol", "smtp");
+            //SSL加密
+            MailSSLSocketFactory sf = new MailSSLSocketFactory();
+            sf.setTrustAllHosts(true);
+            p.put("mail.smtp.ssl.enable", "true");
+            p.put("mail.smtp.ssl.socketFactory", sf);
+            //创建Session
+            Session session = Session.getDefaultInstance(p, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+            //打开调试模式
+            session.setDebug(true);
+            //声明邮件对象
+            MimeMessage msg = new MimeMessage(session);
+            //设置发件人
+            InternetAddress from = new InternetAddress("TMS SERVICE"+"<"+p.getProperty("mail.username")+">");
+            msg.setFrom(from);
+            //设置收件人
+            InternetAddress to = new InternetAddress(receive);
+            msg.setRecipient(Message.RecipientType.TO, to);
+            //设置邮件标题
+            msg.setSubject("TMS:维护提醒");
+            //设置主题内容
+            String content = generateScrapContext(receive);
+            msg.setContent(content, "text/html;charset=UTF-8");
+            //发送邮件
+            Transport.send(msg);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public String generateScrapContext(String re){
+        String context = "您好,"+ re+ "<br>";
+        context = context+ "您借出的工夹具已临近期限!<br>";
+        context = context + "请注意使用!<br>";
+        return context;
+    }
+
 }

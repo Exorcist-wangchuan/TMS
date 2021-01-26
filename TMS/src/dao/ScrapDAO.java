@@ -114,4 +114,17 @@ public class ScrapDAO extends BaseDAO implements IScrapDAO {
         }
     }
 
+    public List<Scrap> getAllRecord(){
+        Session session = getSession();
+        session.beginTransaction();
+        try {
+            String hql = "from Scrap";
+            Query query = session.createQuery(hql);
+            return query.list();
+        }catch (RuntimeException re){
+            log.error("getAllRecord error");
+            throw re;
+        }
+    }
+
 }

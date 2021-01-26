@@ -96,6 +96,10 @@
     </bean>
     <bean name="wareHouseService" class="service.WareHouseService">
         <property name="wareHouseDAO" ref="wareHouseDAO"/>
+        <property name="scrapRecordService" ref="scrapService"/>
+        <property name="toolEntityDAO" ref="toolEntityDAO"/>
+        <property name="userDAO" ref="userDAO"/>
+        <property name="mailUtil" ref="mail"/>
     </bean>
 
     <!--action类-->
