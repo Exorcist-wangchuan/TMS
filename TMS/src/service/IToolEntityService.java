@@ -15,4 +15,7 @@ public interface IToolEntityService {
 
     //修改toolentity记录
     boolean updateToolEntity(ToolEntity toolEntity);
+
+    //查询
+    ToolEntity getToolEntity(String pk);
 }

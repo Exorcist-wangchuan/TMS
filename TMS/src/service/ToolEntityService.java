@@ -32,11 +32,21 @@ public class ToolEntityService implements IToolEntityService {
         return true;
     }
 
+
+
     //修改toolentity记录
     @Override
     public boolean updateToolEntity(ToolEntity toolEntity){
         toolEntityDAO.updateToolEntity(toolEntity);
         return true;
+
+    }
+
+    //查询
+    @Override
+    public ToolEntity getToolEntity(String pk){
+        ToolEntity res=toolEntityDAO.getToolEntityByCodeandSeqID(pk);
+        return res;
 
     }
 }

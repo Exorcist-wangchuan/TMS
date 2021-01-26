@@ -96,6 +96,7 @@ public class ScrapRecordAction extends ActionSupport {
     public String getStorageScrapRecord() {
         List<Scrap> list = new ArrayList<>();
         list = scrapService.getScrapRecord();
+
         ActionContext.getContext().getSession().put("scrapRecords", list);
         return "success";
     }
