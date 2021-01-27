@@ -43,6 +43,7 @@ Configuration 2.1//EN"
         <!--获取工夹具类别-->
         <action name="getToolCodeForStorage" class="purchaseRecordAction" method="getToolCode">
             <result name="success">/pages/senior/storageApply.jsp</result>
+            <result name="input">/pages/senior/storageApply.jsp</result>
         </action>
 
         <!--采购入库申请表-->
@@ -53,6 +54,8 @@ Configuration 2.1//EN"
             </result>
             <result name="fail">/pages/senior/storageApply.jsp</result>
             <result name="PurchaseRecordexist">/pages/senior/storageApply.jsp</result>
+            <!---->
+            <result name="input">/error.jsp</result>
             <!-- 配置系统默认拦截器 -->
             <interceptor-ref name="defaultStack"/>
             <!-- 配置自定义拦截器 -->
@@ -110,6 +113,7 @@ Configuration 2.1//EN"
         <!--以下为报废流程-->
         <action name="getToolCodeForScrap" class="purchaseRecordAction" method="getToolCode">
             <result name="success">/pages/senior/scrapAppl.jsp</result>
+            <result name="input">/pages/senior/scrapAppl.jsp</result>
         </action>
         <!--报废提交申请-->
         <action name="submitScrapApplication" class="scrapAction" method="dealScrapApply">
@@ -117,8 +121,8 @@ Configuration 2.1//EN"
                 <param name="location">/pages/senior/seniorHome.jsp</param>
                 <param name="msg">提交成功！</param>
             </result>
-            <result name="fail">/pages/senior/scrapAppl.jsp</result>
-            <result name="ScrapRecordExist">/pages/senior/scrapAppl.jsp</result>
+            <result name="fail" type="chain">getToolCodeForScrap</result>
+            <result name="ScrapRecordExist" type="chain">getToolCodeForScrap</result>
             <!--配置系统默认拦截器-->
             <interceptor-ref name="defaultStack"/>
             <!--配置自定义拦截器-->
@@ -184,6 +188,7 @@ Configuration 2.1//EN"
         <!--高级员工修改基础信息-->
         <action name="getToolCodeForUpdate" class="purchaseRecordAction" method="getToolCode">
             <result name="success">/pages/senior/toolEntityUpdate.jsp</result>
+            <result name="input">/pages/senior/toolEntityUpdate.jsp</result>
         </action>
         <action name="submitToolEntityUpdate" class="toolEntityAction" method="updateToolEntity">
             <result name="success" type="purchasetype">
@@ -246,6 +251,7 @@ Configuration 2.1//EN"
         <!--高级员工录入入库记录-->
         <action name="getToolCodeForWareHouse" class="purchaseRecordAction" method="getToolCode">
             <result name="success">/pages/senior/WareHouseAppl.jsp</result>
+            <result name="input">/pages/senior/WareHouseAppl.jsp</result>
         </action>
         <action name="submitWareHouseAppl" class="WareHouseAction" method="dealWareHouse">
             <result name="success" type="chain">getToolCodeForWareHouse</result>
