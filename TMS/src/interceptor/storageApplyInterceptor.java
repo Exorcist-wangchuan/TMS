@@ -45,7 +45,10 @@ public class storageApplyInterceptor extends AbstractInterceptor {
         String seqid = formMap.get("purchaseRecord.code_seqid.seqID").toString();
         String billNo = formMap.get("purchaseRecord.billNo").toString();
         String purchaseDate = formMap.get("purchaseRecord.purchaseDate").toString();
-        String location = formMap.get("purchaseRecord.location").toString();
+        String location = formMap.get("toolEntity.location").toString();
+        System.out.println("code:"+code);
+        System.out.println("seqid"+seqid);
+        System.out.println("location"+location);
         //输入框为空提示
         if(code.toString().length()<1 || seqid.toString().length()<1 || billNo.toString().length()<1 || purchaseDate.toString().length()<1 || location.toString().length()<1){
             purchaseRecordAction.addActionError("表格不能为空");

@@ -114,6 +114,7 @@
                         <div class="card-body">
                             <form action="submitPurchaseRecord" method="post" enctype="multipart/form-data">
                                 <s:actionerror/>
+                                <s:fielderror/>
                                 <div class="form-group row">
                                     <label class="col-3">申请者编号</label>
                                     <s:textfield name="purchaseRecord.applyUID" value="%{#session.user.id}" class="col-8 form-control" readonly="true"/>
