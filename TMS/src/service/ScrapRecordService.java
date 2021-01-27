@@ -57,11 +57,11 @@ public class ScrapRecordService implements IScrapRecordService {
             if (count < 5) {
                 count = count * 8;
             } else if (count < 7) {
-                count = count * 8 * 5;
+                count = 8 * 5;
             } else {
                 int week = count / 7;
                 count = count % 7;
-                count = (int) (count * 8 + week * 5 * 0.9);
+                count = (int) (count * 8 + week * 5 * 8 * 0.9);
             }
             record.setLifecount(count);
         }

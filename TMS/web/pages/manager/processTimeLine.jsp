@@ -162,7 +162,7 @@
                         </s:if>
                         <!--有初审-->
                         <s:if test="#session.processSearchResult.first_Check_Date!='no'">
-
+                            <s:if test="#session.processSearchResult.first_Check_Date!=null">
                             <div class="timeline-item timeline-item-right timeline-item-arrow-sm col-8">
                                 <div class="timeline-point timeline-point-blank">
                                 </div>
@@ -187,10 +187,11 @@
                                     </table>
                                 </div>
                             </div>
+                            </s:if>
                         </s:if>
                         <!--有终审-->
                         <s:if test="#session.processSearchResult.final_Check_Date!='no'">
-
+                            <s:if test="#session.processSearchResult.final_Check_Date!=null">
                             <div class="timeline-item  timeline-item-left timeline-item-arrow-sm col-8">
                                 <div class="timeline-point timeline-point-blank">
                                 </div>
@@ -215,7 +216,7 @@
                                     </table>
                                 </div>
                             </div>
-
+                            </s:if>
                         </s:if>
 
                     </div>
