@@ -107,7 +107,7 @@
         <property name="userService" ref="userService"/>
         <property name="checkList" ref="checkList"/>
     </bean>
-    <bean name="purchaseRecordAction" class="action.PurchaseRecordAction">
+    <bean name="purchaseRecordAction" class="action.PurchaseRecordAction" scope="prototype">
         <property name="checkList" ref="checkList"/>
         <property name="purchaseRecordService" ref="purRecordService"/>
         <property name="processService" ref="processService"/>
@@ -115,7 +115,7 @@
         <property name="periodCheckService" ref="periodCheckService"/>
     </bean>
     <!--报废Action声明-->
-    <bean name="scrapAction" class="action.ScrapRecordAction">
+    <bean name="scrapAction" class="action.ScrapRecordAction" scope="prototype">
         <property name="scrapService" ref="scrapService"/>
         <property name="processService" ref="processService"/>
         <property name="checkList" ref="checkList"/>
